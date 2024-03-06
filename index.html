@@ -1,53 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
-    <!-- MDB icon -->
-    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- Google Fonts Roboto -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    />
-    <!-- MDB -->
-    <link rel="stylesheet" href="css/mdb.min.css" />
-  </head>
-  <body>
-    <!-- Start your project here-->
-    <div class="container">
-      <div class="d-flex justify-content-center align-items-center" style="height: 100vh">
-        <div class="text-center">
-          <img
-            class="mb-4"
-            src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png"
-            style="width: 250px; height: 90px"
-          />
-          <h5 class="mb-3">Thank you for using our product. We're glad you're with us.</h5>
-          <p class="mb-3">MDB Team</p>
-          <a
-            class="btn btn-primary btn-lg"
-            data-mdb-ripple-init
-            href="https://mdbootstrap.com/docs/standard/getting-started/"
-            target="_blank"
-            role="button"
-            >Start MDB tutorial</a
-          >
-        </div>
-      </div>
-    </div>
-    <!-- End your project here-->
 
-    <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.umd.min.js"></script>
-    <!-- Custom scripts -->
-    <script type="text/javascript"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="css/mdb.min.css" />
+</head>
+
+<body>
+  <!-- Start your project here-->
+  <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light bg-body">
+      <!-- Container wrapper -->
+      <div class="container">
+        <!-- Navbar brand -->
+        <a class="navbar-brand me-5" href="index.html">
+          <img src="img/logo.png" height="70px" alt="Tempotune Logo" loading="lazy" style="margin-top: 1px;" />
+        </a>
+
+        <!-- Toggle button -->
+        <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarButtonsExample"
+          aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+          <!-- Left links -->
+          <ul class="navbar-nav me-auto mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <p class="fs-4 mb-0 text-">TEMPOTUNE</p>
+              </a>
+            </li>
+          </ul>
+          <!-- Left links -->
+
+          <div class="d-flex align-items-center">
+            <button data-mdb-ripple-init type="button" class="btn btn-primary me-3 br-2"
+              style="background-color: #FFFDF3; color: #4B40B5; border-color: #4B40B5; border-radius: 90cm; border-width: 0.22cap;">
+              GENERATE PLAYLIST
+            </button>
+            <a data-mdb-ripple-init class="px-3" href="https://github.com/mdbootstrap/mdb-ui-kit" role="button"><i
+                class=""><img src="img/avatar.png" alt=""></i></a>
+          </div>
+        </div>
+        <!-- Collapsible wrapper -->
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+
+  <!-- Background image -->
+  <div class="p-5 text-left bg-color" style="background: linear-gradient(to right, #000517, #080052); height: 900px">
+    <!-- Welcome text -->
+    <div class="welcome-text" style="color: #FFFDF3; font-size: 40px; margin-left: 20px; margin-top: 50px;">
+      TEMPOTUNE
+    </div>
+    <!-- End Welcome text -->
+    <!-- Sub text -->
+    <div class="text" style="color: #FFFDF3; font-size: 24px; margin-left: 20px; margin-top: 50px;">
+      Welcome to TEMPOTUNE- Your Ultimate Destination for Curated Music Experiences!
+    </div>
+    <div class="sub-text2" style="color: #FFFDF3; font-size: 24px; margin-left: 20px; margin-top: 40px;">
+      <p>
+        At TEMPOTUNE, we believe that music has the power to shape emotions, transcend boundaries, <br>
+        and create unforgettable moments. Our passion lies in curating the perfect playlists tailored<br>
+        to your unique tastes and moods.
+      </p>
+
+    </div>
+
+    <!-- End Sub text -->
+  </div>
+  <!-- End your project here-->
+
+  <!-- MDB -->
+  <script type="text/javascript" src="js/mdb.umd.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript"></script>
+</body>
+
 </html>
