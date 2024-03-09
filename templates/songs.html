@@ -9,7 +9,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Songs</title>
     <!-- MDB icon -->
-    <link rel="icon" href="img/logo.png" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/logo.png')}}"
+      type="image/x-icon"
+    />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -21,7 +25,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
     />
     <!-- MDB -->
-    <link rel="stylesheet" href="css/mdb.min.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/mdb.min.css' )}}"
+    />
   </head>
 
   <body>
@@ -34,7 +41,7 @@
           <!-- Navbar brand -->
           <a class="navbar-brand me-5" href="index.html">
             <img
-              src="img/logo.png"
+              src="{{ url_for('static', filename='img/logo.png')}}"
               height="70px"
               alt="Tempotune Logo"
               loading="lazy"
@@ -101,117 +108,37 @@
       <!-- Navbar -->
     </header>
     <div
-      class="p-5"
+      class="p-4"
       style="background: linear-gradient(to right, #000a30, #180cb9, #4136ab)"
     >
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
+      <div class="" style="">
+        <div class="overflow-auto h-50 px-5">
+          {% for n in range(10) %}
+          <div
+            class="card mt-4 mb-4"
+            style="
+              background-image: linear-gradient(to right, #4b40b5, #54095b);
+            "
+          >
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-1">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-floating btn"
+                    data-mdb-ripple-init
+                  >
+                    &#9658;
+                    <!-- This is the HTML entity for the play figure -->
+                  </button>
+                </div>
+                <div class="col-4 pt-2 text-white">Song Name</div>
+                <div class="col-5 pt-2 text-white">Artist Name</div>
+                <div class="col-1 pt-2 text-white">Duration</div>
+              </div>
             </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
           </div>
-        </div>
-      </div>
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
-            </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
-            </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
-            </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
-            </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -225,7 +152,11 @@
             class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
             style="object-fit: scale-down"
           >
-            <img src="img/logo.png" alt="" style="max-height: 6vw" />
+            <img
+              src="{{ url_for('static', filename='img/logo.png')}}"
+              alt=""
+              style="max-height: 6vw"
+            />
           </div>
           <!--Grid column-->
           <!--Grid column-->
@@ -301,7 +232,10 @@
     <!-- End your project here-->
 
     <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.umd.min.js"></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/mdb.umd.min.js' )}}"
+    ></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>
