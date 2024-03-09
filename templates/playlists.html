@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.png')}}" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css' )}}" />
+</head>
+
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md navbar-light bg-body">
+            <!-- Container wrapper -->
+            <div class="container">
+                <!-- Navbar brand -->
+                <a class="navbar-brand me-5" href="index.html">
+                    <img src="{{ url_for('static', filename='img/logo.png')}}" height="70px" alt="Tempotune Logo" loading="lazy"
+                        style="margin-top: -1px;" />
+                </a>
+
+                <!-- Toggle button -->
+                <button data-mdb-collapse-init class="navbar-toggler" type="button"
+                    data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <p class="mb-0 h3" style="color:#040219; letter-spacing: 0.25em">TEMPOTUNE</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Left links -->
+
+                    <div class="d-flex align-items-center">
+                        <button data-mdb-ripple-init type="button"
+                            class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                            style="background-color: #FFFDF3; color: #4B40B5; border-color: #4B40B5 !important">
+                            GENERATE PLAYLIST
+                        </button>
+                        <a data-mdb-ripple-init class="px-3" href="https://github.com/mdbootstrap/mdb-ui-kit"
+                            role="button"><i class=""><img src="{{ url_for('static', filename='img/avatar.png')}}" alt=""></i></a>
+                    </div>
+                </div>
+                <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!-- Start your project here-->
+    <div class="mt-0 pb-5" style="background: linear-gradient(to right, rgba(0,5,23), rgb(14, 4, 103))">
+        <div class="row mx-4 justify-content-evenly">
+            <div class="container mt-0">
+                <section class="row my-4 d-flex justify-content-between">
+                    <div class="col-6 col-md-6 text-center text-light  fw-bold" style="font-size: 3vw;">
+                        Your playlists:
+                    </div>
+                    <div class="col-6 col-md-6 text-center text-light fw-bold" style="font-size: 3vw;">
+                        User Name
+                    </div>
+                </section>
+            </div>
+            {% for i in range(5) %}
+                <div class="card col-5 mx-2 col-lg-3 my-4 px-0">
+                    <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid" />
+                        <a href="../songs">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                    </div>
+                    <div class="card-body p-2 p-sm-4">
+                        <h5 class="card-title" style="font-size: 2.5vw">Name of playlist</h5>
+                        <p class="card-text text-muted" style="font-size: 1.5vw;">Pool party, All i need, Defo...</p>
+                        <div class="row">
+                            <div class="col-6 text-start text-reset" style="font-size: 1.5vw;">12 songs, 2h</div>
+                            <div class="col-6 text-end" style="font-size: 1.5vw;">01.08.24</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer class="" style="background-color: #040024 !important;">
+        <!-- Grid container -->
+        <!--Grid row-->
+        <div class="container">
+            <div class="row text-center justify-content-evenly pt-3">
+                <!--Grid column-->
+                <div class="col-lg-1 col-md-2 mb-4 mb-md-0  d-none d-md-block" style="object-fit: scale-down;">
+                    <img src="{{ url_for('static', filename='img/logo.png')}}" alt="" style='max-height: 6vw'>
+                </div>
+                <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
+                    <h6 class="text-uppercase mb-0  text-white" style="font-size: 1.5vw; letter-spacing: 0.1em">Follow us on:</h6>
+                    <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
+                        <li>
+                            <div class="row justify-content-start mt-2 ">
+                                <img class="col-2 p-0  align-self-center" style="max-width: 1.5vw" src="img/інста_1.png"
+                                    alt="">
+                                <a href="#!" class="col-10 text-white " style="font-size: 1vw;">tempotune_official</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row mt-2 justify-content-center">
+                                <img class="col-2 p-0 align-self-center" style="max-width: 1.5vw" src="img/facebook_1.png"
+                                    alt="">
+                                <a href="#!" class="col-10 text-white " style="font-size: 1vw;">TEMPOTUNE</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row  mt-2 justify-content-end">
+                                <img class="col-2 p-0 align-self-center" style="max-width: 1.5vw" src="img/twitter_1.png"
+                                    alt="">
+                                <a href="#!" class="col-10 text-white " style="font-size: 1vw;">tempotune_official</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Grid row-->
+
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: #040219; font-size: 0.8vw; color:aliceblue; opacity: 0.9">
+            © 2024 Tempotune. All rights reserved.
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- End your project here-->
+    <!--Section: Content-->
+
+    <!--Section: Content-->
+    </div>
+    </main>
+    <!--Main layout-->
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.umd.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+</body>
+
+</html>
