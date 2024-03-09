@@ -97,7 +97,10 @@
                 class="px-3"
                 href="https://github.com/mdbootstrap/mdb-ui-kit"
                 role="button"
-                ><i class=""><img src="img/avatar.png" alt="" /></i
+                ><i class=""
+                  ><img
+                    src="{{ url_for('static', filename='img/avatar.png')}}"
+                    alt="" /></i
               ></a>
             </div>
           </div>
@@ -111,35 +114,31 @@
       class="p-4"
       style="background: linear-gradient(to right, #000a30, #180cb9, #4136ab)"
     >
-      <div class="" style="">
-        <div class="overflow-auto h-50 px-5">
-          {% for n in range(10) %}
-          <div
-            class="card mt-4 mb-4"
-            style="
-              background-image: linear-gradient(to right, #4b40b5, #54095b);
-            "
-          >
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-1">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-floating btn"
-                    data-mdb-ripple-init
-                  >
-                    &#9658;
-                    <!-- This is the HTML entity for the play figure -->
-                  </button>
-                </div>
-                <div class="col-4 pt-2 text-white">Song Name</div>
-                <div class="col-5 pt-2 text-white">Artist Name</div>
-                <div class="col-1 pt-2 text-white">Duration</div>
+      <div class="vh-50 px-5">
+        {% for n in range(10) %}
+        <div
+          class="card mt-4 mb-4"
+          style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
+        >
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-1">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-floating btn"
+                  data-mdb-ripple-init
+                >
+                  &#9658;
+                  <!-- This is the HTML entity for the play figure -->
+                </button>
               </div>
+              <div class="col-4 pt-2 text-white">Song Name</div>
+              <div class="col-5 pt-2 text-white">Artist Name</div>
+              <div class="col-1 pt-2 text-white">Duration</div>
             </div>
           </div>
-          {% endfor %}
         </div>
+        {% endfor %}
       </div>
     </div>
     <footer class="" style="background-color: #040024 !important">
@@ -173,7 +172,7 @@
                   <img
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
-                    src="img/інста_1.png"
+                    src="{{ url_for('static', filename='img/інста_1.png')}}"
                     alt=""
                   />
                   <a href="#!" class="col-10 text-white" style="font-size: 1vw"
@@ -186,7 +185,7 @@
                   <img
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
-                    src="img/facebook_1.png"
+                    src="{{ url_for('static', filename='img/facebook_1.png')}}"
                     alt=""
                   />
                   <a href="#!" class="col-10 text-white" style="font-size: 1vw"
@@ -199,7 +198,7 @@
                   <img
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
-                    src="img/twitter_1.png"
+                    src="{{ url_for('static', filename='img/twitter_1.png')}}"
                     alt=""
                   />
                   <a href="#!" class="col-10 text-white" style="font-size: 1vw"
