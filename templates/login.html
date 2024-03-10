@@ -41,14 +41,14 @@
       "
     >
       <div class="card-body">
-        <form>
+        <form method="POST">
           <h3 class="mb-4" style="text-align: center">
             Welcome back to TempoTune
           </h3>
           <p class="mb-2">Username</p>
           <!-- Username input -->
           <div data-mdb-input-init class="form-outline mb-4">
-            <input type="username" id="form1Example1" class="form-control" />
+            <input type="username" id="form1Example1" name='username' class="form-control " />
             <label class="form-label" for="form1Example1" style="color: #251a81"
               >Enter your username</label
             >
@@ -56,15 +56,14 @@
           <p class="mb-2">Email</p>
           <!-- Email input -->
           <div data-mdb-input-init class="form-outline mb-4">
-            <input type="email" id="form1Example1" class="form-control" />
+            <input type="email" id="form1Example1" name="email" class="form-control" />
             <label class="form-label" for="form1Example1" style="color: #251a81"
-              >Enter your email</label
-            >
+              >Enter your email</label>
           </div>
           <p class="mb-2">Password</p>
           <!-- Password input -->
           <div data-mdb-input-init class="form-outline mb-5">
-            <input type="password" id="form1Example2" class="form-control" />
+            <input type="password" name="password" id="form1Example2" class="form-control" />
             <label class="form-label" for="form1Example2" style="color: #251a81"
               >Enter your password</label
             >
