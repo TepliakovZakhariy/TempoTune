@@ -26,5 +26,13 @@ def signup():
 def playlists():
     return render_template('playlists.html')
 
+@app.route('/songs')
+def songs():
+    return render_template('songs.html')
+
+@app.route('/generate')
+def generate():
+    return render_template('generate.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
