@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/mdb.min.css') }}"
+    />
+  </head>
+
+  <body style="background: linear-gradient(to right, #060422, #251a81)">
+    <!-- Start your project here-->
+    <div
+      class="card col-10 col-md-5"
+      style="
+        margin: auto;
+        margin-top: 100px;
+        color: #251a81;
+        background-color: #fffdf3;
+        border-radius: 30px;
+      "
+    >
+      <div class="card-body">
+        <form>
+          <h3 class="mb-4" style="text-align: center">
+            Welcome back to TempoTune
+          </h3>
+          <p class="mb-2">Username</p>
+          <!-- Username input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="username" id="form1Example1" class="form-control" />
+            <label class="form-label" for="form1Example1" style="color: #251a81"
+              >Enter your username</label
+            >
+          </div>
+          <p class="mb-2">Email</p>
+          <!-- Email input -->
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="email" id="form1Example1" class="form-control" />
+            <label class="form-label" for="form1Example1" style="color: #251a81"
+              >Enter your email</label
+            >
+          </div>
+          <p class="mb-2">Password</p>
+          <!-- Password input -->
+          <div data-mdb-input-init class="form-outline mb-5">
+            <input type="password" id="form1Example2" class="form-control" />
+            <label class="form-label" for="form1Example2" style="color: #251a81"
+              >Enter your password</label
+            >
+          </div>
+
+          <!-- Submit button -->
+          <button
+            data-mdb-ripple-init
+            type="submit"
+            class="btn btn-primary mb-5 col-12"
+            style="
+              color: #fffdf3;
+              padding: 8px 10px;
+              font-size: 14px;
+              display: block;
+              margin: 0 auto;
+              background-color: #251a81;
+            "
+          >
+            Log In
+          </button>
+        </form>
+        <p style="text-align: center">
+          Don't have an account?
+          <a href="{{url_for('signup')}}" style="color: #251a81">Sign up</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src='{{ url_for("static",filename="js/mdb.umd.min.js")}}'
+    ></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+  </body>
+</html>

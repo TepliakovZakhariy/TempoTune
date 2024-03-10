@@ -54,7 +54,7 @@
                             style="background-color: #FFFDF3; color: #4B40B5; border-color: #4B40B5 !important">
                             GENERATE PLAYLIST
                         </button>
-                        <a data-mdb-ripple-init class="px-3" href="https://github.com/mdbootstrap/mdb-ui-kit"
+                        <a data-mdb-ripple-init class="px-3" href="{{ url_for('login') }}"
                             role="button"><i class=""><img src="{{ url_for('static', filename='img/avatar.png')}}" alt=""></i></a>
                     </div>
                 </div>
@@ -153,7 +153,8 @@
     </main>
     <!--Main layout-->
     <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.umd.min.js"></script>
+    <script type="text/javascript" src="
+    "{{ url_for('static', filename='js/mdb.umd.min.js' )}}""></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
 </body>
