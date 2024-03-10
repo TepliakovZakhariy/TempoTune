@@ -112,15 +112,20 @@
     </header>
     <div
       class="p-4 pt-5"
-      style="background: linear-gradient(to right, #000a30, #180cb9, #4136ab)"
+      style="
+        background: linear-gradient(to right, rgba(0, 5, 23), rgb(14, 4, 103));
+      "
     >
       <div class="px-5">
         {% for n in range(10) %}
         <div
-          class="card mt-4 mb-4"
-          style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
+          class="card my-4 shadow-3-strong"
+          style="
+            background-image: linear-gradient(to right, #2b2185, #6d1cc4);
+            border-radius: 2rem;
+          "
         >
-          <div class="card-body">
+          <div class="card-body" style="margin: -0.6rem">
             <div class="row">
               <div class="col-sm-1">
                 <button
@@ -128,8 +133,7 @@
                   class="btn btn-primary btn-floating btn"
                   data-mdb-ripple-init
                 >
-                  &#9658;
-                  <!-- This is the HTML entity for the play figure -->
+                  <i class="fas fa-play"></i>
                 </button>
               </div>
               <div class="col-4 pt-2 text-white">Song Name</div>
