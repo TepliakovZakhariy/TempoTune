@@ -2,7 +2,7 @@
 
 ## What is TempoTune?
 
-![alt text](img/logo.png)
+![alt text](static/img/logo.png)
 
 TempoTune is your perfect assistant to create a playlist based on the music you love! Just enter any song and get the playlist of your dreams.
 
