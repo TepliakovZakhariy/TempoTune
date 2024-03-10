@@ -7,9 +7,13 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
+    <title>Songs</title>
     <!-- MDB icon -->
-    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/logo.png')}}"
+      type="image/x-icon"
+    />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -21,14 +25,13 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
     />
     <!-- MDB -->
-    <link rel="stylesheet" href="css/mdb.min.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/mdb.min.css' )}}"
+    />
   </head>
 
-  <body
-    style="
-      background-image: linear-gradient(to right, #000a30, #180cb9, #4136ab);
-    "
-  >
+  <body>
     <!-- Start your project here-->
     <header>
       <!-- Navbar -->
@@ -38,7 +41,7 @@
           <!-- Navbar brand -->
           <a class="navbar-brand me-5" href="index.html">
             <img
-              src="img/logo.png"
+              src="{{ url_for('static', filename='img/logo.png')}}"
               height="70px"
               alt="Tempotune Logo"
               loading="lazy"
@@ -65,7 +68,12 @@
             <ul class="navbar-nav me-auto mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <p class="fs-4 mb-0 text-">Tempotune</p>
+                  <p
+                    class="mb-0 h3"
+                    style="color: #040219; letter-spacing: 0.25em"
+                  >
+                    TEMPOTUNE
+                  </p>
                 </a>
               </li>
             </ul>
@@ -75,16 +83,24 @@
               <button
                 data-mdb-ripple-init
                 type="button"
-                class="btn btn-primary me-3 br-2"
+                class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                style="
+                  background-color: #fffdf3;
+                  color: #4b40b5;
+                  border-color: #4b40b5 !important;
+                "
               >
-                Generate playlist
+                GENERATE PLAYLIST
               </button>
               <a
                 data-mdb-ripple-init
                 class="px-3"
                 href="https://github.com/mdbootstrap/mdb-ui-kit"
                 role="button"
-                ><i class=""><img src="img/avatar.png" alt="" /></i
+                ><i class=""
+                  ><img
+                    src="{{ url_for('static', filename='img/avatar.png')}}"
+                    alt="" /></i
               ></a>
             </div>
           </div>
@@ -94,224 +110,135 @@
       </nav>
       <!-- Navbar -->
     </header>
-    <div class="container">
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
+    <div
+      class="p-4 pt-5"
+      style="
+        background: linear-gradient(to right, rgba(0, 5, 23), rgb(14, 4, 103));
+      "
+    >
+      <div class="px-5">
+        {% for n in range(10) %}
+        <div
+          class="card my-4 shadow-3-strong"
+          style="
+            background-image: linear-gradient(to right, #2b2185, #6d1cc4);
+            border-radius: 2rem;
+          "
+        >
+          <div class="card-body" style="margin: -0.6rem">
+            <div class="row">
+              <div class="col-1 align-self-center">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-floating"
+                  data-mdb-ripple-init
+                >
+                  <i class="fas fa-play"></i>
+                </button>
+              </div>
+              <div class="col-4 align-self-center text-white">Song Name</div>
+              <div class="col-4 align-self-center text-white">Artist Name</div>
+              <div class="col-3 align-self-center text-white">Duration</div>
             </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
           </div>
         </div>
-      </div>
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
-            </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
-            </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
-            </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="card mt-4 mb-4"
-        style="background-image: linear-gradient(to right, #4b40b5, #54095b)"
-      >
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-1">
-              <button
-                type="button"
-                class="btn btn-primary btn-floating btn"
-                data-mdb-ripple-init
-              >
-                &#9658;
-                <!-- This is the HTML entity for the play figure -->
-              </button>
-            </div>
-            <div class="col-4 pt-2 text-white">Song Name</div>
-            <div class="col-5 pt-2 text-white">Artist Name</div>
-            <div class="col-1 pt-2 text-white">Duration</div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
-    <footer
-      class="text-center text-lg-start"
-      style="background-color: #040024 !important"
-    >
+    <footer class="" style="background-color: #040024 !important">
       <!-- Grid container -->
       <!--Grid row-->
       <div class="container">
-        <div class="row text-center justify-content-evenly w-100 pt-4">
+        <div class="row text-center justify-content-evenly pt-3">
           <!--Grid column-->
           <div
-            class="col-lg-3 col-md-6 mb-4 mb-md-0 d-none d-md-block"
+            class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
             style="object-fit: scale-down"
           >
-            <img src="img/logo.png" alt="" style="max-height: 130px" />
+            <img
+              src="{{ url_for('static', filename='img/logo.png')}}"
+              alt=""
+              style="max-height: 6vw"
+            />
           </div>
           <!--Grid column-->
           <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h6 class="text-uppercase mb-0 text-start text-white">
+          <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
+            <h6
+              class="text-uppercase mb-0 text-white"
+              style="font-size: 1.5vw; letter-spacing: 0.1em"
+            >
               Follow us on:
             </h6>
-            <ul class="list-unstyled mt-2">
-              <li>
-                <div class="row justify-content-start">
-                  <img
-                    class="col-3 p-0 align-self-center"
-                    style="max-width: 30px"
-                    src="img/інста_1.png"
-                    alt=""
-                  />
-                  <a href="#!" class="col-7 text-white">tempotune_official</a>
-                </div>
-              </li>
+            <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
               <li>
                 <div class="row justify-content-start mt-2">
                   <img
-                    class="col-3 p-0 align-self-center"
-                    style="max-width: 30px"
-                    src="img/facebook_1.png"
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/інста_1.png')}}"
                     alt=""
                   />
-                  <a href="#!" class="col-7 text-white">TEMPOTUNE</a>
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
                 </div>
               </li>
               <li>
-                <div class="row justify-content-start mt-2">
+                <div class="row mt-2 justify-content-center">
                   <img
-                    class="col-3 p-0 align-self-center"
-                    style="max-width: 30px"
-                    src="img/twitter_1.png"
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/facebook_1.png')}}"
                     alt=""
                   />
-                  <a href="#!" class="col-7 text-white">tempotune_official</a>
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >TEMPOTUNE</a
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2 justify-content-end">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/twitter_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
                 </div>
               </li>
             </ul>
           </div>
-          <!--Grid column-->
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h6 class="text-uppercase text-white mb-2">
-              Playlist tailored for you
-            </h6>
-            <ul class="list-unstyled mb-0">
-              <li>
-                <a href="#!" class="text-white">Free Music Download</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Sounds Effects</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Saved Playlists</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h6 class="text-uppercase mb-0 text-white">Our contacts:</h6>
-
-            <ul class="list-unstyled">
-              <li>
-                <a href="#!" class="text-white">tempotune@gmail.com</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
         </div>
       </div>
-
       <!--Grid row-->
 
       <!-- Grid container -->
 
       <!-- Copyright -->
-      <div class="text-center p-3 text-white" style="background-color: #040219">
-        © 2024 Copyright:
-        <a class="text-white" href="https://">...</a>
+      <div
+        class="text-center p-3"
+        style="
+          background-color: #040219;
+          font-size: 0.8vw;
+          color: aliceblue;
+          opacity: 0.9;
+        "
+      >
+        © 2024 Tempotune. All rights reserved.
       </div>
       <!-- Copyright -->
     </footer>
     <!-- End your project here-->
 
     <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.umd.min.js"></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/mdb.umd.min.js' )}}"
+    ></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>
