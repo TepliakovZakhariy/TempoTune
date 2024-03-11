@@ -4,27 +4,32 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Material Design for Bootstrap</title>
     <!-- MDB icon -->
     <link
       rel="icon"
       href="{{url_for('static',filename='img/logo.png') }}"
-      type="image/x-icon" />
+      type="image/x-icon"
+    />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <!-- Google Fonts Roboto -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
     <!-- MDB -->
     <link
       rel="stylesheet"
       href="{{ url_for(
-    'static', filename='css/mdb.min.css') }}" />
+    'static', filename='css/mdb.min.css') }}"
+    />
   </head>
 
   <body>
@@ -41,7 +46,8 @@
               height="70px"
               alt="Tempotune Logo"
               loading="lazy"
-              style="margin-top: 1px" />
+              style="margin-top: 1px"
+            />
           </a>
 
           <!-- Toggle button -->
@@ -52,7 +58,8 @@
             data-mdb-target="#navbarButtonsExample"
             aria-controls="navbarButtonsExample"
             aria-expanded="false"
-            aria-label="Toggle navigation">
+            aria-label="Toggle navigation"
+          >
             <i class="fas fa-bars"></i>
           </button>
 
@@ -64,7 +71,8 @@
                 <a class="nav-link" href="{{ url_for('index') }}">
                   <p
                     class="mb-0 h3"
-                    style="color: #040219; letter-spacing: 0.25em">
+                    style="color: #040219; letter-spacing: 0.25em"
+                  >
                     TEMPOTUNE
                   </p>
                 </a>
@@ -73,24 +81,30 @@
             <!-- Left links -->
 
             <div class="d-flex align-items-center">
-              <button
-                data-mdb-ripple-init
-                type="button"
-                class="btn btn-primary me-3 rounded-9 border border-2 display-3"
-                style="
-                  background-color: #fffdf3;
-                  color: #4b40b5;
-                  border-color: #4b40b5 !important;
-                ">
-                GENERATE PLAYLIST
-              </button>
+              <a href="{{url_for('generate')}}">
+                <button
+                  data-mdb-ripple-init
+                  type="button"
+                  class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                  style="
+                    background-color: #fffdf3;
+                    color: #4b40b5;
+                    border-color: #4b40b5 !important;
+                  "
+                >
+                  GENERATE PLAYLIST
+                </button>
+              </a>
               <a
                 data-mdb-ripple-init
                 class="px-3"
                 href="{{url_for('login')}}"
-                role="button"><i class><img
+                role="button"
+                ><i class
+                  ><img
                     src="{{url_for('static', filename='img/avatar.png')}}"
-                    alt /></i></a>
+                    alt /></i
+              ></a>
             </div>
           </div>
           <!-- Collapsible wrapper -->
@@ -107,19 +121,22 @@
         padding-top: 2vh;
         background: linear-gradient(to right, #000517, #080052);
         height: 100vh;
-      ">
+      "
+    >
       <!-- Welcome text -->
       <div class="container-fluid container">
         <div
           class="welcome-text mt-4"
-          style="color: #fffdf3; font-size: 5vw; letter-spacing: 0.25em">
+          style="color: #fffdf3; font-size: 5vw; letter-spacing: 0.25em"
+        >
           <p>TEMPOTUNE</p>
         </div>
         <!-- End Welcome text -->
         <!-- Sub text -->
         <div
           class="text mt-4"
-          style="color: #fffdf3; font-size: 2vw; letter-spacing: 0.1em">
+          style="color: #fffdf3; font-size: 2vw; letter-spacing: 0.1em"
+        >
           <p>
             Welcome to TEMPOTUNE- Your Ultimate Destination for Curated Music
             Experiences!
@@ -127,7 +144,8 @@
         </div>
         <div
           class="sub-text2 mt-4 pb-2"
-          style="color: #fffdf3; font-size: 2vw; letter-spacing: 0.1em">
+          style="color: #fffdf3; font-size: 2vw; letter-spacing: 0.1em"
+        >
           <p>
             At TEMPOTUNE, we believe that music has the power to shape emotions,
             transcend boundaries, and create unforgettable moments. <br />
@@ -138,7 +156,8 @@
       </div>
       <div
         class="pt-5 text-left bg-color"
-        style="background: #fffdf3; height: 100vh">
+        style="background: #fffdf3; height: 100vh"
+      >
         <!-- Welcome text -->
 
         <!-- End Sub text -->
@@ -150,71 +169,77 @@
       <div
         class="card col-3 bg-image border border-4 mt-2"
         style="
-              background-color: #fffdf3;
-              color: #4b40b5;
-              border-color: #4b40b5 !important;
-            ">
+          background-color: #fffdf3;
+          color: #4b40b5;
+          border-color: #4b40b5 !important;
+        "
+      >
         <div class="card-body p-2">
           <p
             class="card-text text-center"
             style="
-                  color: #040024;
-                  font-size: 2vw;
-                  letter-spacing: 0.1em;
-                  font-weight: bold;
-                ">
+              color: #040024;
+              font-size: 2vw;
+              letter-spacing: 0.1em;
+              font-weight: bold;
+            "
+          >
             Find the right music
           </p>
         </div>
         <img
           src="{{url_for('static', filename='img/find.png')}}"
-          class="card-img-top" />
+          class="card-img-top"
+        />
       </div>
       <div
         class="card col-3 bg-image border border-4 mt-2"
         style="
-              background-color: #fffdf3;
-              color: #54095b;
-              border-color: #54095b !important;
-            ">
+          background-color: #fffdf3;
+          color: #54095b;
+          border-color: #54095b !important;
+        "
+      >
         <div class="card-body p-2">
           <p
             class="card-text text-center"
             style="
-                  color: #040024;
-                  font-size: 2vw;
-                  letter-spacing: 0.1em;
-                  font-weight: bold;
-                ">
+              color: #040024;
+              font-size: 2vw;
+              letter-spacing: 0.1em;
+              font-weight: bold;
+            "
+          >
             Set up your filters
           </p>
         </div>
         <img
           src="{{url_for('static', filename='img/chose.png')}}"
-          class="card-img-top" />
+          class="card-img-top"
+        />
       </div>
       <div
         class="card col-3 bg-image border border-4 mt-2"
         style="
-              background-color: #fffdf3;
-              color: #06003d;
-              border-color: #06003d !important;
-            ">
+          background-color: #fffdf3;
+          color: #06003d;
+          border-color: #06003d !important;
+        "
+      >
         <div class="card-body p-2">
           <p
             class="card-text text-center"
             style="
-                  color: #040024;
-                  font-size: 2vw;
-                  letter-spacing: 0.1em;
-                  font-weight: bold;
-                ">
+              color: #040024;
+              font-size: 2vw;
+              letter-spacing: 0.1em;
+              font-weight: bold;
+            "
+          >
             Enjoy your playlist
           </p>
         </div>
-        <img
-          src="{{url_for('static', filename='img/play.png')}}"
-          class />
+        <img src="{{url_for('static', filename='img/play.png')}}" class />
       </div>
     </div>
     <div class="row justify-content-center">
@@ -223,10 +248,11 @@
         type="button"
         class="btn btn-primary col-md-3 me-3 rounded-9 display-1 mt-5 mb-5"
         style="
-              background: linear-gradient(to right, #06003d, #54095b);
-              font-size: 2vw;
-              color: #fffdf3;
-            ">
+          background: linear-gradient(to right, #06003d, #54095b);
+          font-size: 2vw;
+          color: #fffdf3;
+        "
+      >
         GENERATE PLAYLIST
       </button>
     </div>
@@ -238,18 +264,21 @@
           <!--Grid column-->
           <div
             class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
-            style="object-fit: scale-down">
+            style="object-fit: scale-down"
+          >
             <img
               src="{{ url_for('static', filename='img/logo.png')}}"
               alt
-              style="max-height: 6vw" />
+              style="max-height: 6vw"
+            />
           </div>
           <!--Grid column-->
           <!--Grid column-->
           <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
             <h6
               class="text-uppercase mb-0 text-white"
-              style="font-size: 1.5vw; letter-spacing: 0.1em">
+              style="font-size: 1.5vw; letter-spacing: 0.1em"
+            >
               Follow us on:
             </h6>
             <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
@@ -259,11 +288,11 @@
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
                     src="{{ url_for('static', filename='img/інста_1.png')}}"
-                    alt />
-                  <a
-                    href="#!"
-                    class="col-10 text-white"
-                    style="font-size: 1vw">tempotune_official</a>
+                    alt
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
                 </div>
               </li>
               <li>
@@ -272,11 +301,11 @@
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
                     src="{{ url_for('static', filename='img/facebook_1.png')}}"
-                    alt />
-                  <a
-                    href="#!"
-                    class="col-10 text-white"
-                    style="font-size: 1vw">TEMPOTUNE</a>
+                    alt
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >TEMPOTUNE</a
+                  >
                 </div>
               </li>
               <li>
@@ -285,11 +314,11 @@
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
                     src="{{ url_for('static', filename='img/twitter_1.png')}}"
-                    alt />
-                  <a
-                    href="#!"
-                    class="col-10 text-white"
-                    style="font-size: 1vw">tempotune_official</a>
+                    alt
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
                 </div>
               </li>
             </ul>
@@ -304,11 +333,12 @@
       <div
         class="text-center p-3"
         style="
-            background-color: #040219;
-            font-size: 0.8vw;
-            color: aliceblue;
-            opacity: 0.9;
-          ">
+          background-color: #040219;
+          font-size: 0.8vw;
+          color: aliceblue;
+          opacity: 0.9;
+        "
+      >
         © 2024 Tempotune. All rights reserved.
       </div>
       <!-- Copyright -->
@@ -316,7 +346,8 @@
     <!-- MDB -->
     <script
       type="text/javascript"
-      src="{{ url_for('static', filename='js/mdb.umd.min.js' )}}"></script>
+      src="{{ url_for('static', filename='js/mdb.umd.min.js' )}}"
+    ></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>
