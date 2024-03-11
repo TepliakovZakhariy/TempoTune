@@ -11,7 +11,7 @@ db = client['TempoTune']
 users = db["users"]
 app = Flask(__name__)
 
-spotify_client=spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="f17426cd426c406eb0909cb148cb0981",client_secret='0f16e1667986460c9841c0aa0944415a'))
+spotify_client=spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="f17426cd426c406eb0909cb148cb0981",client_secret='0f16e1667986460c9841c0aa0944415a'))
 
 def milliseconds_to_string_duration(milliseconds):
     seconds, milliseconds = divmod(milliseconds, 1000)
