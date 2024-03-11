@@ -4,27 +4,24 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Generate playlist</title>
     <!-- MDB icon -->
-    <link rel="icon" href="{{url_for('static',filename='img/logo.png') }}" type="image/x-icon" />
+    <link rel="icon" href="{{url_for('static',filename='img/logo.png') }}"
+      type="image/x-icon" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- Google Fonts Roboto -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    />
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
     <!-- MDB -->
     <link
       rel="stylesheet"
-      href="{{url_for('static',filename='css/mdb.min.css')}}"
-    />
+      href="{{url_for('static',filename='css/mdb.min.css')}}" />
   </head>
   <body>
     <header>
@@ -39,8 +36,7 @@
               height="70px"
               alt="Tempotune Logo"
               loading="lazy"
-              style="margin-top: -1px"
-            />
+              style="margin-top: -1px" />
           </a>
 
           <!-- Toggle button -->
@@ -51,8 +47,7 @@
             data-mdb-target="#navbarButtonsExample"
             aria-controls="navbarButtonsExample"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
 
@@ -64,8 +59,7 @@
                 <a class="nav-link" href="#">
                   <p
                     class="mb-0 h3"
-                    style="color: #040219; letter-spacing: 0.25em"
-                  >
+                    style="color: #040219; letter-spacing: 0.25em">
                     TEMPOTUNE
                   </p>
                 </a>
@@ -82,20 +76,16 @@
                   background-color: #fffdf3;
                   color: #4b40b5;
                   border-color: #4b40b5 !important;
-                "
-              >
+                ">
                 GENERATE PLAYLIST
               </button>
               <a
                 data-mdb-ripple-init
                 class="px-3"
                 href="https://github.com/mdbootstrap/mdb-ui-kit"
-                role="button"
-                ><i class=""
-                  ><img
+                role="button"><i class><img
                     src="{{ url_for('static', filename='img/avatar.png')}}"
-                    alt="" /></i
-              ></a>
+                    alt /></i></a>
             </div>
           </div>
           <!-- Collapsible wrapper -->
@@ -108,14 +98,12 @@
     <div class="container">
       <div
         class="d-flex justify-content-center align-items-center"
-        style="height: 100vh"
-      >
+        style="height: 100vh">
         <div class="text-center">
           <img
             class="mb-4"
             src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png"
-            style="width: 250px; height: 90px"
-          />
+            style="width: 250px; height: 90px" />
           <h5 class="mb-3">
             Thank you for using our product. We're glad you're with us.
           </h5>
@@ -125,14 +113,40 @@
             data-mdb-ripple-init
             href="https://mdbootstrap.com/docs/standard/getting-started/"
             target="_blank"
-            role="button"
-            >Generate playlist</a
-          >
+            role="button">Generate playlist</a>
         </div>
+      </div>
+      <div class="px-5">
+        {% for n in range(3) %}
+        <div
+          class="card my-4 shadow-3-strong"
+          style="
+            background-image: linear-gradient(to right, #2b2185, #6d1cc4);
+            border-radius: 2rem;
+          "
+        >
+          <div class="card-body" style="margin: -0.6rem">
+            <div class="row">
+              <div class="col-1 align-self-center">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-floating"
+                  data-mdb-ripple-init
+                >
+                  <i class="fas fa-play"></i>
+                </button>
+              </div>
+              <div class="col-4 align-self-center text-white">Song Name</div>
+              <div class="col-4 align-self-center text-white">Artist Name</div>
+              <div class="col-3 align-self-center text-white">Duration</div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
       </div>
     </div>
     <!-- End your project here-->
-    <footer class="" style="background-color: #040024 !important">
+    <footer class style="background-color: #040024 !important">
       <!-- Grid container -->
       <!--Grid row-->
       <div class="container">
@@ -140,21 +154,18 @@
           <!--Grid column-->
           <div
             class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
-            style="object-fit: scale-down"
-          >
+            style="object-fit: scale-down">
             <img
               src="{{ url_for('static', filename='img/logo.png')}}"
-              alt=""
-              style="max-height: 6vw"
-            />
+              alt
+              style="max-height: 6vw" />
           </div>
           <!--Grid column-->
           <!--Grid column-->
           <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
             <h6
               class="text-uppercase mb-0 text-white"
-              style="font-size: 1.5vw; letter-spacing: 0.1em"
-            >
+              style="font-size: 1.5vw; letter-spacing: 0.1em">
               Follow us on:
             </h6>
             <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
@@ -164,11 +175,9 @@
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
                     src="{{ url_for('static', filename='img/інста_1.png')}}"
-                    alt=""
-                  />
-                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
-                    >tempotune_official</a
-                  >
+                    alt />
+                  <a href="#!" class="col-10 text-white"
+                    style="font-size: 1vw">tempotune_official</a>
                 </div>
               </li>
               <li>
@@ -177,11 +186,9 @@
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
                     src="{{ url_for('static', filename='img/facebook_1.png')}}"
-                    alt=""
-                  />
-                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
-                    >TEMPOTUNE</a
-                  >
+                    alt />
+                  <a href="#!" class="col-10 text-white"
+                    style="font-size: 1vw">TEMPOTUNE</a>
                 </div>
               </li>
               <li>
@@ -190,11 +197,9 @@
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
                     src="{{ url_for('static', filename='img/twitter_1.png')}}"
-                    alt=""
-                  />
-                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
-                    >tempotune_official</a
-                  >
+                    alt />
+                  <a href="#!" class="col-10 text-white"
+                    style="font-size: 1vw">tempotune_official</a>
                 </div>
               </li>
             </ul>
@@ -213,8 +218,7 @@
           font-size: 0.8vw;
           color: aliceblue;
           opacity: 0.9;
-        "
-      >
+        ">
         © 2024 Tempotune. All rights reserved.
       </div>
       <!-- Copyright -->
@@ -222,8 +226,7 @@
     <!-- MDB -->
     <script
       type="text/javascript"
-      src="{{url_for('static',filename='js/mdb.umd.min.js')}}"
-    ></script>
+      src="{{url_for('static',filename='js/mdb.umd.min.js')}}"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>
