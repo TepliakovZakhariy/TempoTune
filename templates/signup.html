@@ -42,12 +42,17 @@
       "
     >
       <div class="card-body">
-        <form>
+        <form method="POST">
           <h2 class="mb-4" style="text-align: center">SIGN UP</h2>
           <p class="mb-2">Username</p>
           <!-- Username input -->
           <div data-mdb-input-init class="form-outline mb-4">
-            <input type="username" id="form1Example1" class="form-control" />
+            <input
+              type="username"
+              id="form1Example1"
+              class="form-control"
+              name="username"
+            />
             <label class="form-label" for="form1Example1" style="color: #251a81"
               >Enter your username</label
             >
@@ -55,7 +60,12 @@
           <p class="mb-2">Email</p>
           <!-- Email input -->
           <div data-mdb-input-init class="form-outline mb-4">
-            <input type="email" id="form1Example1" class="form-control" />
+            <input
+              type="email"
+              id="form1Example1"
+              class="form-control"
+              name="email"
+            />
             <label class="form-label" for="form1Example1" style="color: #251a81"
               >Enter your email</label
             >
@@ -63,7 +73,12 @@
           <p class="mb-2">Password</p>
           <!-- Password input -->
           <div data-mdb-input-init class="form-outline mb-5">
-            <input type="password" id="form1Example2" class="form-control" />
+            <input
+              type="password"
+              id="form1Example2"
+              class="form-control"
+              name="password"
+            />
             <label class="form-label" for="form1Example2" style="color: #251a81"
               >Enter your password</label
             >
