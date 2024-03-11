@@ -10,7 +10,7 @@ client = MongoClient(uri)
 db = client['TempoTune']
 users = db["users"]
 app = Flask(__name__)
-
+app.secret_key=['very_secret']
 spotify_client=spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="f17426cd426c406eb0909cb148cb0981",client_secret='0f16e1667986460c9841c0aa0944415a'))
 
 def milliseconds_to_string_duration(milliseconds):
@@ -72,31 +72,45 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if "email" in session:
+        return redirect(url_for('playlists'))
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        users.insert_one(
-            {'username': username, 'email': email, 'password': password})
+        f_user=users.find_one({'email':email})
+        if not f_user:
+            message = 'User with such email does not exist'
+            return render_template('login.html', message=message)
+        if f_user['username']!=username or f_user['password']!=password:
+            message = 'Wrong username or password'
+            return render_template('login.html', message=message)
+        session["email"]=email
         return redirect(url_for('index'))
     return render_template('login.html')
 
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    if "email" in session:
+        return redirect(url_for('playlists'))
     if request.method == 'POST':
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
+        if users.find_one({'email':email}):
+            message = 'User with such email already exists'
+            return render_template('sign.html', message=message)
         users.insert_one(
-            {'username': username, 'email': email, 'password': password})
+            {'username': username, 'email': email, 'password': password, 'playlists': []})
         return redirect(url_for('index'))
     return render_template('signup.html')
 
 
 @app.route('/playlists')
 def playlists():
-    return render_template('playlists.html')
+    name = users.find_one({"email" : session["email"]})['username']
+    return render_template('playlists.html', name=name)
 
 
 @app.route('/songs')

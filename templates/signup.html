@@ -83,7 +83,11 @@
               >Enter your password</label
             >
           </div>
-
+          {% if message %}
+          <p class="text-center p-1 pb-3 text-danger" style="font-size: 2vh">
+            <em>{{ message }}</em>
+          </p>
+          {% endif %}
           <!-- Submit button -->
           <button
             data-mdb-ripple-init
