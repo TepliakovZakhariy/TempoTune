@@ -144,15 +144,18 @@
           <div class="card-body" style="margin: -0.6rem">
             <div class="row">
               <div class="col-1 align-self-center">
-                <a href="{{song.preview_url}}">
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-floating"
-                    data-mdb-ripple-init
-                  >
-                    <i class="fas fa-play"></i>
-                  </button>
-                </a>
+                <audio id="audioPlayer">
+                  <source src="{{song.preview_url}}" type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-floating"
+                  data-mdb-ripple-init
+                  onclick="togglePlayPause(this)"
+                >
+                  <i class="fas fa-play"></i>
+                </button>
               </div>
               <div class="col-4 align-self-center text-white">
                 {{song.name}}
@@ -264,6 +267,28 @@
       src="{{ url_for('static', filename='js/mdb.umd.min.js' )}}"
     ></script>
     <!-- Custom scripts -->
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+      var currentAudio = null;
+
+      function togglePlayPause(button) {
+        var audioPlayer = button.previousElementSibling;
+        var playPauseIcon = button.children[0];
+
+        if (currentAudio && currentAudio != audioPlayer) {
+          currentAudio.pause();
+          currentAudio.nextElementSibling.children[0].className = "fas fa-play";
+        }
+
+        if (audioPlayer.paused) {
+          audioPlayer.play();
+          playPauseIcon.className = "fas fa-pause";
+          currentAudio = audioPlayer;
+        } else {
+          audioPlayer.pause();
+          playPauseIcon.className = "fas fa-play";
+          currentAudio = null;
+        }
+      }
+    </script>
   </body>
 </html>
