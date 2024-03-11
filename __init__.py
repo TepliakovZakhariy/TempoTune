@@ -3,6 +3,8 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
+from random import getrandbits
+from datetime import datetime
 
 uri = "mongodb+srv://yurora:tempotune123official@cluster0.pkxylky.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
@@ -42,8 +44,13 @@ class Song:
 
 class Playlist:
     def __init__(self, track):
+        self.id = getrandbits(128)
         self.songs = []
         self.total_duration=0
+        current_day = datetime.now().day
+        current_month = datetime.now().month
+        current_year = datetime.now().year
+        self.date = f'{current_day}/{current_month}/{current_year}'
         recomendations = spotify_client.recommendations(seed_tracks=[track])
         recomendations = recomendations['tracks']
         for track in recomendations:
@@ -79,6 +86,9 @@ def login():
         email = request.form['email']
         password = request.form['password']
         f_user=users.find_one({'email':email})
+        if not username or not email or not password:
+            message = 'All fields are required'
+            return render_template('login.html', message=message)
         if not f_user:
             message = 'User with such email does not exist'
             return render_template('login.html', message=message)
@@ -98,9 +108,12 @@ def signup():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
+        if not username or not email or not password:
+            message = 'All fields are required'
+            return render_template('signup.html', message=message)
         if users.find_one({'email':email}):
             message = 'User with such email already exists'
-            return render_template('sign.html', message=message)
+            return render_template('signup.html', message=message)
         users.insert_one(
             {'username': username, 'email': email, 'password': password, 'playlists': []})
         return redirect(url_for('index'))
