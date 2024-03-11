@@ -117,6 +117,12 @@ def playlists():
 def songs():
     return render_template('songs.html')
 
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    if "email" in session:
+        session.pop("email", None)
+    return render_template("index.html")
+
 
 @app.route('/generate', methods=['GET', 'POST'])
 def generate():
