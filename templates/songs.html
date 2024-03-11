@@ -94,10 +94,24 @@
                   GENERATE PLAYLIST
                 </button>
               </a>
+              <a href="{{url_for('logout')}}">
+                <button
+                  data-mdb-ripple-init
+                  type="button"
+                  class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                  style="
+                    background-color: #fffdf3;
+                    color: #4b40b5;
+                    border-color: #4b40b5 !important;
+                  "
+                >
+                  LOGOUT
+                </button>
+              </a>
               <a
                 data-mdb-ripple-init
                 class="px-3"
-                href="https://github.com/mdbootstrap/mdb-ui-kit"
+                href="{{url_for('login')}}"
                 role="button"
                 ><i class=""
                   ><img
