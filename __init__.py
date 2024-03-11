@@ -5,6 +5,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 from random import getrandbits
 from datetime import datetime
+from ast import literal_eval
 
 uri = "mongodb+srv://yurora:tempotune123official@cluster0.pkxylky.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
@@ -50,7 +51,7 @@ class Playlist:
         current_day = datetime.now().day
         current_month = datetime.now().month
         current_year = datetime.now().year
-        self.date = f'{current_day}/{current_month}/{current_year}'
+        self.date = f'{current_day}.{current_month}.{current_year}'
         recomendations = spotify_client.recommendations(seed_tracks=[track])
         recomendations = recomendations['tracks']
         for track in recomendations:
@@ -66,7 +67,7 @@ class Playlist:
             cover_small = track['album']['images'][2]['url']
             song = Song(name, artist, url, duration, preview_url,
                         cover_big, cover_medium, cover_small)
-            self.songs.append(song)
+            self.songs.append(song.__dict__)
         self.total_duration=milliseconds_to_string_duration(self.total_duration)
 
     def __repr__(self):
@@ -122,8 +123,11 @@ def signup():
 
 @app.route('/playlists')
 def playlists():
-    name = users.find_one({"email" : session["email"]})['username']
-    return render_template('playlists.html', name=name)
+    user = users.find_one({"email" : session["email"]})
+    name = user['username']
+    playlists = user['playlists']
+    playlists = [literal_eval(playlist) for playlist in playlists]
+    return render_template('playlists.html', name=name, playlists=playlists)
 
 
 @app.route('/songs')
