@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 # from pymongo import MongoClient
-# from bson.objectid import ObjectId
 
 uri = "mongodb+srv://yurora:tempotune123official@cluster0.pkxylky.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
