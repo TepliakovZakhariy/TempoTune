@@ -24,7 +24,7 @@
             <!-- Container wrapper -->
             <div class="container">
                 <!-- Navbar brand -->
-                <a class="navbar-brand me-5" href="index.html">
+                <a class="navbar-brand me-5" href="{{ url_for('index') }}">
                     <img src="{{ url_for('static', filename='img/logo.png')}}" height="70px" alt="Tempotune Logo" loading="lazy"
                         style="margin-top: -1px;" />
                 </a>
@@ -41,7 +41,7 @@
                     <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ url_for('index') }}">
                                 <p class="mb-0 h3" style="color:#040219; letter-spacing: 0.25em">TEMPOTUNE</p>
                             </a>
                         </li>
