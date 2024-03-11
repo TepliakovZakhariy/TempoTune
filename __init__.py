@@ -130,9 +130,12 @@ def playlists():
     return render_template('playlists.html', name=name, playlists=playlists)
 
 
-@app.route('/songs')
-def songs():
-    return render_template('songs.html')
+@app.route('/songs/<playlist_id>')
+def songs(playlist_id):
+    playlists_ = users.find_one({"email" : session["email"]})['playlists']
+    playlists = [literal_eval(playlist) for playlist in playlists_]
+    playlist = [playlist for playlist in playlists if playlist['id'] == int(playlist_id)][0]
+    return render_template('songs.html', playlist=playlist)
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():

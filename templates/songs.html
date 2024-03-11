@@ -133,7 +133,7 @@
       "
     >
       <div class="px-5">
-        {% for n in range(10) %}
+        {% for song in playlist.songs %}
         <div
           class="card my-4 shadow-3-strong"
           style="
@@ -144,17 +144,25 @@
           <div class="card-body" style="margin: -0.6rem">
             <div class="row">
               <div class="col-1 align-self-center">
-                <button
-                  type="button"
-                  class="btn btn-primary btn-floating"
-                  data-mdb-ripple-init
-                >
-                  <i class="fas fa-play"></i>
-                </button>
+                <a href="{{song.preview_url}}">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-floating"
+                    data-mdb-ripple-init
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </a>
               </div>
-              <div class="col-4 align-self-center text-white">Song Name</div>
-              <div class="col-4 align-self-center text-white">Artist Name</div>
-              <div class="col-3 align-self-center text-white">Duration</div>
+              <div class="col-4 align-self-center text-white">
+                {{song.name}}
+              </div>
+              <div class="col-4 align-self-center text-white">
+                {{song.artist}}
+              </div>
+              <div class="col-3 align-self-center text-white">
+                {{song.duration}}
+              </div>
             </div>
           </div>
         </div>

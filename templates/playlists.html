@@ -158,7 +158,7 @@
             data-mdb-ripple-color="light"
           >
             <img src="{{playlist.songs[0].cover_big}}" class="img-fluid" />
-            <a href="../songs">
+            <a href="{{url_for('songs',playlist_id=playlist.id)}}">
               <div
                 class="mask"
                 style="background-color: rgba(251, 251, 251, 0.15)"
