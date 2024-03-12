@@ -29,11 +29,14 @@ def milliseconds_to_string_duration(milliseconds):
     return duration_string
 
 class Song:
-    def __init__(self, name, artist, url, duration,
+    def __init__(self, name, artist, album, url, album_url, artist_url, duration,
                  preview_url, cover_big, cover_medium, cover_small):
         self.name = name
         self.artist = artist
+        self.album=album
         self.url = url
+        self.album_url = album_url
+        self.artist_url = artist_url
         self.duration = duration
         self.preview_url = preview_url
         self.cover_big = cover_big
@@ -59,7 +62,10 @@ class Playlist:
                 continue
             name = track['name']
             artist = ', '.join([artist['name'] for artist in track['artists']])
+            album = track['album']['name']
             url = track['external_urls']['spotify']
+            album_url = track['album']['external_urls']['spotify']
+            artist_url = track['artists'][0]['external_urls']['spotify']
             duration = track['duration_ms']
             self.total_duration+=duration
             duration=milliseconds_to_string_duration(duration)
@@ -67,7 +73,7 @@ class Playlist:
             cover_big = track['album']['images'][0]['url']
             cover_medium = track['album']['images'][1]['url']
             cover_small = track['album']['images'][2]['url']
-            song = Song(name, artist, url, duration, preview_url,
+            song = Song(name, artist, album, url, album_url, artist_url, duration, preview_url,
                         cover_big, cover_medium, cover_small)
             self.songs.append(song.__dict__)
         self.total_duration=milliseconds_to_string_duration(self.total_duration)

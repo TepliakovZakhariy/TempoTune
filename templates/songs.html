@@ -156,19 +156,28 @@
                 >
                   <i class="fas fa-play"></i>
                 </button>
+              </div>
+              <div class="col-1 align-self-center">
                 <img
                   src="{{song.cover_small}}"
                   alt=""
                   style="border-radius: 10%"
                 />
               </div>
-              <div class="col-4 align-self-center text-white">
-                {{song.name}}
-              </div>
-              <div class="col-4 align-self-center text-white">
-                {{song.artist}}
+              <div class="col-3 align-self-center text-white">
+                <a href="{{song.url}}" class="text-white"> {{song.name}} </a>
               </div>
               <div class="col-3 align-self-center text-white">
+                <a href="{{song.album_url}}" class="text-white"
+                  >{{song.album}}</a
+                >
+              </div>
+              <div class="col-3 align-self-center text-white">
+                <a href="{{song.artist_url}}" class="text-white"
+                  >{{song.artist}}</a
+                >
+              </div>
+              <div class="col-1 align-self-center text-white">
                 {{song.duration}}
               </div>
             </div>
@@ -285,6 +294,7 @@
         }
 
         if (audioPlayer.paused) {
+          audioPlayer.currentTime = 0;
           audioPlayer.play();
           playPauseIcon.className = "fas fa-pause";
           currentAudio = audioPlayer;
