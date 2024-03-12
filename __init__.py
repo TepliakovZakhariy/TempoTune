@@ -44,7 +44,7 @@ class Song:
         return f'{self.name} by {self.artist}'
 
 class Playlist:
-    def __init__(self, track):
+    def __init__(self, track, limit, instrumentalness, energy, danceability, valence, popularity, acousticness):
         self.id = getrandbits(128)
         self.songs = []
         self.total_duration=0
@@ -52,7 +52,7 @@ class Playlist:
         current_month = datetime.now().month
         current_year = datetime.now().year
         self.date = f'{current_day}.{current_month}.{current_year}'
-        recomendations = spotify_client.recommendations(seed_tracks=[track])
+        recomendations = spotify_client.recommendations(seed_tracks=[track], limit=limit, target_instrumentalness=instrumentalness, target_energy=energy, target_danceability=danceability, target_valence=valence, target_popularity=popularity, target_acousticness=acousticness)
         recomendations = recomendations['tracks']
         for track in recomendations:
             name = track['name']
@@ -150,7 +150,14 @@ def generate():
         song = request.form['song']
         if 'open.spotify.com' not in song:
             song = spotify_client.search(q=song, type='track')['tracks']['items'][0]['external_urls']['spotify']
-        playlist = Playlist(song)
+        song_amount = request.form['song_amount']
+        instrumentalness = request.form['instrumentalness']*0.01 if request.form['instrumentalness']!=0.5 else None
+        energy = request.form['energy']*0.01 if request.form['energy']!=0.5 else None
+        danceability = request.form['danceability']*0.01 if request.form['danceability']!=0.5 else None
+        valence = request.form['valence']*0.01 if request.form['valence']!=0.5 else None
+        popularity = request.form['popularity'] if request.form['popularity']!=50 else None
+        acousticness = request.form['acousticness']*0.01 if request.form['acousticness']!=0.5 else None
+        playlist = Playlist(song, int(song_amount), instrumentalness, energy, danceability, valence, popularity, acousticness)
         return render_template('generate.html', playlist=playlist)
     return render_template('generate.html')
 
