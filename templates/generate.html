@@ -38,7 +38,7 @@
         <!-- Container wrapper -->
         <div class="container">
           <!-- Navbar brand -->
-          <a class="navbar-brand me-5" href="index.html">
+          <a class="navbar-brand me-5" href="{{url_for('index')}}">
             <img
               src="{{ url_for('static', filename='img/logo.png')}}"
               height="70px"
@@ -66,7 +66,7 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href='{{url_for("index")}}'>
                   <p
                     class="mb-0 h3"
                     style="color: #040219; letter-spacing: 0.25em"
@@ -78,22 +78,24 @@
             </ul>
             <!-- Left links -->
             <div class="d-flex align-items-center">
-              <button
-                data-mdb-ripple-init
-                type="button"
-                class="btn btn-primary me-3 rounded-9 border border-2 display-3"
-                style="
-                  background-color: #fffdf3;
-                  color: #4b40b5;
-                  border-color: #4b40b5 !important;
-                "
-              >
-                GENERATE PLAYLIST
-              </button>
+              <a class="text-white" href="{{url_for('generate')}}">
+                <button
+                  data-mdb-ripple-init
+                  type="button"
+                  class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                  style="
+                    background-color: #fffdf3;
+                    color: #4b40b5;
+                    border-color: #4b40b5 !important;
+                  "
+                >
+                  GENERATE PLAYLIST
+                </button>
+              </a>
               <a
                 data-mdb-ripple-init
                 class="px-3"
-                href="https://github.com/mdbootstrap/mdb-ui-kit"
+                href="{{url_for('playlists')}}"
                 role="button"
                 ><i class
                   ><img
@@ -153,14 +155,20 @@
             <button
               class="btn btn-primary col-5 me-3 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
               style="
-                background: linear-gradient(to right, #06003d, #4b40b5, #54095b);
+                background: linear-gradient(
+                  to right,
+                  #06003d,
+                  #4b40b5,
+                  #54095b
+                );
                 font-size: 1.7vw;
                 color: #fffdf3;
               "
               data-mdb-ripple-init
               type="submit"
-              >GENERATE PLAYLIST</button
             >
+              GENERATE PLAYLIST
+            </button>
           </div>
           <div class="d-flex w-100 justify-content-between">
             <div class="form-outline w-50" data-mdb-input-init>
@@ -171,7 +179,10 @@
                 style="font-size: 1.7vw"
                 name="song_amount"
               />
-              <label class="form-label" for="typeNumber" style="font-size: 1.7vw"
+              <label
+                class="form-label"
+                for="typeNumber"
+                style="font-size: 1.7vw"
                 >Enter number of songs</label
               >
             </div>
@@ -193,7 +204,7 @@
             </div>
           </div>
 
-          <div class="justify-content-center" style="height: 85vh">
+          <div class="justify-content-center mt-3 mb-5">
             <div class="mt-1">
               <label class="form-label" for="customRange1"></label>
               <div class="range mt-0 mr-0 ml-0">
@@ -368,8 +379,31 @@
             </div>
           </div>
         </form>
-          
-        {% if playlist %} {% for song in playlist.songs %}
+
+        {% if playlist %}
+        <form method="POST">
+          <div class="row justify-content-center mb-4">
+            <button
+              data-mdb-ripple-init
+              type="button"
+              class="btn btn-primary col-5 rounded-9 display-1 mt-5 mb-5 justify-content-center"
+              style="
+                background: linear-gradient(to right, #06003d, #54095b);
+                font-size: 2vw;
+                color: #fffdf3;
+              "
+            >
+              <a
+                href="{{url_for('add_playlist', playlist=playlist|string)}}"
+                ,
+                style="color: #fffdf3"
+              >
+                SAVE PLAYLIST
+              </a>
+            </button>
+          </div>
+        </form>
+        {% for song in playlist.songs %}
         <div
           class="card my-4 shadow-3-strong"
           style="
@@ -392,19 +426,28 @@
                 >
                   <i class="fas fa-play"></i>
                 </button>
+              </div>
+              <div class="col-1 align-self-center">
                 <img
                   src="{{song.cover_small}}"
-                  alt
+                  alt=""
                   style="border-radius: 10%"
                 />
               </div>
-              <div class="col-4 align-self-center text-white">
-                {{song.name}}
-              </div>
-              <div class="col-4 align-self-center text-white">
-                {{song.artist}}
+              <div class="col-3 align-self-center text-white">
+                <a href="{{song.url}}" class="text-white"> {{song.name}} </a>
               </div>
               <div class="col-3 align-self-center text-white">
+                <a href="{{song.album_url}}" class="text-white"
+                  >{{song.album}}</a
+                >
+              </div>
+              <div class="col-3 align-self-center text-white">
+                <a href="{{song.artist_url}}" class="text-white"
+                  >{{song.artist}}</a
+                >
+              </div>
+              <div class="col-1 align-self-center text-white">
                 {{song.duration}}
               </div>
             </div>
@@ -509,6 +552,33 @@
       src="{{url_for('static',filename='js/mdb.umd.min.js')}}"
     ></script>
     <!-- Custom scripts -->
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+      var currentAudio = null;
+
+      function togglePlayPause(button) {
+        var audioPlayer = button.previousElementSibling;
+        var playPauseIcon = button.children[0];
+
+        if (currentAudio && currentAudio != audioPlayer) {
+          currentAudio.pause();
+          currentAudio.nextElementSibling.children[0].className = "fas fa-play";
+        }
+
+        if (audioPlayer.paused) {
+          audioPlayer.currentTime = 0;
+          audioPlayer.play();
+          playPauseIcon.className = "fas fa-pause";
+          currentAudio = audioPlayer;
+        } else {
+          audioPlayer.pause();
+          playPauseIcon.className = "fas fa-play";
+          currentAudio = null;
+        }
+
+        audioPlayer.onended = function () {
+          playPauseIcon.className = "fas fa-play";
+        };
+      }
+    </script>
   </body>
 </html>
