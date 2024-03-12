@@ -52,9 +52,11 @@ class Playlist:
         current_month = datetime.now().month
         current_year = datetime.now().year
         self.date = f'{current_day}.{current_month}.{current_year}'
-        recomendations = spotify_client.recommendations(seed_tracks=[track], limit=limit, target_instrumentalness=instrumentalness, target_energy=energy, target_danceability=danceability, target_valence=valence, target_popularity=popularity, target_acousticness=acousticness)
+        recomendations = spotify_client.recommendations(seed_tracks=[track], limit=100, target_instrumentalness=instrumentalness, target_energy=energy, target_danceability=danceability, target_valence=valence, target_popularity=popularity, target_acousticness=acousticness)
         recomendations = recomendations['tracks']
         for track in recomendations:
+            if not track['preview_url']:
+                continue
             name = track['name']
             artist = ', '.join([artist['name'] for artist in track['artists']])
             url = track['external_urls']['spotify']
@@ -69,6 +71,9 @@ class Playlist:
                         cover_big, cover_medium, cover_small)
             self.songs.append(song.__dict__)
         self.total_duration=milliseconds_to_string_duration(self.total_duration)
+        self.songs = self.songs[:limit]
+        if len(self.songs) < limit:
+            print('ERROR: Not enough songs to fill the playlist')
 
     def __repr__(self):
         return f'{self.total_duration}{[(song.url, song.duration) for song in self.songs]}'
