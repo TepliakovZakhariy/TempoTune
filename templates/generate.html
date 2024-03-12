@@ -68,88 +68,23 @@
   </header>
   <!-- Start your project here-->
   <div class="container">
-    <div class="card mt-5">
-      <div
-          class="text-center mt-4"
-          style="font-size: 4vw; letter-spacing: 0.1em; background-image: linear-gradient(to right, #06003D, #4b40b5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;"
-        >
-          <p>
-            GET YOUR PLAYLIST NOW
-          </p>
+    <div class="d-flex justify-content-center align-items-center flex-column flex-md-row" style="height: 100vh">
+      <div class="form-outline me-3 mb-3 mb-md-0" style="color: #06003D;" data-mdb-input-init>
+        <input type="text" id="form12" class="form-control" />
+        <label class="form-label" for="form12">Type a song name or a song URL (Spotify)</label>
       </div>
-      <div
-        class="text-center mt-2"
-        style="color: #040024; font-size: 2vw; letter-spacing: 0.1em"
-      >
-        <p>
-          PLAYLIST TAILORED FOR YOU
-        </p>
-      </div>
-      <div class="d-flex justify-content-center align-items-center flex-column flex-md-row" style="height: 25vh">
-        <div class="form-outline me-0.5 mb-3 mb-md-0" style="color: #06003D;" data-mdb-input-init>
-          <input type="text" id="form10" class="form-control" style="font-size: 1.7vw;" />
-          <label class="form-label" for="form12" style="font-size: 1.7vw;">Type a song name or a song URL
-            (Spotify)</label>
-        </div>
-        <a class="btn btn-primary col-5 me-3 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
-          style="background: linear-gradient(to right, #06003D, #4b40b5, #54095B); font-size: 1.7vw; color: #FFFDF3;"
-          data-mdb-ripple-init href="https://mdbootstrap.com/docs/standard/getting-started/" target="_blank"
-          role="button">GENERATE PLAYLIST</a>
-      </div>
-      <div class="justify-content-center" style="height: 85vh">
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle me-3 border border-2 display-3" type="button"
-            id="dropdownMenuButton" data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false" style="background-color: #fffdf3;
-                  color: #06003D;
-                  border-color: #06003D !important;
-                  font-size: 1vw;">
-            NUMBER OF SONGS
-          </button>
-          <a class="btn btn-primary col-3 me-1 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
-          style="background: linear-gradient(to right, #06003D, #0e0842); font-size: 1.5vw; color: #FFFDF3; float: right;"
-          data-mdb-ripple-init href="https://mdbootstrap.com/docs/standard/getting-started/" target="_blank"
-          role="button">Reset options</a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="#">10</a></li>
-            <li><a class="dropdown-item" href="#">20</a></li>
-            <li><a class="dropdown-item" href="#">30</a></li>
-            <li><a class="dropdown-item" href="#">40</a></li>
-            <li><a class="dropdown-item" href="#">50</a></li>
-          </ul>
-          <div class="mt-1">
-            <label class="form-label" for="customRange1"></label>
-            <div class="range mt-0 mr-0 ml-0">
-              <label class="form-label" style="color: #06003D; float: left; font-size: 1.5vw; font-weight: bold;">VOCAL</label>
-              <label class="form-label" style="color: #06003D; float: right; font-size: 1.5vw; font-weight: bold;">INSTRUMENTAL</label>
-              <input type="range" class="form-range" id="customRange1" style="background-color: transparent;" />
-
-              <label class="form-label" style="color: #06003D; float: left; font-size: 1.5vw; font-weight: bold;">RELAXED</label>
-              <label class="form-label" style="color: #06003D; float: right; font-size: 1.5vw; font-weight: bold;">ENERGETIC</label>
-              <input type="range" class="form-range" id="customRange2" style="background-color: transparent;" />
-
-              <label class="form-label" style="color: #06003D; float: left; font-size: 1.5vw; font-weight: bold;">NON-DANCE</label>
-              <label class="form-label" style="color: #06003D; float: right; font-size: 1.5vw; font-weight: bold;">DANCE</label>
-              <input type="range" class="form-range" id="customRange2" style="background-color: transparent;" />
-
-              <label class="form-label" style="color: #06003D; float: left; font-size: 1.5vw; font-weight: bold;">SAD</label>
-              <label class="form-label" style="color: #06003D; float: right; font-size: 1.5vw; font-weight: bold;">HAPPY</label>
-              <input type="range" class="form-range" id="customRange2" style="background-color: transparent;" />
-
-              <label class="form-label" style="color: #06003D; float: left; font-size: 1.5vw; font-weight: bold;">OBSCURE</label>
-              <label class="form-label" style="color: #06003D; float: right; font-size: 1.5vw; font-weight: bold;">POPULAR</label>
-              <input type="range" class="form-range" id="customRange2" style="background-color: transparent;" />
-
-              <label class="form-label" style="color: #06003D; float: left; font-size: 1.5vw; font-weight: bold;">ELECTRONIC</label>
-              <label class="form-label" style="color: #06003D; float: right; font-size: 1.5vw; font-weight: bold;">ACOUSTIC</label>
-              <input type="range" class="form-range" id="customRange2" style="background-color: transparent;" />
-            </div>
-          </div>
-        </div>
+      <a class="btn btn-primary col-5 me-3 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
+        style="background: linear-gradient(to right, #06003D, #4b40b5, #54095B); font-size: 1.7vw; color: #FFFDF3;"
+        data-mdb-ripple-init href="https://mdbootstrap.com/docs/standard/getting-started/" 
+        target="_blank"
+        role="button">GENERATE PLAYLIST</a>
+      <div class="arrow-advanced">Options
+        <i class="fas farplus"></i>
       </div>
     </div>
   </div>
-  
-  
+
+
   <!-- End your project here-->
 
   <footer class="" style="background-color: #040024 !important">
