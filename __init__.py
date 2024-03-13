@@ -48,7 +48,7 @@ class Song:
 
 class Playlist:
     def __init__(self, track, limit, instrumentalness, energy, danceability, valence, popularity, acousticness):
-        self.id = getrandbits(128)
+        self.id = getrandbits(64)
         self.songs = []
         self.total_duration=0
         current_day = datetime.now().day
@@ -81,8 +81,8 @@ class Playlist:
         if len(self.songs) < limit:
             print('ERROR: Not enough songs to fill the playlist')
 
-    def __repr__(self):
-        return f'{self.total_duration}{[(song.url, song.duration) for song in self.songs]}'
+    def __str__(self):
+        return repr(self.__dict__)
 
 @app.route('/')
 def index():
@@ -162,16 +162,35 @@ def generate():
         if 'open.spotify.com' not in song:
             song = spotify_client.search(q=song, type='track')['tracks']['items'][0]['external_urls']['spotify']
         song_amount = request.form['song_amount']
-        instrumentalness = request.form['instrumentalness']*0.01 if request.form['instrumentalness']!=0.5 else None
-        energy = request.form['energy']*0.01 if request.form['energy']!=0.5 else None
-        danceability = request.form['danceability']*0.01 if request.form['danceability']!=0.5 else None
-        valence = request.form['valence']*0.01 if request.form['valence']!=0.5 else None
-        popularity = request.form['popularity'] if request.form['popularity']!=50 else None
-        acousticness = request.form['acousticness']*0.01 if request.form['acousticness']!=0.5 else None
+        instrumentalness = int(request.form['instrumentalness'])*0.01 if request.form['instrumentalness']!='0.5' else None
+        energy = int(request.form['energy'])*0.01 if request.form['energy']!='0.5' else None
+        danceability = int(request.form['danceability'])*0.01 if request.form['danceability']!='0.5' else None
+        valence = int(request.form['valence'])*0.01 if request.form['valence']!='0.5' else None
+        popularity = int(request.form['popularity']) if request.form['popularity']!='50' else None
+        acousticness = int(request.form['acousticness'])*0.01 if request.form['acousticness']!='0.5' else None
         playlist = Playlist(song, int(song_amount), instrumentalness, energy, danceability, valence, popularity, acousticness)
+        session['playlist'] = str(playlist)
+        print(session['playlist'])
+        print(type(session['playlist']))
         return render_template('generate.html', playlist=playlist)
     return render_template('generate.html')
 
+@app.route('/add_playlist', methods=['GET','POST'])
+def add_playlist():
+    if request.method == 'POST':
+        playlist=session.get('playlist', None)
+        if playlist is None:
+            print('ERROR: No playlist to add')
+            return redirect(url_for('generate'))
+        else:
+            session.pop('playlist', None)
+        user = users.find_one({"email" : session["email"]})
+        user['playlists'].append(playlist)
+        print(user['playlists'])
+        users.update_one({"email" : session["email"]}, {"$set": {"playlists": user['playlists']}})
+        return redirect(url_for('playlists'))
+    else:
+        print('ERROR: Not a POST request')
 
 if __name__ == '__main__':
     app.run(debug=True)

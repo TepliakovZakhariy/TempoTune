@@ -381,11 +381,11 @@
         </form>
 
         {% if playlist %}
-        <form method="POST">
+        <form action="{{url_for('add_playlist')}}" method="POST">
           <div class="row justify-content-center mb-4">
             <button
               data-mdb-ripple-init
-              type="button"
+              type="submit"
               class="btn btn-primary col-5 rounded-9 display-1 mt-5 mb-5 justify-content-center"
               style="
                 background: linear-gradient(to right, #06003d, #54095b);
@@ -393,13 +393,7 @@
                 color: #fffdf3;
               "
             >
-              <a
-                href="{{url_for('add_playlist', playlist=playlist|string)}}"
-                ,
-                style="color: #fffdf3"
-              >
-                SAVE PLAYLIST
-              </a>
+              SAVE PLAYLIST
             </button>
           </div>
         </form>
