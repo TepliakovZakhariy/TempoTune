@@ -383,6 +383,7 @@
         {% if playlist %}
         <form action="{{url_for('add_playlist')}}" method="POST">
           <div class="row justify-content-center mb-4">
+            <input type="text" class="d-none" name="play" value="{{ playlist }}">
             <button
               data-mdb-ripple-init
               type="submit"

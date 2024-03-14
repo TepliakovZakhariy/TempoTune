@@ -178,7 +178,8 @@ def generate():
 @app.route('/add_playlist', methods=['GET','POST'])
 def add_playlist():
     if request.method == 'POST':
-        playlist=session.get('playlist', None)
+        playlist=request.form['play']
+        # playlist=session.get('playlist', None)
         if playlist is None:
             print('ERROR: No playlist to add')
             return redirect(url_for('generate'))
