@@ -38,13 +38,13 @@
         <!-- Container wrapper -->
         <div class="container">
           <!-- Navbar brand -->
-          <a class="navbar-brand me-5" href="{{url_for('index')}}">
+          <a class="navbar-brand me-5" href="{{ url_for('index') }}">
             <img
-              src="{{ url_for('static', filename='img/logo.png')}}"
+              src="{{ url_for('static', filename='img/logo.png') }}"
               height="70px"
               alt="Tempotune Logo"
               loading="lazy"
-              style="margin-top: -1px"
+              style="margin-top: 1px"
             />
           </a>
 
@@ -66,7 +66,7 @@
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href='{{url_for("index")}}'>
+                <a class="nav-link" href="{{ url_for('index') }}">
                   <p
                     class="mb-0 h3"
                     style="color: #040219; letter-spacing: 0.25em"
@@ -77,8 +77,9 @@
               </li>
             </ul>
             <!-- Left links -->
+
             <div class="d-flex align-items-center">
-              <a class="text-white" href="{{url_for('generate')}}">
+              <a href="{{url_for('generate')}}">
                 <button
                   data-mdb-ripple-init
                   type="button"
@@ -95,11 +96,11 @@
               <a
                 data-mdb-ripple-init
                 class="px-3"
-                href="{{url_for('playlists')}}"
+                href="{{url_for('login')}}"
                 role="button"
                 ><i class
                   ><img
-                    src="{{ url_for('static', filename='img/avatar.png')}}"
+                    src="{{url_for('static', filename='img/avatar.png')}}"
                     alt /></i
               ></a>
             </div>
@@ -120,6 +121,7 @@
             letter-spacing: 0.1em;
             background-image: linear-gradient(to right, #06003d, #4b40b5);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: bold;
           "
@@ -183,7 +185,7 @@
                 class="form-label"
                 for="typeNumber"
                 style="font-size: 1.7vw"
-                >Enter number of songs</label
+                >Enter number of songs (from 1 to 50)</label
               >
             </div>
             <div class="">
@@ -383,7 +385,12 @@
         {% if playlist %}
         <form action="{{url_for('add_playlist')}}" method="POST">
           <div class="row justify-content-center mb-4">
-            <input type="text" class="d-none" name="play" value="{{ playlist }}">
+            <input
+              type="text"
+              class="d-none"
+              name="play"
+              value="{{ playlist }}"
+            />
             <button
               data-mdb-ripple-init
               type="submit"

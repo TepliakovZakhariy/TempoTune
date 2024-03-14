@@ -160,9 +160,18 @@ def logout():
 def generate():
     if request.method == 'POST':
         song = request.form['song']
+        if not song:
+            print('ERROR: No song to generate playlist from')
+            return redirect(url_for('generate'))
         if 'open.spotify.com' not in song:
             song = spotify_client.search(q=song, type='track')['tracks']['items'][0]['external_urls']['spotify']
         song_amount = request.form['song_amount']
+        if not song_amount:
+            song_amount = 25
+        if song_amount > 50:
+            song_amount = 50
+        if song_amount < 1:
+            song_amount = 1
         instrumentalness = int(request.form['instrumentalness'])*0.01 if request.form['instrumentalness']!='0.5' else None
         energy = int(request.form['energy'])*0.01 if request.form['energy']!='0.5' else None
         danceability = int(request.form['danceability'])*0.01 if request.form['danceability']!='0.5' else None
@@ -170,8 +179,6 @@ def generate():
         popularity = int(request.form['popularity']) if request.form['popularity']!='50' else None
         acousticness = int(request.form['acousticness'])*0.01 if request.form['acousticness']!='0.5' else None
         playlist = Playlist(song, int(song_amount), instrumentalness, energy, danceability, valence, popularity, acousticness)
-        session['playlist'] = str(playlist)
-        print(session)
         return render_template('generate.html', playlist=playlist)
     return render_template('generate.html')
 
@@ -179,15 +186,11 @@ def generate():
 def add_playlist():
     if request.method == 'POST':
         playlist=request.form['play']
-        # playlist=session.get('playlist', None)
         if playlist is None:
             print('ERROR: No playlist to add')
             return redirect(url_for('generate'))
-        else:
-            session.pop('playlist', None)
         user = users.find_one({"email" : session["email"]})
         user['playlists'].append(playlist)
-        print(user['playlists'])
         users.update_one({"email" : session["email"]}, {"$set": {"playlists": user['playlists']}})
         return redirect(url_for('playlists'))
     else:
