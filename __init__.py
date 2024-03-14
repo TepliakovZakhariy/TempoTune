@@ -12,6 +12,7 @@ uri = "mongodb+srv://yurora:tempotune123official@cluster0.pkxylky.mongodb.net/?r
 client = MongoClient(uri)
 db = client['TempoTune']
 users = db["users"]
+temp = db["temp"]
 app = Flask(__name__)
 app.secret_key=['very_secret']
 spotify_client=spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="f17426cd426c406eb0909cb148cb0981",client_secret='0f16e1667986460c9841c0aa0944415a'))
@@ -136,16 +137,16 @@ def signup():
 def playlists():
     user = users.find_one({"email" : session["email"]})
     name = user['username']
-    playlists = user['playlists']
-    playlists = [literal_eval(playlist) for playlist in playlists]
-    return render_template('playlists.html', name=name, playlists=playlists)
+    playlists_ = user['playlists']
+    playlists_ = [literal_eval(playlist) for playlist in playlists_]
+    return render_template('playlists.html', name=name, playlists=playlists_)
 
 
 @app.route('/songs/<playlist_id>')
 def songs(playlist_id):
     playlists_ = users.find_one({"email" : session["email"]})['playlists']
-    playlists = [literal_eval(playlist) for playlist in playlists_]
-    playlist = [playlist for playlist in playlists if playlist['id'] == int(playlist_id)][0]
+    playlists_ = [literal_eval(playlist) for playlist in playlists_]
+    playlist = [playlist for playlist in playlists_ if playlist['id'] == int(playlist_id)][0]
     return render_template('songs.html', playlist=playlist)
 
 @app.route('/logout', methods=['GET', 'POST'])
@@ -170,8 +171,7 @@ def generate():
         acousticness = int(request.form['acousticness'])*0.01 if request.form['acousticness']!='0.5' else None
         playlist = Playlist(song, int(song_amount), instrumentalness, energy, danceability, valence, popularity, acousticness)
         session['playlist'] = str(playlist)
-        print(session['playlist'])
-        print(type(session['playlist']))
+        print(session)
         return render_template('generate.html', playlist=playlist)
     return render_template('generate.html')
 
