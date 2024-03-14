@@ -149,6 +149,14 @@
                 class="form-control"
                 style="font-size: 1.7vw"
                 name="song"
+                {%
+                if
+                song
+                %}
+                value="{{ song }}"
+                {%
+                endif
+                %}
               />
               <label class="form-label" for="form12" style="font-size: 1.7vw"
                 >Type a song name or a song URL (Spotify)</label
@@ -168,6 +176,8 @@
               "
               data-mdb-ripple-init
               type="submit"
+              name="action"
+              value="generate"
             >
               GENERATE PLAYLIST
             </button>
@@ -180,6 +190,14 @@
                 class="form-control"
                 style="font-size: 1.7vw"
                 name="song_amount"
+                {%
+                if
+                song_amount
+                %}
+                value="{{ song_amount }}"
+                {%
+                endif
+                %}
               />
               <label
                 class="form-label"
@@ -189,7 +207,7 @@
               >
             </div>
             <div class="">
-              <a
+              <button
                 class="btn btn-primary me-3 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
                 style="
                   background: linear-gradient(to right, #06003d, #0e0842);
@@ -198,11 +216,13 @@
                   float: right;
                 "
                 data-mdb-ripple-init
-                href="../generate"
+                type="submit"
                 target="_blank"
-                role="button"
-                >Reset options</a
+                value="reset"
+                name="action"
               >
+                Reset options
+              </button>
             </div>
           </div>
 

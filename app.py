@@ -159,27 +159,32 @@ def logout():
 @app.route('/generate', methods=['GET', 'POST'])
 def generate():
     if request.method == 'POST':
-        song = request.form['song']
-        if not song:
-            print('ERROR: No song to generate playlist from')
-            return redirect(url_for('generate'))
-        if 'open.spotify.com' not in song:
-            song = spotify_client.search(q=song, type='track')['tracks']['items'][0]['external_urls']['spotify']
-        song_amount = request.form['song_amount']
-        if not song_amount:
-            song_amount = 25
-        if song_amount > 50:
-            song_amount = 50
-        if song_amount < 1:
-            song_amount = 1
-        instrumentalness = int(request.form['instrumentalness'])*0.01 if request.form['instrumentalness']!='0.5' else None
-        energy = int(request.form['energy'])*0.01 if request.form['energy']!='0.5' else None
-        danceability = int(request.form['danceability'])*0.01 if request.form['danceability']!='0.5' else None
-        valence = int(request.form['valence'])*0.01 if request.form['valence']!='0.5' else None
-        popularity = int(request.form['popularity']) if request.form['popularity']!='50' else None
-        acousticness = int(request.form['acousticness'])*0.01 if request.form['acousticness']!='0.5' else None
-        playlist = Playlist(song, int(song_amount), instrumentalness, energy, danceability, valence, popularity, acousticness)
-        return render_template('generate.html', playlist=playlist)
+        if request.form['action']=='generate':
+            song = request.form['song']
+            if not song:
+                print('ERROR: No song to generate playlist from')
+                return redirect(url_for('generate'))
+            if 'open.spotify.com' not in song:
+                song = spotify_client.search(q=song, type='track')['tracks']['items'][0]['external_urls']['spotify']
+            song_amount = int(request.form['song_amount'])
+            if not song_amount:
+                song_amount = 25
+            if song_amount > 50:
+                song_amount = 50
+            if song_amount < 1:
+                song_amount = 1
+            instrumentalness = int(request.form['instrumentalness'])*0.01 if request.form['instrumentalness']!='0.5' else None
+            energy = int(request.form['energy'])*0.01 if request.form['energy']!='0.5' else None
+            danceability = int(request.form['danceability'])*0.01 if request.form['danceability']!='0.5' else None
+            valence = int(request.form['valence'])*0.01 if request.form['valence']!='0.5' else None
+            popularity = int(request.form['popularity']) if request.form['popularity']!='50' else None
+            acousticness = int(request.form['acousticness'])*0.01 if request.form['acousticness']!='0.5' else None
+            playlist = Playlist(song, int(song_amount), instrumentalness, energy, danceability, valence, popularity, acousticness)
+            return render_template('generate.html', playlist=playlist)
+        elif request.form['action']=='reset':
+            song = request.form['song']
+            song_amount = request.form['song_amount']
+            return render_template('generate.html', song=song, song_amount=song_amount)
     return render_template('generate.html')
 
 @app.route('/add_playlist', methods=['GET','POST'])
@@ -195,6 +200,10 @@ def add_playlist():
         return redirect(url_for('playlists'))
     else:
         print('ERROR: Not a POST request')
+
+@app.route('/reset_options', methods=['GET','POST'])
+def reset_options():
+    return render_template('generate.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
