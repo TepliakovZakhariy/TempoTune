@@ -6,6 +6,7 @@ from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 from random import getrandbits
 from datetime import datetime
 from ast import literal_eval
+import random
 
 uri = "mongodb+srv://yurora:tempotune123official@cluster0.pkxylky.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
@@ -56,7 +57,12 @@ class Playlist:
         current_month = datetime.now().month
         current_year = datetime.now().year
         self.date = f'{current_day}.{current_month}.{current_year}'
-        recomendations = spotify_client.recommendations(seed_tracks=[track], limit=100, target_instrumentalness=instrumentalness, target_energy=energy, target_danceability=danceability, target_valence=valence, target_popularity=popularity, target_acousticness=acousticness)
+        if track is False:
+            genres=spotify_client.recommendation_genre_seeds()['genres']
+            genres=[random.choice(genres)]
+            recomendations = spotify_client.recommendations(seed_genres=genres, limit=100, target_instrumentalness=instrumentalness, target_energy=energy, target_danceability=danceability, target_valence=valence, target_popularity=popularity, target_acousticness=acousticness)
+        else:
+            recomendations = spotify_client.recommendations(seed_tracks=[track], limit=100, target_instrumentalness=instrumentalness, target_energy=energy, target_danceability=danceability, target_valence=valence, target_popularity=popularity, target_acousticness=acousticness)
         recomendations = recomendations['tracks']
         for track in recomendations:
             if not track['preview_url']:
@@ -71,9 +77,15 @@ class Playlist:
             self.total_duration+=duration
             duration=milliseconds_to_string_duration(duration)
             preview_url = track['preview_url']
-            cover_big = track['album']['images'][0]['url']
-            cover_medium = track['album']['images'][1]['url']
-            cover_small = track['album']['images'][2]['url']
+            try:
+                cover_big = track['album']['images'][0]['url']
+                cover_medium = track['album']['images'][1]['url']
+                cover_small = track['album']['images'][2]['url']
+            except IndexError:
+                print('ERROR: No cover found')
+                cover_big = None
+                cover_medium = None
+                cover_small = None
             song = Song(name, artist, album, url, album_url, artist_url, duration, preview_url,
                         cover_big, cover_medium, cover_small)
             self.songs.append(song.__dict__)
@@ -162,24 +174,25 @@ def generate():
         if request.form['action']=='generate':
             song = request.form['song']
             if not song:
-                print('ERROR: No song to generate playlist from')
-                return redirect(url_for('generate'))
-            if 'open.spotify.com' not in song:
-                song = spotify_client.search(q=song, type='track')['tracks']['items'][0]['external_urls']['spotify']
-            song_amount = int(request.form['song_amount'])
+                song = False
+            else:
+                if 'open.spotify.com' not in song:
+                    song = spotify_client.search(q=song, type='track')['tracks']['items'][0]['external_urls']['spotify']
+            song_amount = request.form['song_amount']
             if not song_amount:
                 song_amount = 25
-            if song_amount > 50:
+            if int(song_amount) > 50:
                 song_amount = 50
-            if song_amount < 1:
+            if int(song_amount) < 1:
                 song_amount = 1
+            song_amount = int(song_amount)
             instrumentalness = int(request.form['instrumentalness'])*0.01 if request.form['instrumentalness']!='0.5' else None
             energy = int(request.form['energy'])*0.01 if request.form['energy']!='0.5' else None
             danceability = int(request.form['danceability'])*0.01 if request.form['danceability']!='0.5' else None
             valence = int(request.form['valence'])*0.01 if request.form['valence']!='0.5' else None
             popularity = int(request.form['popularity']) if request.form['popularity']!='50' else None
             acousticness = int(request.form['acousticness'])*0.01 if request.form['acousticness']!='0.5' else None
-            playlist = Playlist(song, int(song_amount), instrumentalness, energy, danceability, valence, popularity, acousticness)
+            playlist = Playlist(song, song_amount, instrumentalness, energy, danceability, valence, popularity, acousticness)
             return render_template('generate.html', playlist=playlist)
         elif request.form['action']=='reset':
             song = request.form['song']
