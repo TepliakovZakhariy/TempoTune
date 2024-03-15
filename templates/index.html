@@ -158,7 +158,7 @@
       <!-- End your project here-->
     </div>
 
-    <div class="row mx-4 mt-4 justify-content-evenly pt-5">
+    <div class="row mx-4 mt-5 justify-content-evenly pt-5">
       <div
         class="card col-3 bg-image border border-4 mt-2"
         style="
@@ -238,22 +238,22 @@
         />
       </div>
     </div>
-    <div class="container">
-      <div class="row justify-content-center mb-4">
-        <button
-          data-mdb-ripple-init
-          type="button"
-          class="btn btn-primary col-5 rounded-9 display-1 mt-5 mb-5 justify-content-center"
-          style="
-            background: linear-gradient(to right, #06003d, #54095b);
-            font-size: 2vw;
-            color: #fffdf3;
-          "
-        >
-          <a href="{{ url_for('generate') }}" , style="color: #fffdf3">
-            GET STARTED NOW
-          </a>
-        </button>
+    <div class="container my-md-5">
+      <div class="row justify-content-center mb-4 w-100">
+        <a href="{{url_for('generate')}}"  style="color: #fffdf3" class="d-flex justify-content-center">
+          <button
+            data-mdb-ripple-init
+            type="button"
+            class="btn btn-primary col-5 rounded-9 display-1 mt-5 mb-5 justify-content-center"
+            style="
+              background: linear-gradient(to right, #06003d, #54095b);
+              font-size: 2vw;
+              color: #fffdf3;
+            "
+          >
+              GET STARTED NOW
+          </button>
+        </a>
       </div>
     </div>
 
