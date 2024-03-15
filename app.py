@@ -66,8 +66,6 @@ class Playlist:
             recomendations = spotify_client.recommendations(seed_tracks=[track], limit=100, target_instrumentalness=instrumentalness, target_energy=energy, target_danceability=danceability, target_valence=valence, target_popularity=popularity, target_acousticness=acousticness)
         recomendations = recomendations['tracks']
         for track in recomendations:
-            if not track['preview_url']:
-                continue
             name = track['name']
             artist = ', '.join([artist['name'] for artist in track['artists']])
             album = track['album']['name']
@@ -78,6 +76,8 @@ class Playlist:
             self.total_duration+=duration
             duration=milliseconds_to_string_duration(duration)
             preview_url = track['preview_url']
+            if preview_url is None:
+                preview_url = 'z'
             try:
                 cover_big = track['album']['images'][0]['url']
                 cover_medium = track['album']['images'][1]['url']
@@ -90,10 +90,10 @@ class Playlist:
             song = Song(name, artist, album, url, album_url, artist_url, duration, preview_url,
                         cover_big, cover_medium, cover_small)
             self.songs.append(song.__dict__)
+        self.songs=sorted(self.songs, key=lambda x: x['preview_url'])
         self.total_duration=milliseconds_to_string_duration(self.total_duration)
-        self.songs = self.songs[:limit]
-        if len(self.songs) < limit:
-            print('ERROR: Not enough songs to fill the playlist')
+        self.songs=self.songs[:limit]
+        random.shuffle(self.songs)
 
     def __str__(self):
         return repr(self.__dict__)
@@ -213,11 +213,12 @@ def add_playlist():
         if not playlist_name:
             playlist_name='Playlist'
         playlist['name']=playlist_name
+        playlist_id=playlist['id']
         playlist=str(playlist)
         user = users.find_one({"email" : session["email"]})
         user['playlists'].append(playlist)
         users.update_one({"email" : session["email"]}, {"$set": {"playlists": user['playlists']}})
-        return redirect(url_for('playlists'))
+        return redirect(url_for('songs', playlist_id=playlist_id))
     else:
         print('ERROR: Not a POST request')
 

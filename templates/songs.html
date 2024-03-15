@@ -143,6 +143,18 @@
         >
           <div class="card-body" style="margin: -0.6rem">
             <div class="row">
+              {% if song.preview_url == 'z' %}
+              <div class="col-1 align-self-center">
+                <button
+                  type="button"
+                  class="btn btn-secondary btn-floating"
+                  data-mdb-ripple-init
+                  disabled
+                >
+                  <i class="fas fa-play"></i>
+                </button>
+              </div>
+              {% else %}
               <div class="col-1 align-self-center">
                 <audio id="audioPlayer">
                   <source src="{{song.preview_url}}" type="audio/mpeg" />
@@ -157,6 +169,7 @@
                   <i class="fas fa-play"></i>
                 </button>
               </div>
+              {% endif %}
               <div class="col-1 align-self-center">
                 <img
                   src="{{song.cover_small}}"
