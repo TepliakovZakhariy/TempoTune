@@ -50,6 +50,7 @@ class Song:
 
 class Playlist:
     def __init__(self, track, limit, instrumentalness, energy, danceability, valence, popularity, acousticness):
+        self.name = None
         self.id = getrandbits(64)
         self.songs = []
         self.total_duration=0
@@ -207,6 +208,12 @@ def add_playlist():
         if playlist is None:
             print('ERROR: No playlist to add')
             return redirect(url_for('generate'))
+        playlist=literal_eval(playlist)
+        playlist_name=request.form['playlist_name']
+        if not playlist_name:
+            playlist_name='Playlist'
+        playlist['name']=playlist_name
+        playlist=str(playlist)
         user = users.find_one({"email" : session["email"]})
         user['playlists'].append(playlist)
         users.update_one({"email" : session["email"]}, {"$set": {"playlists": user['playlists']}})
@@ -217,6 +224,17 @@ def add_playlist():
 @app.route('/reset_options', methods=['GET','POST'])
 def reset_options():
     return render_template('generate.html')
+
+@app.route('/delete_playlist/<playlist_id>', methods=['GET','POST'])
+def delete_playlist(playlist_id):
+    user = users.find_one({"email" : session["email"]})
+    playlists_ = user['playlists']
+    playlists_ = [literal_eval(playlist) for playlist in playlists_]
+    playlist = [playlist for playlist in playlists_ if playlist['id'] == int(playlist_id)][0]
+    playlists_.remove(playlist)
+    playlists_ = [str(playlist) for playlist in playlists_]
+    users.update_one({"email" : session["email"]}, {"$set": {"playlists": playlists_}})
+    return redirect(url_for('playlists'))
 
 if __name__ == '__main__':
     app.run(debug=True)

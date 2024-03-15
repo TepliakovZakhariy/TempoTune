@@ -167,7 +167,7 @@
           </div>
           <div class="card-body p-2 p-sm-4">
             <h5 class="card-title" style="font-size: 2.5vw">
-              Playlist №{{loop.index}}
+              {{playlist.name}}
             </h5>
             <p class="card-text text-muted" style="font-size: 1.5vw">
               {{playlist.songs[0].name}} by {{playlist.songs[0].artist}},
@@ -179,6 +179,25 @@
               </div>
               <div class="col-6 text-end" style="font-size: 1.5vw">
                 Created: {{playlist.date}}
+              </div>
+            </div>
+            <div class="row justify-content-end">
+              <div class="col-3">
+                <a
+                  href="{{url_for('delete_playlist',playlist_id=playlist.id)}}"
+                >
+                  <button
+                    data-mdb-ripple-init
+                    type="button"
+                    class="btn btn-primary col-5 rounded-9 display-1 mt-5 mb-5 justify-content-center"
+                    style="
+                      background: linear-gradient(to right, #06003d, #54095b);
+                      font-size: 2vw;
+                      color: #fffdf3;
+                    "
+                  >
+                    <i class="fas fa-trash"></i></button
+                ></a>
               </div>
             </div>
           </div>
