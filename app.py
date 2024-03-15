@@ -225,5 +225,16 @@ def add_playlist():
 def reset_options():
     return render_template('generate.html')
 
+@app.route('/delete_playlist/<playlist_id>', methods=['GET','POST'])
+def delete_playlist(playlist_id):
+    user = users.find_one({"email" : session["email"]})
+    playlists_ = user['playlists']
+    playlists_ = [literal_eval(playlist) for playlist in playlists_]
+    playlist = [playlist for playlist in playlists_ if playlist['id'] == int(playlist_id)][0]
+    playlists_.remove(playlist)
+    playlists_ = [str(playlist) for playlist in playlists_]
+    users.update_one({"email" : session["email"]}, {"$set": {"playlists": playlists_}})
+    return redirect(url_for('playlists'))
+
 if __name__ == '__main__':
     app.run(debug=True)

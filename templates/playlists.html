@@ -181,6 +181,25 @@
                 Created: {{playlist.date}}
               </div>
             </div>
+            <div class="row justify-content-end">
+              <div class="col-3">
+                <a
+                  href="{{url_for('delete_playlist',playlist_id=playlist.id)}}"
+                >
+                  <button
+                    data-mdb-ripple-init
+                    type="button"
+                    class="btn btn-primary col-5 rounded-9 display-1 mt-5 mb-5 justify-content-center"
+                    style="
+                      background: linear-gradient(to right, #06003d, #54095b);
+                      font-size: 2vw;
+                      color: #fffdf3;
+                    "
+                  >
+                    <i class="fas fa-trash"></i></button
+                ></a>
+              </div>
+            </div>
           </div>
         </div>
         {% endfor %}
