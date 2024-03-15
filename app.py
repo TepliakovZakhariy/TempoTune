@@ -16,7 +16,7 @@ users = db["users"]
 temp = db["temp"]
 app = Flask(__name__)
 app.secret_key=['very_secret']
-spotify_client=spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="f17426cd426c406eb0909cb148cb0981",client_secret='0f16e1667986460c9841c0aa0944415a'))
+spotify_client=spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="f17426cd426c406eb0909cb148cb0981",client_secret='3b0ee8a224654b54bb417f35cbda9e01'))
 
 def milliseconds_to_string_duration(milliseconds):
     seconds, milliseconds = divmod(milliseconds, 1000)
