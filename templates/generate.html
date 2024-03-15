@@ -404,25 +404,39 @@
 
         {% if playlist %}
         <form action="{{url_for('add_playlist')}}" method="POST">
-          <div class="row justify-content-center mb-4">
-            <input
-              type="text"
-              class="d-none"
-              name="play"
-              value="{{ playlist }}"
-            />
-            <button
-              data-mdb-ripple-init
-              type="submit"
-              class="btn btn-primary col-5 rounded-9 display-1 mt-5 mb-5 justify-content-center"
-              style="
-                background: linear-gradient(to right, #06003d, #54095b);
-                font-size: 2vw;
-                color: #fffdf3;
-              "
-            >
-              SAVE PLAYLIST
-            </button>
+          <div class="row justify-content-center">
+            <div class="col-4 mb-4">
+              <div class="form-outline my-5" data-mdb-input-init>
+                <input
+                  type="text"
+                  id="form10"
+                  class="form-control"
+                  name="playlist_name"
+                />
+                <label class="form-label" for="form10">Playlist name</label>
+              </div>
+            </div>
+
+            <div class="col-4 mb-4">
+              <input
+                type="text"
+                class="d-none"
+                name="play"
+                value="{{ playlist }}"
+              />
+              <button
+                data-mdb-ripple-init
+                type="submit"
+                class="btn btn-primary mt-5 mb-5"
+                style="
+                  background: linear-gradient(to right, #06003d, #54095b);
+                  font-size: 2vw;
+                  color: #fffdf3;
+                "
+              >
+                SAVE PLAYLIST
+              </button>
+            </div>
           </div>
         </form>
         {% for song in playlist.songs %}

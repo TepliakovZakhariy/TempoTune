@@ -50,6 +50,7 @@ class Song:
 
 class Playlist:
     def __init__(self, track, limit, instrumentalness, energy, danceability, valence, popularity, acousticness):
+        self.name = None
         self.id = getrandbits(64)
         self.songs = []
         self.total_duration=0
@@ -207,6 +208,12 @@ def add_playlist():
         if playlist is None:
             print('ERROR: No playlist to add')
             return redirect(url_for('generate'))
+        playlist=literal_eval(playlist)
+        playlist_name=request.form['playlist_name']
+        if not playlist_name:
+            playlist_name='Playlist'
+        playlist['name']=playlist_name
+        playlist=str(playlist)
         user = users.find_one({"email" : session["email"]})
         user['playlists'].append(playlist)
         users.update_one({"email" : session["email"]}, {"$set": {"playlists": user['playlists']}})
