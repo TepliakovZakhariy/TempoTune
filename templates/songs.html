@@ -169,7 +169,7 @@
             <div class="row m-1">
               {% if song.preview_url == 'z' %}
               <div
-                class="col-2 col-md-1 d-flex align-items-center justify-content-center"
+                class="col-2 col-md-1 d-flex align-items-center justify-content-start"
               >
                 <button
                   type="button"
@@ -188,7 +188,7 @@
               </div>
               {% else %}
               <div
-                class="col-2 col-md-1 d-flex align-items-center justify-content-center"
+                class="col-2 col-md-1 d-flex align-items-center justify-content-start"
               >
                 <audio id="audioPlayer">
                   <source src="{{song.preview_url}}" type="audio/mpeg" />
@@ -200,9 +200,6 @@
                   data-mdb-ripple-init
                   onclick="togglePlayPause(this)"
                   style="height: 3vw; width: 3vw; font-size: 1.2vw"
-                  data-mdb-popover-init
-                  data-mdb-trigger="hover"
-                  data-mdb-content="Play the preview given by Spotify"
                 >
                   <i
                     class="fas fa-play icon-item active"
@@ -214,7 +211,7 @@
               </div>
               {% endif %}
               <div
-                class="col-2 col-md-1 d-flex align-items-center justify-content-center"
+                class="col-2 col-md-1 d-flex align-items-center justify-content-start"
               >
                 <img
                   src="{{song.cover_small}}"
@@ -223,7 +220,7 @@
                 />
               </div>
               <div
-                class="col-3 d-flex align-items-center justify-content-center text-white"
+                class="col-3 d-flex align-items-center justify-content-start text-white"
               >
                 <a
                   target="_blank"
@@ -238,13 +235,13 @@
                 <a
                   target="_blank"
                   href="{{song.album_url}}"
-                  class="text-white d-flex justify-content-center"
+                  class="text-white d-flex justify-content-start"
                   style="font-size: 1vw"
                   >{{song.album}}</a
                 >
               </div>
               <div
-                class="col-3 d-flex align-items-center justify-content-center text-white"
+                class="col-3 d-flex align-items-center justify-content-start text-white"
               >
                 <a
                   href="{{song.artist_url}}"
