@@ -10,8 +10,8 @@ import random
 
 uri = "mongodb+srv://yurora:tempotune123official@cluster0.pkxylky.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-client_id = "f17426cd426c406eb0909cb148cb0981"
-client_secret='3b0ee8a224654b54bb417f35cbda9e01'
+client_id = "f244ce7a8a0b45bd98d1c97eedd13f6c"
+client_secret='e75340ec75314069bd2ef3aa8cb61030'
 client = MongoClient(uri)
 db = client['TempoTune']
 users = db["users"]

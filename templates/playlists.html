@@ -4,31 +4,26 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Material Design for Bootstrap</title>
     <!-- MDB icon -->
     <link
       rel="icon"
       href="{{ url_for('static', filename='img/logo.png')}}"
-      type="image/x-icon"
-    />
+      type="image/x-icon" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- Google Fonts Roboto -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    />
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
     <!-- MDB -->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/mdb.min.css' )}}"
-    />
+      href="{{ url_for('static', filename='css/mdb.min.css' )}}" />
   </head>
 
   <body>
@@ -44,8 +39,7 @@
               height="70px"
               alt="Tempotune Logo"
               loading="lazy"
-              style="margin-top: -1px"
-            />
+              style="margin-top: -1px" />
           </a>
 
           <!-- Toggle button -->
@@ -56,8 +50,7 @@
             data-mdb-target="#navbarButtonsExample"
             aria-controls="navbarButtonsExample"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
 
@@ -69,8 +62,7 @@
                 <a class="nav-link" href="{{ url_for('index') }}">
                   <p
                     class="mb-0 h3"
-                    style="color: #040219; letter-spacing: 0.25em"
-                  >
+                    style="color: #040219; letter-spacing: 0.25em">
                     TEMPOTUNE
                   </p>
                 </a>
@@ -88,8 +80,7 @@
                     background-color: #fffdf3;
                     color: #4b40b5;
                     border-color: #4b40b5 !important;
-                  "
-                >
+                  ">
                   GENERATE PLAYLIST
                 </button>
               </a>
@@ -102,8 +93,7 @@
                     background-color: #fffdf3;
                     color: #4b40b5;
                     border-color: #4b40b5 !important;
-                  "
-                >
+                  ">
                   LOG OUT
                 </button>
               </a>
@@ -111,12 +101,9 @@
                 data-mdb-ripple-init
                 class="px-3"
                 href="{{url_for('playlists')}}"
-                role="button"
-                ><i class=""
-                  ><img
+                role="button"><i class><img
                     src="{{ url_for('static', filename='img/avatar.png')}}"
-                    alt="" /></i
-              ></a>
+                    alt /></i></a>
             </div>
           </div>
         </div>
@@ -127,41 +114,55 @@
       style="
         background: linear-gradient(to right, rgba(0, 5, 23), rgb(14, 4, 103));
         min-height: 70vh;
-      "
-    >
+      ">
       <div class="row mx-4 justify-content-evenly">
         <div class="container mt-0">
           <section class="row my-4 d-flex justify-content-between">
             <div
               class="col-6 col-md-6 text-center text-light fw-bold"
-              style="font-size: 3vw"
-            >
+              style="font-size: 3vw">
               Your playlists:
             </div>
             <div
               class="col-6 col-md-6 text-center text-light fw-bold"
-              style="font-size: 3vw"
-            >
+              style="font-size: 3vw">
               {{ name }}
             </div>
           </section>
         </div>
         {% for playlist in playlists %}
-        <div class="card col-5 mx-2 col-lg-3 my-4 px-0">
+        <div class="card col-5 mx-2 col-lg-3 my-4 px-0 position-relative">
           <div
             class="bg-image hover-overlay"
             data-mdb-ripple-init
-            data-mdb-ripple-color="light"
-          >
+            data-mdb-ripple-color="light">
             <img src="{{playlist.songs[0].cover_big}}" class="img-fluid" />
             <a href="{{url_for('songs',playlist_id=playlist.id)}}">
               <div
                 class="mask"
-                style="background-color: rgba(251, 251, 251, 0.15)"
-              ></div>
+                style="background-color: rgba(251, 251, 251, 0.15)"></div>
             </a>
+            <div class="position-absolute top-0 end-0 mt-2 d-flex justify-content-center me-2">
+                <a
+                  href="{{url_for('delete_playlist',playlist_id=playlist.id)}}"
+                >
+                  <button
+                    data-mdb-ripple-init
+                    type="button"
+                    class="btn btn-primary rounded-9 display-1 px-2 py-2 px-md-3"
+                    style="
+                      background: linear-gradient(to right, #06003d, #54095b);
+                      font-size: 1.3vw;
+                      color: #fffdf3;
+                    "
+                  >
+                    <!-- <div class=""><i class="fas fa-trash "></i></div> -->
+                    <i class="icon-item fas fa-trash" role="button" data-prefix="fas" data-id="trash" data-unicode="f1f8" data-mdb-tooltip-initialized="true" ></i>
+                  </button>
+                </a>
+            </div>
           </div>
-          <div class="card-body p-2 p-sm-4">
+          <div class="card-body p-2 p-sm-4 ">
             <h5 class="card-title" style="font-size: 2.5vw">
               {{playlist.name}}
             </h5>
@@ -176,49 +177,28 @@
                 Created: {{playlist.date}}
               </div>
             </div>
-            <div class="row justify-content-end">
-              <div class="col-3">
-                <a
-                  href="{{url_for('delete_playlist',playlist_id=playlist.id)}}"
-                >
-                  <button
-                    data-mdb-ripple-init
-                    type="button"
-                    class="btn btn-primary col-5 rounded-9 display-1 mt-5 mb-5 justify-content-center"
-                    style="
-                      background: linear-gradient(to right, #06003d, #54095b);
-                      font-size: 2vw;
-                      color: #fffdf3;
-                    "
-                  >
-                    <i class="fas fa-trash"></i></button
-                ></a>
-              </div>
-            </div>
+
           </div>
         </div>
         {% endfor %}
       </div>
     </div>
 
-    <footer class="" style="background-color: #040024 !important">
+    <footer class style="background-color: #040024 !important">
       <div class="container">
         <div class="row text-center justify-content-evenly pt-3">
           <div
             class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
-            style="object-fit: scale-down"
-          >
+            style="object-fit: scale-down">
             <img
               src="{{ url_for('static', filename='img/logo.png')}}"
-              alt=""
-              style="max-height: 6vw"
-            />
+              alt
+              style="max-height: 6vw" />
           </div>
           <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
             <h6
               class="text-uppercase mb-0 text-white"
-              style="font-size: 1.5vw; letter-spacing: 0.1em"
-            >
+              style="font-size: 1.5vw; letter-spacing: 0.1em">
               Follow us on:
             </h6>
             <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
@@ -228,11 +208,9 @@
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
                     src="{{ url_for('static', filename='img/інста_1.png')}}"
-                    alt=""
-                  />
-                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
-                    >tempotune_official</a
-                  >
+                    alt />
+                  <a href="#!" class="col-10 text-white"
+                    style="font-size: 1vw">tempotune_official</a>
                 </div>
               </li>
               <li>
@@ -241,11 +219,9 @@
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
                     src="{{ url_for('static', filename='img/facebook_1.png')}}"
-                    alt=""
-                  />
-                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
-                    >TEMPOTUNE</a
-                  >
+                    alt />
+                  <a href="#!" class="col-10 text-white"
+                    style="font-size: 1vw">TEMPOTUNE</a>
                 </div>
               </li>
               <li>
@@ -254,11 +230,9 @@
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
                     src="{{ url_for('static', filename='img/twitter_1.png')}}"
-                    alt=""
-                  />
-                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
-                    >tempotune_official</a
-                  >
+                    alt />
+                  <a href="#!" class="col-10 text-white"
+                    style="font-size: 1vw">tempotune_official</a>
                 </div>
               </li>
             </ul>
@@ -277,8 +251,7 @@
           font-size: 0.8vw;
           color: aliceblue;
           opacity: 0.9;
-        "
-      >
+        ">
         © 2024 Tempotune. All rights reserved.
       </div>
       <!-- Copyright -->
