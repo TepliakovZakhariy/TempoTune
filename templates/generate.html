@@ -163,7 +163,7 @@
               >
             </div>
             <button
-              class="btn btn-primary col-5 me-3 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
+              class="btn btn-primary col-5 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
               style="
                 background: linear-gradient(
                   to right,
@@ -208,7 +208,7 @@
             </div>
             <div class="">
               <button
-                class="btn btn-primary me-3 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
+                class="btn btn-primary rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
                 style="
                   background: linear-gradient(to right, #06003d, #0e0842);
                   font-size: 1.5vw;
@@ -402,7 +402,7 @@
           <div class="d-flex justify-content-around w-100 mb-4">
             <div class="w-50 ">
               <div
-              class="form-outline  mb-3 mb-md-0 pr-2 align-self-center"
+              class="form-outline mb-md-0 pr-2 align-self-center"
               style="color: #06003d"
               data-mdb-input-init
               >
@@ -425,18 +425,21 @@
                 name="play"
                 value="{{ playlist }}"
               />
-              <button
-                data-mdb-ripple-init
-                type="submit"
-                class="btn btn-primary me-3 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
-                style="
-                  background: linear-gradient(to right, #06003d, #54095b);
-                  font-size: 1.5vw;
-                  color: #fffdf3;
-                "
-              >
-                SAVE PLAYLIST
-              </button>
+              <div class="">
+                <button
+                  class="btn btn-primary rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
+                  style="
+                    background: linear-gradient(to right, #06003d, #54095b);
+                    font-size: 1.5vw;
+                    color: #fffdf3;
+                    float: right;
+                  "
+                  data-mdb-ripple-init
+                  type="submit"
+                >
+                  SAVE PLAYLIST
+                </button>
+              </div>
             </div>
           </div>
         </form>
