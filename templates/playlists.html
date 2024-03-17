@@ -119,13 +119,9 @@
               ></a>
             </div>
           </div>
-          <!-- Collapsible wrapper -->
         </div>
-        <!-- Container wrapper -->
       </nav>
-      <!-- Navbar -->
     </header>
-    <!-- Start your project here-->
     <div
       class="mt-0 pb-5"
       style="
@@ -170,8 +166,7 @@
               {{playlist.name}}
             </h5>
             <p class="card-text text-muted" style="font-size: 1.5vw">
-              {{playlist.songs[0].name}} by {{playlist.songs[0].artist}},
-              {{playlist.songs[1].name}} by {{playlist.songs[1].artist}}...
+              {{playlist.songs[0].name}}, {{playlist.songs[1].name}} ...
             </p>
             <div class="row">
               <div class="col-6 text-start text-reset" style="font-size: 1.5vw">
@@ -207,11 +202,8 @@
     </div>
 
     <footer class="" style="background-color: #040024 !important">
-      <!-- Grid container -->
-      <!--Grid row-->
       <div class="container">
         <div class="row text-center justify-content-evenly pt-3">
-          <!--Grid column-->
           <div
             class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
             style="object-fit: scale-down"
@@ -235,7 +227,7 @@
                   <img
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
-                    src="img/інста_1.png"
+                    src="{{ url_for('static', filename='img/інста_1.png')}}"
                     alt=""
                   />
                   <a href="#!" class="col-10 text-white" style="font-size: 1vw"
@@ -248,7 +240,7 @@
                   <img
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
-                    src="img/facebook_1.png"
+                    src="{{ url_for('static', filename='img/facebook_1.png')}}"
                     alt=""
                   />
                   <a href="#!" class="col-10 text-white" style="font-size: 1vw"
@@ -261,7 +253,7 @@
                   <img
                     class="col-2 p-0 align-self-center"
                     style="max-width: 1.5vw"
-                    src="img/twitter_1.png"
+                    src="{{ url_for('static', filename='img/twitter_1.png')}}"
                     alt=""
                   />
                   <a href="#!" class="col-10 text-white" style="font-size: 1vw"
