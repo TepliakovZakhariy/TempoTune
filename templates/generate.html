@@ -112,7 +112,7 @@
       <!-- Navbar -->
     </header>
     <!-- Start your project here-->
-    <div class="container ">
+    <div class="container">
       <div class="card mt-5 px-3 px-md-5 rounded-bottom-0">
         <div
           class="text-center mt-4"
@@ -400,16 +400,16 @@
         {% if playlist %}
         <form action="{{url_for('add_playlist')}}" method="POST">
           <div class="d-flex justify-content-around w-100 mb-4">
-            <div class="w-50 ">
+            <div class="w-50">
               <div
-              class="form-outline mb-md-0 pr-2 align-self-center"
-              style="color: #06003d"
-              data-mdb-input-init
+                class="form-outline mb-md-0 pr-2 align-self-center"
+                style="color: #06003d"
+                data-mdb-input-init
               >
                 <input
                   type="text"
                   id="form13"
-                  class="form-control  "
+                  class="form-control"
                   style="font-size: 1.7vw"
                   name="playlist_name"
                 />
@@ -419,12 +419,8 @@
               </div>
             </div>
 
-            <div class="w-40  d-flex justify-content-center">
-              <input
-                class="d-none"
-                name="play"
-                value="{{ playlist }}"
-              />
+            <div class="w-40 d-flex justify-content-center">
+              <input class="d-none" name="play" value="{{ playlist }}" />
               <div class="">
                 <button
                   class="btn btn-primary rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
@@ -475,9 +471,12 @@
                   class="btn btn-primary btn-floating"
                   data-mdb-ripple-init
                   onclick="togglePlayPause(this)"
-                  style="height: 4vh; width: 4vh "
+                  style="height: 4vh; width: 4vh"
+                  data-mdb-popover-init
+                  data-mdb-trigger="hover"
+                  data-mdb-content="Play the preview given by Spotify"
                 >
-                  <i class="fas fa-play " style=" width: 2vw"></i>
+                  <i class="fas fa-play" style="width: 2vw"></i>
                 </button>
               </div>
               {% endif %}
@@ -488,22 +487,40 @@
                   style="border-radius: 10%; object-fit: fit; height: 3.5vw"
                 />
               </div>
-              <div class="col-3  align-self-center text-white text-center">
-                <a target="_blank" href="{{song.url}}" class="text-white" style="font-size: 1vw;">
+              <div class="col-3 align-self-center text-white text-center">
+                <a
+                  target="_blank"
+                  href="{{song.url}}"
+                  class="text-white"
+                  style="font-size: 1vw"
+                >
                   {{song.name}}
                 </a>
               </div>
-              <div class="col-3  d-none d-md-block align-self-center text-white text-center">
-                <a target="_blank" href="{{song.album_url}}" class="text-white"
-                style="font-size: 1vw;">{{song.album}}</a
+              <div
+                class="col-3 d-none d-md-block align-self-center text-white text-center"
+              >
+                <a
+                  target="_blank"
+                  href="{{song.album_url}}"
+                  class="text-white"
+                  style="font-size: 1vw"
+                  >{{song.album}}</a
                 >
               </div>
               <div class="col-3 align-self-center text-white text-center">
-                <a target="_blank" href="{{song.artist_url}}" class="text-white"
-                style="font-size: 1vw;">{{song.artist}}</a
+                <a
+                  target="_blank"
+                  href="{{song.artist_url}}"
+                  class="text-white"
+                  style="font-size: 1vw"
+                  >{{song.artist}}</a
                 >
               </div>
-              <div class="col-2 col-md-1 align-self-center text-white text-center" style="font-size: 1vw;">
+              <div
+                class="col-2 col-md-1 align-self-center text-white text-center"
+                style="font-size: 1vw"
+              >
                 {{song.duration}}
               </div>
             </div>
