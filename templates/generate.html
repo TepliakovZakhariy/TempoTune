@@ -481,7 +481,10 @@
                   class="btn btn-primary btn-floating"
                   data-mdb-ripple-init
                   onclick="togglePlayPause(this)"
-                  style="height: 3vw; width: 3vw; font-size: 1.2vw"
+                  style="height: 4vh; width: 4vh "
+                  data-mdb-popover-init
+                  data-mdb-trigger="hover"
+                  data-mdb-content="Play the preview given by Spotify"
                 >
                   <i
                     class="fas fa-play icon-item active"
@@ -532,11 +535,8 @@
                   >{{song.artist}}</a
                 >
               </div>
-              <div
-                class="d-flex col-2 col-md-1 align-self-center text-white text-center"
-                style="font-size: 1vw"
-              >
-                <a href="" class="text-white">{{song.duration}}</a>
+              <div class="col-2 col-md-1 align-self-center text-white text-center" style="font-size: 1vw;">
+                {{song.duration}}
               </div>
             </div>
           </div>
