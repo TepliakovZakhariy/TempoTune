@@ -169,18 +169,28 @@
           <div class="card-body p-3 px-4" style="margin: -0.6rem">
             <div class="row m-1">
               {% if song.preview_url == 'z' %}
-              <div class="col-2 col-md-1 align-self-center">
+              <div
+                class="col-2 col-md-1 d-flex align-items-center justify-content-center"
+              >
                 <button
                   type="button"
                   class="btn btn-secondary btn-floating"
+                  style="height: 3vw; width: 3vw; font-size: 1.2vw"
                   data-mdb-ripple-init
                   disabled
                 >
-                  <i class="fas fa-play"></i>
+                  <i
+                    class="fas fa-play icon-item active"
+                    id="mdb-span-example-icon"
+                    role="button"
+                    style="user-select: none; touch-action: none"
+                  ></i>
                 </button>
               </div>
               {% else %}
-              <div class="col-2 col-md-1 align-self-center">
+              <div
+                class="col-2 col-md-1 d-flex align-items-center justify-content-center"
+              >
                 <audio id="audioPlayer">
                   <source src="{{song.preview_url}}" type="audio/mpeg" />
                   Your browser does not support the audio element.
@@ -190,36 +200,62 @@
                   class="btn btn-primary btn-floating"
                   data-mdb-ripple-init
                   onclick="togglePlayPause(this)"
-                  style="height: 4vh; width: 4vh "
+                  style="height: 3vw; width: 3vw; font-size: 1.2vw"
                 >
-                  <i class="fas fa-play " style=" width: 2vw"></i>
+                  <i
+                    class="fas fa-play icon-item active"
+                    id="mdb-span-example-icon"
+                    role="button"
+                    style="user-select: none; touch-action: none"
+                  ></i>
                 </button>
               </div>
               {% endif %}
-              <div class="col-2 col-md-1 align-self-center">
+              <div
+                class="col-2 col-md-1 d-flex align-items-center justify-content-center"
+              >
                 <img
                   src="{{song.cover_small}}"
                   alt=""
                   style="border-radius: 10%; object-fit: fit; height: 3.5vw"
                 />
               </div>
-              <div class="col-3  align-self-center text-white text-center">
-                <a target="_blank" href="{{song.url}}" class="text-white" style="font-size: 1vw;">
+              <div
+                class="col-3 d-flex align-items-center justify-content-center text-white"
+              >
+                <a
+                  target="_blank"
+                  href="{{song.url}}"
+                  class="text-white"
+                  style="font-size: 1vw"
+                >
                   {{song.name}}
                 </a>
               </div>
-              <div class="col-3  d-none d-md-block align-self-center text-white text-center">
-                <a target="_blank" href="{{song.album_url}}" class="text-white"
-                style="font-size: 1vw;">{{song.album}}</a
+              <div class="col-3 d-none d-md-block align-self-center text-white">
+                <a
+                  target="_blank"
+                  href="{{song.album_url}}"
+                  class="text-white d-flex justify-content-center"
+                  style="font-size: 1vw"
+                  >{{song.album}}</a
                 >
               </div>
-              <div class="col-3 align-self-center text-white text-center">
-                <a target="_blank" href="{{song.artist_url}}" class="text-white"
-                style="font-size: 1vw;">{{song.artist}}</a
+              <div
+                class="col-3 d-flex align-items-center justify-content-center text-white"
+              >
+                <a
+                  href="{{song.artist_url}}"
+                  class="text-white"
+                  style="font-size: 1vw"
+                  >{{song.artist}}</a
                 >
               </div>
-              <div class="col-2 col-md-1 align-self-center text-white text-center" style="font-size: 1vw;">
-                {{song.duration}}
+              <div
+                class="d-flex col-2 col-md-1 align-items-center text-white"
+                style="font-size: 1vw"
+              >
+                <a href="" class="text-white">{{song.duration}}</a>
               </div>
             </div>
           </div>
