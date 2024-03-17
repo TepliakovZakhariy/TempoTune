@@ -136,15 +136,17 @@
         <div class="col-6">
           <h1 class="text-white text-center">{{playlist.name}}</h1>
         </div>
-        <div class="col-6">
+        <div class="col-4">
           <form
             method="POST"
             action="{{url_for('add_to_spotify')}}"
             target="_blank"
+            class="text-center"
           >
             <button
               data-mdb-ripple-init
-              class="btn btn-primary rounded-9 border border-2 display-3"
+              class="btn rounded-9  border border-1 display-3 text-white"
+              style="background-image: linear-gradient(to right,  #1DB954, #5a11a7);"
               type="submit"
               name="playlist"
               value="{{playlist}}"
@@ -155,9 +157,6 @@
         </div>
       </div>
       <div class="px-5">
-        <div class="text-center text-white" style="font-size: 4vh">
-          {{ playlist.name }}
-        </div>
         {% for song in playlist.songs %}
         <div
           class="card my-3 shadow-3-strong"
