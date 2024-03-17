@@ -137,18 +137,20 @@
           <h1 class="text-white text-center">{{playlist.name}}</h1>
         </div>
         <div class="col-6">
-          <form method="POST" action="{{url_for('add_to_spotify')}}">
-            <a target="_blank">
-              <button
-                data-mdb-ripple-init
-                class="btn btn-primary rounded-9 border border-2 display-3"
-                type="submit"
-                name="playlist"
-                value="{{playlist}}"
-              >
-                Save to Spotify
-              </button></a
+          <form
+            method="POST"
+            action="{{url_for('add_to_spotify')}}"
+            target="_blank"
+          >
+            <button
+              data-mdb-ripple-init
+              class="btn btn-primary rounded-9 border border-2 display-3"
+              type="submit"
+              name="playlist"
+              value="{{playlist}}"
             >
+              Save to Spotify
+            </button>
           </form>
         </div>
       </div>
