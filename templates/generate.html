@@ -439,6 +439,17 @@
             </div>
           </div>
         </form>
+        <div class="row container p-3 px-4">
+          <div class="col-2 col-md-1"></div>
+        <div class="col-2" style="font-size: 1vw">song photo</div>
+        <div class="col-3" style="font-size: 1vw">song name</div>
+        <div class="col-3  d-none d-md-block" style="font-size: 1vw">album name</div>
+        <div class="col-2" style="font-size: 1vw">artist name</div>
+        <div class="col-1" style="font-size: 1vw">duration</div>
+        <div class="col-2" style="font-size: 1vw"></div>
+        </div>
+        
+        <hr>
         {% for song in playlist.songs %}
         <div
           class="card my-3 shadow-3-strong"
@@ -450,8 +461,7 @@
           <div class="card-body p-3 px-4" style="margin: -0.6rem">
             <div class="row m-1">
               {% if song.preview_url == 'z' %}
-              <div
-                class="col-2 col-md-1 d-flex align-items-center justify-content-start"
+              <div  class="col-2 col-md-1 d-flex align-items-center justify-content-start"
               >
                 <button
                   type="button"
@@ -469,8 +479,7 @@
                 </button>
               </div>
               {% else %}
-              <div
-                class="col-2 col-md-1 d-flex align-items-center justify-content-start"
+              <div  class="col-2 col-md-1 d-flex align-items-center justify-content-start"
               >
                 <audio id="audioPlayer">
                   <source src="{{song.preview_url}}" type="audio/mpeg" />
@@ -495,8 +504,7 @@
                 </button>
               </div>
               {% endif %}
-              <div
-                class="col-2 col-md-1 d-flex align-items-center justify-content-start"
+              <div  class="col-2 col-md-1 d-flex align-items-center justify-content-start"
               >
                 <img
                   src="{{song.cover_small}}"
@@ -504,8 +512,7 @@
                   style="border-radius: 10%; object-fit: fit; height: 3.5vw"
                 />
               </div>
-              <div
-                class="col-3 d-flex align-items-center justify-content-start text-white"
+              <div class="col-3 d-flex align-items-center justify-content-start text-white"
               >
                 <a
                   target="_blank"
@@ -525,8 +532,7 @@
                   >{{song.album}}</a
                 >
               </div>
-              <div
-                class="col-3 d-flex align-items-center justify-content-start text-white"
+              <div  class="col-2 d-flex align-items-center justify-content-start text-white"
               >
                 <a
                   href="{{song.artist_url}}"
@@ -535,11 +541,17 @@
                   >{{song.artist}}</a
                 >
               </div>
-              <div
-                class="d-flex col-2 col-md-1 align-items-center text-white"
+              <div  class="d-flex col-1 align-items-center text-white"
                 style="font-size: 1vw"
               >
                 <a href="" class="text-white">{{song.duration}}</a>
+              </div>
+              <div  class="d-flex col-2  col-md-1 align-items-center text-white justify-content-center"
+                style="font-size: 1vw"
+              >
+                <a href="" class="text-white" style="font-size: 1.2vw">
+                  <i class="icon-item fas fa-trash" role="button" data-prefix="fas" data-id="trash" data-unicode="f1f8" data-mdb-tooltip-initialized="true" ></i>
+                </a>
               </div>
             </div>
           </div>

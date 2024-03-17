@@ -156,7 +156,7 @@
           </form>
         </div>
       </div>
-      <div class="px-5">
+      <div class="px-2 px-md-5">
         {% for song in playlist.songs %}
         <div
           class="card my-3 shadow-3-strong"
@@ -253,10 +253,12 @@
               >
                 <a href="" class="text-white">{{song.duration}}</a>
               </div>
-              <div  class="d-flex col-1 align-items-center text-white"
+              <div  class="d-flex col-2  col-md-1 align-items-center text-white justify-content-center"
                 style="font-size: 1vw"
               >
-                <a href="" class="text-white"></a>
+                <a href="" class="text-white" style="font-size: 1.2vw">
+                  <i class="icon-item fas fa-trash" role="button" data-prefix="fas" data-id="trash" data-unicode="f1f8" data-mdb-tooltip-initialized="true" ></i>
+                </a>
               </div>
             </div>
           </div>
