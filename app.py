@@ -159,7 +159,7 @@ def playlists():
     return render_template('playlists.html', name=name, playlists=playlists_)
 
 
-@app.route('/songs/<playlist_id>')
+@app.route('/songs/<playlist_id>', methods=['GET','POST'])
 def songs(playlist_id):
     playlists_ = users.find_one({"email" : session["email"]})['playlists']
     playlists_ = [literal_eval(playlist) for playlist in playlists_]
