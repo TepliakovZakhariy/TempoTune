@@ -140,13 +140,12 @@
           <form
             method="POST"
             action="{{url_for('add_to_spotify')}}"
-            target="_blank"
             class="text-center"
           >
             <button
               data-mdb-ripple-init
               class="btn rounded-8 display-3 text-white"
-              style="background-color: #1CCC5B; font-size: 2vw"
+              style="background-color: #1ccc5b; font-size: 2vw"
               type="submit"
               name="playlist"
               value="{{playlist}}"
@@ -199,6 +198,9 @@
                   data-mdb-ripple-init
                   onclick="togglePlayPause(this)"
                   style="height: 3vw; width: 3vw; font-size: 1.2vw"
+                  data-mdb-popover-init
+                  data-mdb-trigger="hover"
+                  data-mdb-content="Play the preview given by Spotify"
                 >
                   <i
                     class="fas fa-play icon-item active"
@@ -263,20 +265,19 @@
       </div>
     </div>
     <footer class="" style="background-color: #040024 !important">
-
       <div class="container">
         <div class="row text-center justify-content-evenly pt-3">
           <div
             class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
             style="object-fit: scale-down"
           >
-          <a href="../">
-            <img
-              src="{{ url_for('static', filename='img/logo.png')}}"
-              alt=""
-              style="max-height: 6vw"
-            />
-          </a>
+            <a href="../">
+              <img
+                src="{{ url_for('static', filename='img/logo.png')}}"
+                alt=""
+                style="max-height: 6vw"
+              />
+            </a>
           </div>
           <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
             <h6
@@ -341,7 +342,6 @@
       >
         © 2024 Tempotune. All rights reserved.
       </div>
-
     </footer>
     <script
       type="text/javascript"
