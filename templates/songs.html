@@ -136,7 +136,7 @@
         <div class="col-6">
           <h1 class="text-white text-center">{{playlist.name}}</h1>
         </div>
-        <div class="col-4">
+        <div class="col-5">
           <form
             method="POST"
             action="{{url_for('add_to_spotify')}}"
@@ -145,12 +145,13 @@
           >
             <button
               data-mdb-ripple-init
-              class="btn rounded-9  border border-1 display-3 text-white"
-              style="background-image: linear-gradient(to right,  #1DB954, #5a11a7);"
+              class="btn rounded-4 display-3 text-white"
+              style="background-color: #1CCC5B; font-size: 2vw"
               type="submit"
               name="playlist"
               value="{{playlist}}"
             >
+              <i class="fab fa-spotify fa-md mx-1"></i>
               Save to Spotify
             </button>
           </form>
