@@ -35,8 +35,8 @@ def milliseconds_to_string_duration(milliseconds):
     return duration_string
 
 class Song:
-    def __init__(self, name, artist, album, url, album_url, artist_url, duration,
-                 preview_url, cover_big, cover_medium, cover_small):
+    def __init__(self, name, artist, album, url, album_url, artist_url, duration, duration_ms,
+                 preview_url, cover_big, cover_small):
         self.name = name
         self.artist = artist
         self.album=album
@@ -44,9 +44,9 @@ class Song:
         self.album_url = album_url
         self.artist_url = artist_url
         self.duration = duration
+        self.duration_ms=duration_ms
         self.preview_url = preview_url
         self.cover_big = cover_big
-        self.cover_medium = cover_medium
         self.cover_small = cover_small
 
     def __repr__(self):
@@ -57,7 +57,6 @@ class Playlist:
         self.name = None
         self.id = getrandbits(64)
         self.songs = []
-        self.total_duration=0
         current_day = datetime.now().day
         current_month = datetime.now().month
         current_year = datetime.now().year
@@ -77,27 +76,25 @@ class Playlist:
             album_url = track['album']['external_urls']['spotify']
             artist_url = track['artists'][0]['external_urls']['spotify']
             duration = track['duration_ms']
-            self.total_duration+=duration
+            duration_ms=track['duration_ms']
             duration=milliseconds_to_string_duration(duration)
             preview_url = track['preview_url']
             if preview_url is None:
                 preview_url = 'z'
             try:
                 cover_big = track['album']['images'][0]['url']
-                cover_medium = track['album']['images'][1]['url']
                 cover_small = track['album']['images'][2]['url']
             except IndexError:
                 print('ERROR: No cover found')
                 cover_big = None
-                cover_medium = None
                 cover_small = None
-            song = Song(name, artist, album, url, album_url, artist_url, duration, preview_url,
-                        cover_big, cover_medium, cover_small)
+            song = Song(name, artist, album, url, album_url, artist_url, duration, duration_ms, preview_url,
+                        cover_big, cover_small)
             self.songs.append(song.__dict__)
         self.songs=sorted(self.songs, key=lambda x: x['preview_url'])
-        self.total_duration=milliseconds_to_string_duration(self.total_duration)
         self.songs=self.songs[:limit]
         random.shuffle(self.songs)
+        self.total_duration=milliseconds_to_string_duration(sum([song['duration_ms'] for song in self.songs]))
 
     def __str__(self):
         return repr(self.__dict__)
