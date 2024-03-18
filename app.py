@@ -124,6 +124,10 @@ def login():
             return render_template('login.html', message=message)
         session["email"]=email
         return redirect(url_for('index'))
+    err=request.args.get('err')
+    if err:
+        message='You need to log in to your account to save your playlist'
+        return render_template('login.html', message=message)
     return render_template('login.html')
 
 
@@ -234,7 +238,7 @@ def generate():
 @app.route('/add_playlist', methods=['GET','POST'])
 def add_playlist():
     if 'email' not in session:
-        return redirect(url_for('login'))
+        return redirect(url_for('login', err=1))
     if request.method == 'POST':
         playlist=request.form['play']
         if playlist is None:

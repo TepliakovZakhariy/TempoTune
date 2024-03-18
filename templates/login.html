@@ -4,24 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Log in</title>
+    <title>Log in - TempoTune</title>
     <!-- MDB icon -->
     <link
       rel="icon"
       href="{{url_for('static',filename='img/logo.png')}}"
-      type="image/x-icon" />
+      type="image/x-icon"
+    />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <!-- Google Fonts Roboto -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
     <!-- MDB -->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/mdb.min.css') }}" />
+      href="{{ url_for('static', filename='css/mdb.min.css') }}"
+    />
   </head>
 
   <body style="background: linear-gradient(to right, #060422, #251a81)">
@@ -33,7 +37,8 @@
         color: #251a81;
         background-color: #fffdf3;
         border-radius: 30px;
-      ">
+      "
+    >
       <div class="card-body">
         <h1 class="mb-2" style="text-align: left; font-size: medium">
           <a href="{{url_for('index')}}">← Main page</a>
@@ -49,9 +54,11 @@
               type="username"
               id="form1Example1"
               name="username"
-              class="form-control" />
-            <label class="form-label" for="form1Example1"
-              style="color: #251a81">Enter your username</label>
+              class="form-control"
+            />
+            <label class="form-label" for="form1Example1" style="color: #251a81"
+              >Enter your username</label
+            >
           </div>
           <p class="mb-2">Email</p>
           <!-- Email input -->
@@ -60,9 +67,11 @@
               type="email"
               id="form1Example1"
               name="email"
-              class="form-control" />
-            <label class="form-label" for="form1Example1"
-              style="color: #251a81">Enter your email</label>
+              class="form-control"
+            />
+            <label class="form-label" for="form1Example1" style="color: #251a81"
+              >Enter your email</label
+            >
           </div>
           <p class="mb-2">Password</p>
           <!-- Password input -->
@@ -71,9 +80,11 @@
               type="password"
               name="password"
               id="form1Example2"
-              class="form-control" />
-            <label class="form-label" for="form1Example2"
-              style="color: #251a81">Enter your password</label>
+              class="form-control"
+            />
+            <label class="form-label" for="form1Example2" style="color: #251a81"
+              >Enter your password</label
+            >
           </div>
 
           {% if message %}
@@ -93,7 +104,8 @@
               display: block;
               margin: 0 auto;
               background-color: #251a81;
-            ">
+            "
+          >
             Log In
           </button>
         </form>
@@ -109,7 +121,8 @@
     <!-- MDB -->
     <script
       type="text/javascript"
-      src='{{ url_for("static",filename="js/mdb.umd.min.js")}}'></script>
+      src='{{ url_for("static",filename="js/mdb.umd.min.js")}}'
+    ></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>
