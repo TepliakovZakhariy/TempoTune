@@ -195,9 +195,15 @@
               {{playlist.songs[0].name}} by {{playlist.songs[0].artist}}...
             </p>
             <div class="row">
+              {% if playlist.songs|length > 1 %}
               <div class="col-6 text-start text-reset" style="font-size: 1.5vw">
                 {{playlist.songs|length}} songs, {{playlist.total_duration}}
               </div>
+              {% else %}
+              <div class="col-6 text-start text-reset" style="font-size: 1.5vw">
+                1 song, {{playlist.total_duration}}
+              </div>
+              {% endif %}
               <div class="col-6 text-end" style="font-size: 1.5vw">
                 Created: {{playlist.date}}
               </div>

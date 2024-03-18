@@ -172,6 +172,7 @@ def songs(playlist_id):
         playlist_index=playlists_.index(playlist)
         if len(playlist['songs'])>1:
             playlist['songs']=[song for song in playlist['songs'] if song['url']!=song_to_delete['url']]
+            playlist['total_duration']=milliseconds_to_string_duration(sum(song['duration_ms'] for song in playlist['songs']))
             playlists_[playlist_index]=playlist
             playlists_ = [str(playlist) for playlist in playlists_]
             users.update_one({"email" : session["email"]}, {"$set": {"playlists": playlists_}})
@@ -224,6 +225,9 @@ def generate():
             playlist=request.form['playlist_delete']
             playlist=literal_eval(playlist)
             playlist['songs']=[song for song in playlist['songs'] if song['url']!=deleted_song['url']]
+            if not playlist['songs']:
+                return render_template('generate.html')
+            playlist['total_duration']=milliseconds_to_string_duration(sum(song['duration_ms'] for song in playlist['songs']))
             return render_template('generate.html', playlist=playlist)
     return render_template('generate.html')
 
