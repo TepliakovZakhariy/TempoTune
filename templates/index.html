@@ -100,16 +100,16 @@
 
     <!-- Background image -->
     <div
-      class="pt-5"
+      class="py-5"
       style="
+        padding-top: 2vh;
         background: linear-gradient(to right, #000517, #080052);
-        height: 100vh;
       "
     >
       <!-- Welcome text -->
-      <div class="container-fluid">
+      <div class="container-fluid container">
         <div
-          class="welcome-text mt-4"
+          class="welcome-text mt-4 pt-md-5"
           style="color: #fffdf3; font-size: 5vw; letter-spacing: 0.25em"
         >
           <p>TEMPOTUNE</p>
@@ -137,207 +137,187 @@
           </p>
         </div>
       </div>
+
+      <!-- End your project here-->
+    </div>
+
+    <div class="row mx-4 mt-5 justify-content-evenly pt-5">
       <div
-        class="pt-5 text-left bg-color"
-        style="background: #fffdf3; height: 100vh"
+        class="card col-3 bg-image border border-4 mt-2"
+        style="
+          background-color: #fffdf3;
+          color: #4b40b5;
+          border-color: #4b40b5 !important;
+        "
       >
-        <!-- Welcome text -->
-        <div class="row mx-4 justify-content-evenly">
-          <div
-            class="card col-3 bg-image border border-4 mt-2"
+        <div class="card-body p-2">
+          <p
+            class="card-text text-center"
             style="
-              background-color: #fffdf3;
-              color: #4b40b5;
-              border-color: #4b40b5 !important;
+              color: #040024;
+              font-size: 2vw;
+              letter-spacing: 0.1em;
+              font-weight: bold;
             "
           >
-            <div class="card-body p-2">
-              <p
-                class="card-text text-center"
-                style="
-                  color: #040024;
-                  font-size: 2vw;
-                  letter-spacing: 0.1em;
-                  font-weight: bold;
-                "
-              >
-                Find the right music
-              </p>
-            </div>
-            <img
-              src="{{url_for('static', filename='img/find.png')}}"
-              class="card-img-top"
-            />
-          </div>
-          <div
-            class="card col-3 bg-image border border-4 mt-2"
-            style="
-              background-color: #fffdf3;
-              color: #54095b;
-              border-color: #54095b !important;
-            "
-          >
-            <div class="card-body p-2">
-              <p
-                class="card-text text-center"
-                style="
-                  color: #040024;
-                  font-size: 2vw;
-                  letter-spacing: 0.1em;
-                  font-weight: bold;
-                "
-              >
-                Set up your filters
-              </p>
-            </div>
-            <img
-              src="{{url_for('static', filename='img/chose.png')}}"
-              class="card-img-top"
-            />
-          </div>
-          <div
-            class="card col-3 bg-image border border-4 mt-2"
-            style="
-              background-color: #fffdf3;
-              color: #06003d;
-              border-color: #06003d !important;
-            "
-          >
-            <div class="card-body p-2">
-              <p
-                class="card-text text-center"
-                style="
-                  color: #040024;
-                  font-size: 2vw;
-                  letter-spacing: 0.1em;
-                  font-weight: bold;
-                "
-              >
-                Enjoy your playlist
-              </p>
-            </div>
-            <img
-              src="{{url_for('static', filename='img/play.png')}}"
-              class=""
-            />
-          </div>
+            Find the right music
+          </p>
         </div>
-        <div class="row mx-4 pt-5 mt-5">
-          <div class="col-4"></div>
-          <button
-            data-mdb-ripple-init
-            type="button"
-            class="btn btn-lg col-4 btn-primary me-3 rounded-9 border border-3 display-3"
-            style="
-              color: linear-gradient(to right, #fffdf3, #f41df3);
-              border-color: #4b40b5 !important;
-              height: 5vw;
-            "
-          >
-            GET STARTED NOW
-          </button>
-          <div class="col-4"></div>
-        </div>
-        <!-- End Sub text -->
+        <img
+          src="{{url_for('static', filename='img/find.png')}}"
+          class="card-img-top"
+        />
       </div>
-      <footer class="" style="background-color: #040024 !important">
-        <!-- Grid container -->
-        <!--Grid row-->
-        <div class="container">
-          <div class="row text-center justify-content-evenly pt-3">
-            <!--Grid column-->
-            <div
-              class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
-              style="object-fit: scale-down"
-            >
+      <div
+        class="card col-3 bg-image border border-4 mt-2"
+        style="
+          background-color: #fffdf3;
+          color: #54095b;
+          border-color: #54095b !important;
+        "
+      >
+        <div class="card-body p-2">
+          <p
+            class="card-text text-center"
+            style="
+              color: #040024;
+              font-size: 2vw;
+              letter-spacing: 0.1em;
+              font-weight: bold;
+            "
+          >
+            Set up your filters
+          </p>
+        </div>
+        <img
+          src="{{url_for('static', filename='img/chose.png')}}"
+          class="card-img-top"
+        />
+      </div>
+      <div
+        class="card col-3 bg-image border border-4 mt-2"
+        style="
+          background-color: #fffdf3;
+          color: #06003d;
+          border-color: #06003d !important;
+        "
+      >
+        <div class="card-body p-2">
+          <p
+            class="card-text text-center"
+            style="
+              color: #040024;
+              font-size: 2vw;
+              letter-spacing: 0.1em;
+              font-weight: bold;
+            "
+          >
+            Enjoy your playlist
+          </p>
+        </div>
+        <img
+          src="{{url_for('static', filename='img/play.png')}}"
+          class="card-img-top"
+        />
+      </div>
+    </div>
+    <div class="container my-md-5">
+      <div class="row justify-content-center mb-4 w-100">
+        <a
+          data-mdb-ripple-init
+          type="button"
+          href="{{url_for('generate')}}"
+          class="btn btn-primary col-5 rounded-9 display-1 mt-5 mb-5 justify-content-center"
+          style="
+            background: linear-gradient(to right, #06003d, #54095b);
+            font-size: 2vw;
+            color: #fffdf3;
+          "
+        >
+          GET STARTED NOW
+        </a>
+      </div>
+    </div>
+
+    <footer class="" style="background-color: #040024 !important">
+      <div class="container">
+        <div class="row text-center justify-content-evenly pt-3">
+          <div
+            class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
+            style="object-fit: scale-down"
+          >
+            <a href="../">
               <img
                 src="{{ url_for('static', filename='img/logo.png')}}"
                 alt=""
                 style="max-height: 6vw"
               />
-            </div>
-            <!--Grid column-->
-            <!--Grid column-->
-            <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
-              <h6
-                class="text-uppercase mb-0 text-white"
-                style="font-size: 1.5vw; letter-spacing: 0.1em"
-              >
-                Follow us on:
-              </h6>
-              <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
-                <li>
-                  <div class="row justify-content-start mt-2">
-                    <img
-                      class="col-2 p-0 align-self-center"
-                      style="max-width: 1.5vw"
-                      src="{{ url_for('static', filename='img/інста_1.png')}}"
-                      alt=""
-                    />
-                    <a
-                      href="#!"
-                      class="col-10 text-white"
-                      style="font-size: 1vw"
-                      >tempotune_official</a
-                    >
-                  </div>
-                </li>
-                <li>
-                  <div class="row mt-2 justify-content-center">
-                    <img
-                      class="col-2 p-0 align-self-center"
-                      style="max-width: 1.5vw"
-                      src="{{ url_for('static', filename='img/facebook_1.png')}}"
-                      alt=""
-                    />
-                    <a
-                      href="#!"
-                      class="col-10 text-white"
-                      style="font-size: 1vw"
-                      >TEMPOTUNE</a
-                    >
-                  </div>
-                </li>
-                <li>
-                  <div class="row mt-2 justify-content-end">
-                    <img
-                      class="col-2 p-0 align-self-center"
-                      style="max-width: 1.5vw"
-                      src="{{ url_for('static', filename='img/twitter_1.png')}}"
-                      alt=""
-                    />
-                    <a
-                      href="#!"
-                      class="col-10 text-white"
-                      style="font-size: 1vw"
-                      >tempotune_official</a
-                    >
-                  </div>
-                </li>
-              </ul>
-            </div>
+            </a>
+          </div>
+          <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
+            <h6
+              class="text-uppercase mb-0 text-white"
+              style="font-size: 1.5vw; letter-spacing: 0.1em"
+            >
+              Follow us on:
+            </h6>
+            <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
+              <li>
+                <div class="row justify-content-start mt-2">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/інста_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2 justify-content-center">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/facebook_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >TEMPOTUNE</a
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2 justify-content-end">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/twitter_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
-        <!--Grid row-->
+      </div>
 
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div
-          class="text-center p-3"
-          style="
-            background-color: #040219;
-            font-size: 0.8vw;
-            color: aliceblue;
-            opacity: 0.9;
-          "
-        >
-          © 2024 Tempotune. All rights reserved.
-        </div>
-        <!-- Copyright -->
-      </footer>
-      <!-- End your project here-->
-    </div>
+      <div
+        class="text-center p-3"
+        style="
+          background-color: #040219;
+          font-size: 0.8vw;
+          color: aliceblue;
+          opacity: 0.9;
+        "
+      >
+        © 2024 Tempotune. All rights reserved.
+      </div>
+    </footer>
     <!-- MDB -->
     <script
       type="text/javascript"
