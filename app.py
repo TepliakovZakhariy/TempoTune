@@ -199,6 +199,13 @@ def generate():
             song = request.form['song']
             song_amount = request.form['song_amount']
             return render_template('generate.html', song=song, song_amount=song_amount)
+        else:
+            deleted_song=request.form['action']
+            deleted_song=literal_eval(deleted_song)
+            playlist=request.form['playlist_delete']
+            playlist=literal_eval(playlist)
+            playlist['songs']=[song for song in playlist['songs'] if song['url']!=deleted_song['url']]
+            return render_template('generate.html', playlist=playlist)
     return render_template('generate.html')
 
 @app.route('/add_playlist', methods=['GET','POST'])
