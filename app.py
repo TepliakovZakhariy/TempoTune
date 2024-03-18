@@ -258,10 +258,6 @@ def add_playlist():
     else:
         print('ERROR: Not a POST request')
 
-@app.route('/reset_options', methods=['GET','POST'])
-def reset_options():
-    return render_template('generate.html')
-
 @app.route('/delete_playlist/<playlist_id>', methods=['GET','POST'])
 def delete_playlist(playlist_id):
     user = users.find_one({"email" : session["email"]})

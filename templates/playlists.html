@@ -126,7 +126,7 @@
       class="mt-0 pb-5"
       style="
         background: linear-gradient(to right, rgba(0, 5, 23), rgb(14, 4, 103));
-        min-height: 70vh;
+        min-height: 80vh;
       "
     >
       <div class="row mx-4 justify-content-evenly">
@@ -210,7 +210,13 @@
             </div>
           </div>
         </div>
-        {% endfor %}
+        {% endfor %} {% if not playlists %}
+        <div
+          class="d-flex pt-5 mt-5 align-items-center justify-content-center text-center"
+        >
+          <h1 class="text-light">You have no playlists yet!</h1>
+        </div>
+        {% endif %}
       </div>
     </div>
 
