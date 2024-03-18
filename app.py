@@ -170,12 +170,17 @@ def songs(playlist_id):
         playlists_ = [literal_eval(playlist) for playlist in playlists_]
         playlist = [playlist for playlist in playlists_ if playlist['id'] == int(playlist_id)][0]
         playlist_index=playlists_.index(playlist)
-        #i need to delete song from playlist
-        playlist['songs']=[song for song in playlist['songs'] if song['url']!=song_to_delete['url']]
-        playlists_[playlist_index]=playlist
-        playlists_ = [str(playlist) for playlist in playlists_]
-        users.update_one({"email" : session["email"]}, {"$set": {"playlists": playlists_}})
-        return render_template('songs.html', playlist=playlist)
+        if len(playlist['songs'])>1:
+            playlist['songs']=[song for song in playlist['songs'] if song['url']!=song_to_delete['url']]
+            playlists_[playlist_index]=playlist
+            playlists_ = [str(playlist) for playlist in playlists_]
+            users.update_one({"email" : session["email"]}, {"$set": {"playlists": playlists_}})
+            return render_template('songs.html', playlist=playlist)
+        else:
+            playlists_.remove(playlist)
+            playlists_ = [str(playlist) for playlist in playlists_]
+            users.update_one({"email" : session["email"]}, {"$set": {"playlists": playlists_}})
+            return redirect(url_for('playlists'))
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
