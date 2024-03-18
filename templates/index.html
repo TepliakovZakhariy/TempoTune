@@ -40,38 +40,25 @@
         <!-- Container wrapper -->
         <div class="container">
           <!-- Navbar brand -->
-          <a class="navbar-brand me-5" href="{{ url_for('index') }}">
+          <a class="navbar-brand me-5 " href="{{ url_for('index') }}">
             <img
               src="{{ url_for('static', filename='img/logo.png') }}"
-              height="70px"
               alt="Tempotune Logo"
               loading="lazy"
               style="margin-top: 1px"
+              class="col-3"
             />
           </a>
 
-          <!-- Toggle button -->
-          <button
-            data-mdb-collapse-init
-            class="navbar-toggler"
-            type="button"
-            data-mdb-target="#navbarButtonsExample"
-            aria-controls="navbarButtonsExample"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-
           <!-- Collapsible wrapper -->
-          <div class="collapse navbar-collapse" id="navbarButtonsExample">
+          <div class="row col">
             <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-lg-0">
+            <ul class="navbar-nav me-auto mb-lg-0 d-flex letter-spacing">
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <p
-                    class="mb-0 h3"
-                    style="color: #040219; letter-spacing: 0.25em"
+                    class="mb-0 d-none d-md-block"
+                    style="color: #040219; font-size: 3vw; letter-spacing: 0.25em"
                   >
                     TEMPOTUNE
                   </p>
@@ -79,32 +66,32 @@
               </li>
             </ul>
             <!-- Left links -->
-
-            <div class="d-flex align-items-center">
-              <button
-                data-mdb-ripple-init
-                type="button"
-                class="btn btn-primary me-3 rounded-9 border border-2 display-3"
-                style="
-                  background-color: #fffdf3;
-                  color: #4b40b5;
-                  border-color: #4b40b5 !important;
-                "
-              >
-                GENERATE PLAYLIST
-              </button>
-              <a
-                data-mdb-ripple-init
-                class="px-3"
-                href="{{url_for('login')}}"
-                role="button"
-                ><i class=""
-                  ><img
-                    src="{{url_for('static', filename='img/avatar.png')}}"
-                    alt="" /></i
-              ></a>
-            </div>
           </div>
+          <div class="d-flex text-left">
+            <button
+              data-mdb-ripple-init
+              type="button"
+              class="btn btn-primary me-3 rounded-9 border border-2 display-3 col-9"
+              style="
+                background-color: #fffdf3;
+                color: #4b40b5;
+                border-color: #4b40b5 !important;
+              "
+            >
+              GENERATE PLAYLIST
+            </button>
+            <a
+              data-mdb-ripple-init
+              class="px-3"
+              href="{{url_for('login')}}"
+              role="button"
+              ><i class=""
+                ><img
+                  src="{{url_for('static', filename='img/avatar.png')}}"
+                  alt="" /></i
+            ></a>
+          </div>
+          
           <!-- Collapsible wrapper -->
         </div>
         <!-- Container wrapper -->
