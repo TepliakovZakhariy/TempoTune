@@ -158,10 +158,24 @@ def playlists():
 
 @app.route('/songs/<playlist_id>', methods=['GET','POST'])
 def songs(playlist_id):
-    playlists_ = users.find_one({"email" : session["email"]})['playlists']
-    playlists_ = [literal_eval(playlist) for playlist in playlists_]
-    playlist = [playlist for playlist in playlists_ if playlist['id'] == int(playlist_id)][0]
-    return render_template('songs.html', playlist=playlist)
+    song_to_delete=request.form.get('song')
+    if not song_to_delete:
+        playlists_ = users.find_one({"email" : session["email"]})['playlists']
+        playlists_ = [literal_eval(playlist) for playlist in playlists_]
+        playlist = [playlist for playlist in playlists_ if playlist['id'] == int(playlist_id)][0]
+        return render_template('songs.html', playlist=playlist)
+    else:
+        song_to_delete=literal_eval(song_to_delete)
+        playlists_ = users.find_one({"email" : session["email"]})['playlists']
+        playlists_ = [literal_eval(playlist) for playlist in playlists_]
+        playlist = [playlist for playlist in playlists_ if playlist['id'] == int(playlist_id)][0]
+        playlist_index=playlists_.index(playlist)
+        #i need to delete song from playlist
+        playlist['songs']=[song for song in playlist['songs'] if song['url']!=song_to_delete['url']]
+        playlists_[playlist_index]=playlist
+        playlists_ = [str(playlist) for playlist in playlists_]
+        users.update_one({"email" : session["email"]}, {"$set": {"playlists": playlists_}})
+        return render_template('songs.html', playlist=playlist)
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
