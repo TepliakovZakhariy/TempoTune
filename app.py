@@ -17,7 +17,7 @@ users = db["users"]
 temp = db["temp"]
 app = Flask(__name__)
 app.secret_key=['very_secret']
-oauth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri='http://localhost:8888/callback', scope='playlist-modify-private', cache_handler=spotipy.FlaskSessionCacheHandler(session))
+oauth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri='http://localhost:8888/callback', scope='playlist-modify-private user-read-private user-read-email', cache_handler=spotipy.FlaskSessionCacheHandler(session))
 spotify_client=spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
 spotify_user=spotipy.Spotify(oauth_manager=oauth_manager)
 
