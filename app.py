@@ -108,7 +108,8 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if "email" in session:
+    email = request.form.get('email')
+    if email:
         return redirect(url_for('playlists'))
     if request.method == 'POST':
         email = request.form['email']
@@ -134,7 +135,8 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    if "email" in session:
+    email = request.form.get('email')
+    if email:
         return redirect(url_for('playlists'))
     if request.method == 'POST':
         username = request.form['username']
@@ -244,7 +246,8 @@ def generate():
 
 @app.route('/add_playlist', methods=['GET','POST'])
 def add_playlist():
-    if 'email' not in session:
+    email = request.form.get('email')
+    if not email:
         return redirect(url_for('login', err=1))
     if request.method == 'POST':
         playlist=request.form['play']
