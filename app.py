@@ -109,18 +109,17 @@ def login():
     if "email" in session:
         return redirect(url_for('playlists'))
     if request.method == 'POST':
-        username = request.form['username']
         email = request.form['email']
         password = request.form['password']
-        f_user=users.find_one({'email':email})
-        if not username or not email or not password:
+        if not email or not password:
             message = 'All fields are required'
             return render_template('login.html', message=message)
+        f_user=users.find_one({'email':email})
         if not f_user:
             message = 'User with such email does not exist'
             return render_template('login.html', message=message)
-        if f_user['username']!=username or f_user['password']!=password:
-            message = 'Wrong username or password'
+        if f_user['password']!=password:
+            message = 'Wrong password'
             return render_template('login.html', message=message)
         session["email"]=email
         return redirect(url_for('index'))
@@ -202,7 +201,10 @@ def generate():
                 song = False
             else:
                 if 'open.spotify.com' not in song:
-                    song = spotify_client.search(q=song, type='track')['tracks']['items'][0]['external_urls']['spotify']
+                    song = spotify_client.search(q=song, type='track', limit=1)
+                    if not song['tracks']['items']:
+                        return render_template('generate.html', message='No song found')
+                    song=song['tracks']['items'][0]['external_urls']['spotify']
             song_amount = request.form['song_amount']
             if not song_amount:
                 song_amount = 25
@@ -217,7 +219,10 @@ def generate():
             valence = int(request.form['valence'])*0.01 if request.form['valence']!='0.5' else None
             popularity = int(request.form['popularity']) if request.form['popularity']!='50' else None
             acousticness = int(request.form['acousticness'])*0.01 if request.form['acousticness']!='0.5' else None
-            playlist = Playlist(song, song_amount, instrumentalness, energy, danceability, valence, popularity, acousticness)
+            try:
+                playlist = Playlist(song, song_amount, instrumentalness, energy, danceability, valence, popularity, acousticness)
+            except spotipy.exceptions.SpotifyException:
+                return render_template('generate.html', message='No song found')
             return render_template('generate.html', playlist=playlist)
         elif request.form['action']=='reset':
             song = request.form['song']

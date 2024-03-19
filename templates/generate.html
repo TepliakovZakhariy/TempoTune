@@ -225,7 +225,11 @@
               </button>
             </div>
           </div>
-
+          {% if message %}
+          <p class="text-center p-1 pb-3 text-danger" style="font-size: 2vh">
+            <em>{{ message }}</em>
+          </p>
+          {% endif %}
           <div class="justify-content-center mt-3 mb-5">
             <div class="mt-1">
               <label class="form-label" for="customRange1"></label>
