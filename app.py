@@ -293,4 +293,4 @@ def add_to_spotify():
         print('ERROR: Not a POST request')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
