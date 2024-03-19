@@ -9,106 +9,94 @@
     <link
       rel="icon"
       href="{{url_for('static',filename='img/logo.png')}}"
-      type="image/x-icon"
-    />
+      type="image/x-icon" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- Google Fonts Roboto -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    />
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
     <!-- MDB -->
     <link
       rel="stylesheet"
       href="{{ url_for(
-    'static', filename='css/mdb.min.css')}}"
-    />
+    'static', filename='css/mdb.min.css')}}" />
   </head>
 
-  <body
-    style="background: linear-gradient(to right, #060422, #251a81)"
-    class="d-flex justify-content-center align-items-center"
-  >
+  <body>
     <!-- Start your project here-->
-    <div
-      class="card col-10 col-md-5 rounded-9 mt-2"
-      style="color: #251a81; background-color: #fffdf3"
-    >
-      <div class="card-body">
-        <h1 class="mb-2" style="text-align: left; font-size: medium">
-          <a href="{{url_for('index')}}">← Main page</a>
-        </h1>
-        <form method="POST">
-          <h2 class="mb-4" style="text-align: center">SIGN UP</h2>
-          <p class="mb-2">Username</p>
-          <!-- Username input -->
-          <div data-mdb-input-init class="form-outline mb-4">
-            <input
-              type="username"
-              id="form1Example1"
-              class="form-control"
-              name="username"
-            />
-            <label class="form-label" for="form1Example1" style="color: #251a81"
-              >Enter your username</label
-            >
-          </div>
-          <p class="mb-2">Email</p>
-          <!-- Email input -->
-          <div data-mdb-input-init class="form-outline mb-4">
-            <input
-              type="email"
-              id="form1Example1"
-              class="form-control"
-              name="email"
-            />
-            <label class="form-label" for="form1Example1" style="color: #251a81"
-              >Enter your email</label
-            >
-          </div>
-          <p class="mb-2">Password</p>
-          <!-- Password input -->
-          <div data-mdb-input-init class="form-outline mb-5">
-            <input
-              type="password"
-              id="form1Example2"
-              class="form-control"
-              name="password"
-            />
-            <label class="form-label" for="form1Example2" style="color: #251a81"
-              >Enter your password</label
-            >
-          </div>
-          {% if message %}
-          <p class="text-center p-1 pb-3 text-danger" style="font-size: 2vh">
-            <em>{{ message }}</em>
-          </p>
-          {% endif %}
-          <!-- Submit button -->
-          <button
-            data-mdb-ripple-init
-            type="submit"
-            class="btn btn-primary mb-5 col-12"
-            style="
+    <div class="d-flex justify-content-center align-items-center"
+      style="background: linear-gradient(to right, #060422, #251a81); height: 100vh">
+      <div
+        class="card col-10 col-md-5 rounded-9 mt-2"
+        style="color: #251a81; background-color: #fffdf3">
+        <div class="card-body">
+          <h1 class="mb-2" style="text-align: left; font-size: medium">
+            <a href="{{url_for('index')}}">← Main page</a>
+          </h1>
+          <form method="POST">
+            <h2 class="mb-4" style="text-align: center">SIGN UP</h2>
+            <p class="mb-2">Username</p>
+            <!-- Username input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input
+                type="username"
+                id="form1Example1"
+                class="form-control"
+                name="username" />
+              <label class="form-label" for="form1Example1"
+                style="color: #251a81">Enter your username</label>
+            </div>
+            <p class="mb-2">Email</p>
+            <!-- Email input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input
+                type="email"
+                id="form1Example1"
+                class="form-control"
+                name="email" />
+              <label class="form-label" for="form1Example1"
+                style="color: #251a81">Enter your email</label>
+            </div>
+            <p class="mb-2">Password</p>
+            <!-- Password input -->
+            <div data-mdb-input-init class="form-outline mb-5">
+              <input
+                type="password"
+                id="form1Example2"
+                class="form-control"
+                name="password" />
+              <label class="form-label" for="form1Example2"
+                style="color: #251a81">Enter your password</label>
+            </div>
+            {% if message %}
+            <p class="text-center p-1 pb-3 text-danger" style="font-size: 2vh">
+              <em>{{ message }}</em>
+            </p>
+            {% endif %}
+            <!-- Submit button -->
+            <button
+              data-mdb-ripple-init
+              type="submit"
+              class="btn btn-primary mb-5 col-12"
+              style="
               color: #fffdf3;
               padding: 8px 10px;
               font-size: 14px;
               display: block;
               margin: 0 auto;
               background-color: #251a81;
-            "
-          >
-            Create Account
-          </button>
-        </form>
-        <p style="text-align: center">
-          Already have an account?
-          <a href="{{url_for('login')}}" style="color: #251a81">Log in</a>
-        </p>
+            ">
+              Create Account
+            </button>
+          </form>
+          <p style="text-align: center">
+            Already have an account?
+            <a href="{{url_for('login')}}" style="color: #251a81">Log in</a>
+          </p>
+        </div>
       </div>
     </div>
 
@@ -117,8 +105,7 @@
     <!-- MDB -->
     <script
       type="text/javascript"
-      src="{{ url_for('static', filename='js/mdb.umd.min.js')}}"
-    ></script>
+      src="{{ url_for('static', filename='js/mdb.umd.min.js')}}"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
   </body>
