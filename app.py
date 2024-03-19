@@ -223,7 +223,7 @@ def generate():
                 playlist = Playlist(song, song_amount, instrumentalness, energy, danceability, valence, popularity, acousticness)
             except spotipy.exceptions.SpotifyException:
                 return render_template('generate.html', message='No song found')
-            return render_template('generate.html', playlist=playlist)
+            return render_template('generate.html', playlist=playlist, section='playlist')
         elif request.form['action']=='reset':
             song = request.form['song']
             song_amount = request.form['song_amount']
@@ -237,7 +237,7 @@ def generate():
             if not playlist['songs']:
                 return render_template('generate.html')
             playlist['total_duration']=milliseconds_to_string_duration(sum(song['duration_ms'] for song in playlist['songs']))
-            return render_template('generate.html', playlist=playlist)
+            return render_template('generate.html', playlist=playlist, section='playlist')
     return render_template('generate.html')
 
 @app.route('/add_playlist', methods=['GET','POST'])
