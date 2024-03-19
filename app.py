@@ -1,11 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from pymongo import MongoClient
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
+'''TempoTune'''
+
+import os
 from random import getrandbits
 from datetime import datetime
 from ast import literal_eval
 import random
+from flask import Flask, render_template, request, redirect, url_for, session
+from pymongo import MongoClient
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 
 uri = "mongodb+srv://yurora:tempotune123official@cluster0.pkxylky.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
@@ -293,4 +296,5 @@ def add_to_spotify():
         print('ERROR: Not a POST request')
 
 if __name__ == '__main__':
-    app.run()
+    port=int(os.environ.get('PORT', 8000))
+    app.run(port=port)
