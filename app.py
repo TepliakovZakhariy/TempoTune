@@ -108,7 +108,7 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    email = request.form.get('email')
+    email = session.get('email')
     if email:
         return redirect(url_for('playlists'))
     if request.method == 'POST':
@@ -135,7 +135,7 @@ def login():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    email = request.form.get('email')
+    email = session.get('email')
     if email:
         return redirect(url_for('playlists'))
     if request.method == 'POST':
@@ -246,7 +246,7 @@ def generate():
 
 @app.route('/add_playlist', methods=['GET','POST'])
 def add_playlist():
-    email = request.form.get('email')
+    email = session.get('email')
     if not email:
         return redirect(url_for('login', err=1))
     if request.method == 'POST':
