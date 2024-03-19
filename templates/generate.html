@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Generate playlist - TempoTune</title>
+    <!-- MDB icon -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      rel="icon"
+      href="{{url_for('static',filename='img/logo.png') }}"
+      type="image/x-icon"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/mdb.min.css')}}"
+    />
+  </head>
+
+  <body style="background: linear-gradient(to right, #030113, #2d2760)">
+    <header>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-md navbar-light bg-body">
+        <!-- Container wrapper -->
+        <div class="container">
+          <!-- Navbar brand -->
+          <a class="navbar-brand me-5" href="{{ url_for('index') }}">
+            <img
+              src="{{ url_for('static', filename='img/logo.png') }}"
+              height="70px"
+              alt="Tempotune Logo"
+              loading="lazy"
+              style="margin-top: 1px"
+            />
+          </a>
+
+          <!-- Toggle button -->
+          <button
+            data-mdb-collapse-init
+            class="navbar-toggler"
+            type="button"
+            data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Collapsible wrapper -->
+          <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('index') }}">
+                  <p
+                    class="mb-0 h3"
+                    style="color: #040219; letter-spacing: 0.25em"
+                  >
+                    TEMPOTUNE
+                  </p>
+                </a>
+              </li>
+            </ul>
+            <!-- Left links -->
+
+            <div class="d-flex align-items-center">
+              <a href="{{url_for('generate')}}">
+                <button
+                  data-mdb-ripple-init
+                  type="button"
+                  class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                  style="
+                    background-color: #fffdf3;
+                    color: #4b40b5;
+                    border-color: #4b40b5 !important;
+                  "
+                >
+                  GENERATE PLAYLIST
+                </button>
+              </a>
+              <a
+                data-mdb-ripple-init
+                class="px-3"
+                href="{{url_for('login')}}"
+                role="button"
+                ><i class
+                  ><img
+                    src="{{url_for('static', filename='img/avatar.png')}}"
+                    alt /></i
+              ></a>
+            </div>
+          </div>
+          <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+      </nav>
+      <!-- Navbar -->
+    </header>
+    <!-- Start your project here-->
+    <div class="container">
+      <div class="card mt-5 px-3 px-md-5 rounded-bottom-0">
+        <div
+          class="text-center mt-4"
+          style="
+            font-size: 4vw;
+            letter-spacing: 0.1em;
+            background-image: linear-gradient(to right, #06003d, #4b40b5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+          "
+        >
+          <p>GET YOUR PLAYLIST NOW</p>
+        </div>
+        <div
+          class="text-center"
+          style="color: #040024; font-size: 2vw; letter-spacing: 0.1em"
+        >
+          <p>PLAYLIST TAILORED FOR YOU</p>
+        </div>
+        <form method="post">
+          <div
+            class="d-flex justify-content-between align-items-center flex-column flex-md-row w-100 mb-3"
+          >
+            <div
+              class="form-outline me-0.5 mb-3 mb-md-0 pr-2 w-50"
+              style="color: #06003d"
+              data-mdb-input-init
+            >
+              <input
+                type="text"
+                id="form12"
+                class="form-control"
+                style="font-size: 1.7vw"
+                name="song"
+                {%
+                if
+                song
+                %}
+                value="{{ song }}"
+                {%
+                endif
+                %}
+              />
+              <label class="form-label" for="form12" style="font-size: 1.7vw"
+                >Type a song name or a song URL (Spotify)</label
+              >
+            </div>
+            <button
+              class="btn btn-primary col-5 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
+              style="
+                background: linear-gradient(
+                  to right,
+                  #06003d,
+                  #4b40b5,
+                  #54095b
+                );
+                font-size: 1.7vw;
+                color: #fffdf3;
+              "
+              data-mdb-ripple-init
+              type="submit"
+              name="action"
+              value="generate"
+            >
+              GENERATE PLAYLIST
+            </button>
+          </div>
+          <div class="d-flex w-100 justify-content-between">
+            <div class="form-outline w-50" data-mdb-input-init>
+              <input
+                type="number"
+                id="typeNumber"
+                class="form-control"
+                style="font-size: 1.7vw"
+                name="song_amount"
+                {%
+                if
+                song_amount
+                %}
+                value="{{ song_amount }}"
+                {%
+                endif
+                %}
+              />
+              <label
+                class="form-label"
+                for="typeNumber"
+                style="font-size: 1.7vw"
+                >Enter number of songs (from 1 to 50)</label
+              >
+            </div>
+            <div class="">
+              <button
+                class="btn btn-primary rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
+                style="
+                  background: linear-gradient(to right, #06003d, #0e0842);
+                  font-size: 1.5vw;
+                  color: #fffdf3;
+                  float: right;
+                "
+                data-mdb-ripple-init
+                type="submit"
+                target="_blank"
+                value="reset"
+                name="action"
+              >
+                Reset options
+              </button>
+            </div>
+          </div>
+          {% if message %}
+          <p class="text-center mb-0 mt-3 text-danger" style="font-size: 2vw">
+            <em>{{ message }}</em>
+          </p>
+          {% endif %}
+          <div class="justify-content-center mb-4">
+            <div class="mt-1">
+              
+              <div class="range mt-0 mr-0 ml-0">
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: left;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >VOCAL</label
+                >
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: right;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >INSTRUMENTAL</label
+                >
+                <input
+                  type="range"
+                  class="form-range"
+                  id="customRange1"
+                  style="background-color: transparent"
+                  name="instrumentalness"
+                />
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: left;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >RELAXED</label
+                >
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: right;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >ENERGETIC</label
+                >
+                <input
+                  type="range"
+                  class="form-range"
+                  id="customRange2"
+                  style="background-color: transparent"
+                  name="energy"
+                />
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: left;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >NON-DANCE</label
+                >
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: right;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >DANCE</label
+                >
+                <input
+                  type="range"
+                  class="form-range"
+                  id="customRange2"
+                  style="background-color: transparent"
+                  name="danceability"
+                />
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: left;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >SAD</label
+                >
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: right;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >HAPPY</label
+                >
+                <input
+                  type="range"
+                  class="form-range"
+                  id="customRange2"
+                  style="background-color: transparent"
+                  name="valence"
+                />
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: left;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >OBSCURE</label
+                >
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: right;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >POPULAR</label
+                >
+                <input
+                  type="range"
+                  class="form-range"
+                  id="customRange2"
+                  style="background-color: transparent"
+                  name="popularity"
+                />
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: left;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >ELECTRONIC</label
+                >
+                <label
+                  class="form-label"
+                  style="
+                    color: #06003d;
+                    float: right;
+                    font-size: 1.5vw;
+                    font-weight: bold;
+                  "
+                  >ACOUSTIC</label
+                >
+                <input
+                  type="range"
+                  class="form-range"
+                  id="customRange2"
+                  style="background-color: transparent"
+                  name="acousticness"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+
+        {% if playlist %}
+        <section id="playlist">
+          <form action="{{url_for('add_playlist')}}" method="POST">
+            <div class="d-flex justify-content-around w-100 mb-4">
+              <div class="w-50">
+                <div
+                  class="form-outline mb-md-0 pr-2 align-self-center"
+                  style="color: #06003d"
+                  data-mdb-input-init
+                >
+                  <input
+                    type="text"
+                    id="form13"
+                    class="form-control"
+                    style="font-size: 1.7vw"
+                    name="playlist_name"
+                  />
+                  <label
+                    class="form-label"
+                    for="form13"
+                    style="font-size: 1.7vw"
+                    >Type playlist name</label
+                  >
+                </div>
+              </div>
+
+              <div class="w-40 d-flex justify-content-center">
+                <input class="d-none" name="play" value="{{ playlist }}" />
+                <div class="">
+                  <button
+                    class="btn btn-primary rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
+                    style="
+                      background: linear-gradient(to right, #06003d, #54095b);
+                      font-size: 1.5vw;
+                      color: #fffdf3;
+                      float: right;
+                    "
+                    data-mdb-ripple-init
+                    type="submit"
+                  >
+                    SAVE PLAYLIST
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row container p-3 px-4 mx-1" style="margin: -0.6rem">
+            <div class="col-2 col-md-1"></div>
+            <div class="col-1" style="font-size: 1vw"></div>
+            <div class="col-3" style="font-size: 1vw">Song</div>
+            <div class="col-3 d-none d-md-block" style="font-size: 1vw">
+              Album
+            </div>
+            <div class="col-2" style="font-size: 1vw">Artist</div>
+            <div class="col-2" style="font-size: 1vw">Duration</div>
+            <div class="col-2" style="font-size: 1vw"></div>
+          </div>
+
+          <hr class="m-0" />
+          <form action="{{url_for('generate')}}" method="POST">
+            <input
+              class="d-none"
+              name="playlist_delete"
+              value="{{ playlist }}"
+            />
+            {% for song in playlist.songs %}
+            <div
+              class="card my-3 shadow-3-strong"
+              style="
+                background-image: linear-gradient(to right, #2b2185, #6d1cc4);
+                border-radius: 2rem;
+              "
+            >
+              <div class="card-body p-3 px-4" style="margin: -0.6rem">
+                <div class="row m-1">
+                  {% if song.preview_url == 'z' %}
+                  <div
+                    class="col-2 col-md-1 d-flex align-items-center justify-content-start"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-floating"
+                      style="height: 3vw; width: 3vw; font-size: 1.2vw"
+                      data-mdb-ripple-init
+                      disabled
+                    >
+                      <i
+                        class="fas fa-play icon-item active"
+                        id="mdb-span-example-icon"
+                        role="button"
+                        style="user-select: none; touch-action: none"
+                      ></i>
+                    </button>
+                  </div>
+                  {% else %}
+                  <div
+                    class="col-2 col-md-1 d-flex align-items-center justify-content-start"
+                  >
+                    <audio id="audioPlayer">
+                      <source src="{{song.preview_url}}" type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-floating"
+                      data-mdb-ripple-init
+                      onclick="togglePlayPause(this)"
+                      style="height: 3vw; width: 3vw; font-size: 1.2vw"
+                      data-mdb-popover-init
+                      data-mdb-trigger="hover"
+                      data-mdb-content="Play the preview given by Spotify"
+                    >
+                      <i
+                        class="fas fa-play icon-item active"
+                        id="mdb-span-example-icon"
+                        role="button"
+                        style="user-select: none; touch-action: none"
+                      ></i>
+                    </button>
+                  </div>
+                  {% endif %}
+                  <div
+                    class="col-2 col-md-1 d-flex align-items-center justify-content-start"
+                  >
+                    <img
+                      src="{{song.cover_small}}"
+                      alt=""
+                      style="border-radius: 10%; object-fit: fit; height: 3.5vw"
+                    />
+                  </div>
+                  <div
+                    class="col-3 d-flex align-items-center justify-content-start text-white"
+                  >
+                    <a
+                      target="_blank"
+                      href="{{song.url}}"
+                      class="text-white"
+                      style="font-size: 1vw"
+                    >
+                      {{song.name}}
+                    </a>
+                  </div>
+                  <div
+                    class="col-3 d-none d-md-block align-self-center text-white"
+                  >
+                    <a
+                      target="_blank"
+                      href="{{song.album_url}}"
+                      class="text-white d-flex justify-content-start"
+                      style="font-size: 1vw"
+                      >{{song.album}}</a
+                    >
+                  </div>
+                  <div
+                    class="col-2 d-flex align-items-center justify-content-start text-white"
+                  >
+                    <a
+                      target="_blank"
+                      href="{{song.artist_url}}"
+                      class="text-white"
+                      style="font-size: 1vw"
+                      >{{song.artist}}</a
+                    >
+                  </div>
+                  <div
+                    class="d-flex col-1 align-items-center text-white"
+                    style="font-size: 1vw"
+                  >
+                    {{song.duration}}
+                  </div>
+                  <div
+                    class="d-flex col-2 col-md-1 align-items-center text-white justify-content-center"
+                    style="font-size: 1vw"
+                  >
+                    <button
+                      type="submit"
+                      name="action"
+                      value="{{song}}"
+                      class="text-white"
+                      style="
+                        font-size: 1.2vw;
+                        background: transparent;
+                        border: none !important;
+                      "
+                    >
+                      <i
+                        class="icon-item fas fa-trash"
+                        role="button"
+                        data-prefix="fas"
+                        data-id="trash"
+                        data-unicode="f1f8"
+                        data-mdb-tooltip-initialized="true"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %} {% endif %}
+          </form>
+        </section>
+      </div>
+    </div>
+
+    <!-- End your project here-->
+
+    <footer class="" style="background-color: #040024 !important">
+      <div class="container">
+        <div class="row text-center justify-content-evenly pt-3">
+          <div
+            class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
+            style="object-fit: scale-down"
+          >
+            <a href="../">
+              <img
+                src="{{ url_for('static', filename='img/logo.png')}}"
+                alt=""
+                style="max-height: 6vw"
+              />
+            </a>
+          </div>
+          <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
+            <h6
+              class="text-uppercase mb-0 text-white"
+              style="font-size: 1.5vw; letter-spacing: 0.1em"
+            >
+              Follow us on:
+            </h6>
+            <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
+              <li>
+                <div class="row justify-content-start mt-2">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/інста_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2 justify-content-center">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/facebook_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >TEMPOTUNE</a
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2 justify-content-end">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/twitter_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="text-center p-3"
+        style="
+          background-color: #040219;
+          font-size: 0.8vw;
+          color: aliceblue;
+          opacity: 0.9;
+        "
+      >
+        © 2024 Tempotune. All rights reserved.
+      </div>
+    </footer>
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="{{url_for('static',filename='js/mdb.umd.min.js')}}"
+    ></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript">
+      var currentAudio = null;
+
+      function togglePlayPause(button) {
+        var audioPlayer = button.previousElementSibling;
+        var playPauseIcon = button.children[0];
+
+        if (currentAudio && currentAudio != audioPlayer) {
+          currentAudio.pause();
+          currentAudio.nextElementSibling.children[0].className = "fas fa-play";
+        }
+
+        if (audioPlayer.paused) {
+          audioPlayer.currentTime = 0;
+          audioPlayer.play();
+          playPauseIcon.className = "fas fa-pause";
+          currentAudio = audioPlayer;
+        } else {
+          audioPlayer.pause();
+          playPauseIcon.className = "fas fa-play";
+          currentAudio = null;
+        }
+
+        audioPlayer.onended = function () {
+          playPauseIcon.className = "fas fa-play";
+        };
+      }
+    </script>
+    {% if section %}
+    <script>
+      $(function () {
+        $("html, body").animate(
+          { scrollTop: $("#{{ section }}").offset().top },
+          500
+        );
+      });
+    </script>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Playlists - TempoTune</title>
+    <!-- MDB icon -->
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/logo.png')}}"
+      type="image/x-icon"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/mdb.min.css' )}}"
+    />
+  </head>
+
+  <body>
+    <header>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-md navbar-light bg-body">
+        <!-- Container wrapper -->
+        <div class="container">
+          <!-- Navbar brand -->
+          <a class="navbar-brand me-5" href="{{ url_for('index') }}">
+            <img
+              src="{{ url_for('static', filename='img/logo.png')}}"
+              height="70px"
+              alt="Tempotune Logo"
+              loading="lazy"
+              style="margin-top: -1px"
+            />
+          </a>
+
+          <!-- Toggle button -->
+          <button
+            data-mdb-collapse-init
+            class="navbar-toggler"
+            type="button"
+            data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Collapsible wrapper -->
+          <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('index') }}">
+                  <p
+                    class="mb-0 h3"
+                    style="color: #040219; letter-spacing: 0.25em"
+                  >
+                    TEMPOTUNE
+                  </p>
+                </a>
+              </li>
+            </ul>
+            <!-- Left links -->
+
+            <div class="d-flex align-items-center">
+              <a href="{{url_for('generate')}}">
+                <button
+                  data-mdb-ripple-init
+                  type="button"
+                  class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                  style="
+                    background-color: #fffdf3;
+                    color: #4b40b5;
+                    border-color: #4b40b5 !important;
+                  "
+                >
+                  GENERATE PLAYLIST
+                </button>
+              </a>
+              <a href="{{url_for('logout')}}">
+                <button
+                  data-mdb-ripple-init
+                  type="button"
+                  class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                  style="
+                    background-color: #fffdf3;
+                    color: #4b40b5;
+                    border-color: #4b40b5 !important;
+                  "
+                >
+                  LOG OUT
+                </button>
+              </a>
+              <a
+                data-mdb-ripple-init
+                class="px-3"
+                href="{{url_for('playlists')}}"
+                role="button"
+                ><i class
+                  ><img
+                    src="{{ url_for('static', filename='img/avatar.png')}}"
+                    alt /></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div
+      class="mt-0 pb-5"
+      style="
+        background: linear-gradient(to right, rgba(0, 5, 23), rgb(14, 4, 103));
+        min-height: 80vh;
+      "
+    >
+      <div class="row mx-4 justify-content-evenly">
+        <div class="container mt-0">
+          <section class="row my-4 d-flex justify-content-between">
+            <div
+              class="col-6 col-md-6 text-center text-light fw-bold"
+              style="font-size: 3vw"
+            >
+              Your playlists:
+            </div>
+            <div
+              class="col-6 col-md-6 text-center text-light fw-bold"
+              style="font-size: 3vw"
+            >
+              {{ name }}
+            </div>
+          </section>
+        </div>
+        {% for playlist in playlists %}
+        <div class="card col-5 mx-2 col-lg-3 my-4 px-0 position-relative">
+          <div
+            class="bg-image hover-overlay"
+            data-mdb-ripple-init
+            data-mdb-ripple-color="light"
+          >
+            <img src="{{playlist.songs[0].cover_big}}" class="img-fluid" />
+            <a href="{{url_for('songs',playlist_id=playlist.id)}}">
+              <div
+                class="mask"
+                style="background-color: rgba(251, 251, 251, 0.15)"
+              ></div>
+            </a>
+            <div
+              class="position-absolute top-0 end-0 mt-2 d-flex justify-content-center me-2"
+            >
+              <a href="{{url_for('delete_playlist',playlist_id=playlist.id)}}">
+                <button
+                  data-mdb-ripple-init
+                  type="button"
+                  class="btn rounded-2 display-1 px-2 py-2 px-md-3"
+                  style="
+                    background-color: rgba(84, 77, 77, 0.864);
+                    font-size: 1.3vw;
+                    color: #fffdf3;
+                  "
+                >
+                  <!-- <div class=""><i class="fas fa-trash "></i></div> -->
+                  <i
+                    class="icon-item fas fa-trash"
+                    role="button"
+                    data-prefix="fas"
+                    data-id="trash"
+                    data-unicode="f1f8"
+                    data-mdb-tooltip-initialized="true"
+                  ></i>
+                </button>
+              </a>
+            </div>
+          </div>
+          <div class="card-body p-2 p-sm-4">
+            <h5 class="card-title" style="font-size: 2.5vw">
+              {{playlist.name}}
+            </h5>
+            <p class="card-text text-muted" style="font-size: 1.5vw">
+              {{playlist.songs[0].name}} by {{playlist.songs[0].artist}}...
+            </p>
+            <div class="row">
+              {% if playlist.songs|length > 1 %}
+              <div class="col-6 text-start text-reset" style="font-size: 1.5vw">
+                {{playlist.songs|length}} songs, {{playlist.total_duration}}
+              </div>
+              {% else %}
+              <div class="col-6 text-start text-reset" style="font-size: 1.5vw">
+                1 song, {{playlist.total_duration}}
+              </div>
+              {% endif %}
+              <div class="col-6 text-end" style="font-size: 1.5vw">
+                Created: {{playlist.date}}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %} {% if not playlists %}
+        <div
+          class="d-flex pt-5 mt-5 align-items-center justify-content-center text-center"
+        >
+          <h1 class="text-light">You have no playlists yet!</h1>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <footer class="" style="background-color: #040024 !important">
+      <div class="container">
+        <div class="row text-center justify-content-evenly pt-3">
+          <div
+            class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
+            style="object-fit: scale-down"
+          >
+            <a href="../">
+              <img
+                src="{{ url_for('static', filename='img/logo.png')}}"
+                alt=""
+                style="max-height: 6vw"
+              />
+            </a>
+          </div>
+          <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
+            <h6
+              class="text-uppercase mb-0 text-white"
+              style="font-size: 1.5vw; letter-spacing: 0.1em"
+            >
+              Follow us on:
+            </h6>
+            <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
+              <li>
+                <div class="row justify-content-start mt-2">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/інста_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2 justify-content-center">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/facebook_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >TEMPOTUNE</a
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="row mt-2 justify-content-end">
+                  <img
+                    class="col-2 p-0 align-self-center"
+                    style="max-width: 1.5vw"
+                    src="{{ url_for('static', filename='img/twitter_1.png')}}"
+                    alt=""
+                  />
+                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
+                    >tempotune_official</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="text-center p-3"
+        style="
+          background-color: #040219;
+          font-size: 0.8vw;
+          color: aliceblue;
+          opacity: 0.9;
+        "
+      >
+        © 2024 Tempotune. All rights reserved.
+      </div>
+    </footer>
+    <!-- End your project here-->
+    <!--Section: Content-->
+
+    <!--Section: Content-->
+    <!--Main layout-->
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="{{url_for('static',filename='js/mdb.umd.min.js')}}"
+    ></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+  </body>
+</html>
