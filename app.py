@@ -20,9 +20,7 @@ users = db["users"]
 temp = db["temp"]
 app = Flask(__name__)
 app.secret_key=['very_secret']
-oauth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri='http://localhost:1337/callback', scope='playlist-modify-private user-read-private user-read-email', cache_handler=spotipy.FlaskSessionCacheHandler(session))
 spotify_client=spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
-spotify_user=spotipy.Spotify(oauth_manager=oauth_manager)
 
 def milliseconds_to_string_duration(milliseconds):
     seconds, milliseconds = divmod(milliseconds, 1000)
@@ -281,6 +279,8 @@ def delete_playlist(playlist_id):
 
 @app.route('/add_to_spotify', methods=['GET','POST'])
 def add_to_spotify():
+    oauth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri='http://localhost:1337/callback', scope='playlist-modify-private user-read-private user-read-email', cache_handler=spotipy.FlaskSessionCacheHandler(session), show_dialog=True)
+    spotify_user=spotipy.Spotify(oauth_manager=oauth_manager)
     if request.method == 'POST':
         playlist=request.form['playlist']
         playlist=literal_eval(playlist)
