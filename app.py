@@ -279,7 +279,7 @@ def delete_playlist(playlist_id):
 
 @app.route('/add_to_spotify', methods=['GET','POST'])
 def add_to_spotify():
-    oauth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri='http://127.0.0.1:8080', scope='playlist-modify-private user-read-private user-read-email', cache_handler=spotipy.FlaskSessionCacheHandler(session), show_dialog=True)
+    oauth_manager = SpotifyOAuth(client_id=client_id, client_secret=client_secret, redirect_uri=url_for('add_to_spotify', _external=True), scope='playlist-modify-private user-read-private user-read-email', cache_handler=spotipy.FlaskSessionCacheHandler(session), show_dialog=True)
     spotify_user=spotipy.Spotify(oauth_manager=oauth_manager)
     if request.method == 'POST':
         playlist=request.form['playlist']
