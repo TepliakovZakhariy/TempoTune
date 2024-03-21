@@ -134,20 +134,20 @@
           <section class="row my-4 d-flex justify-content-between">
             <div
               class="col-6 col-md-6 text-center text-light fw-bold"
-              style="font-size: 3vw"
+              style="font-size: 4vh"
             >
               Your playlists:
             </div>
             <div
               class="col-6 col-md-6 text-center text-light fw-bold"
-              style="font-size: 3vw"
+              style="font-size: 4vh"
             >
               {{ name }}
             </div>
           </section>
         </div>
         {% for playlist in playlists %}
-        <div class="card col-5 mx-2 col-lg-3 my-4 px-0 position-relative">
+        <div class="card col-11 col-sm-5 col-lg-3  mx-2 my-4 px-0 position-relative">
           <div
             class="bg-image hover-overlay"
             data-mdb-ripple-init
@@ -170,7 +170,7 @@
                   class="btn rounded-2 display-1 px-2 py-2 px-md-3"
                   style="
                     background-color: rgba(84, 77, 77, 0.864);
-                    font-size: 1.3vw;
+                    font-size: 3vh;
                     color: #fffdf3;
                   "
                 >
@@ -188,23 +188,23 @@
             </div>
           </div>
           <div class="card-body p-2 p-sm-4">
-            <h5 class="card-title" style="font-size: 2.5vw">
+            <h5 class="card-title" style="font-size: 3.2vh">
               {{playlist.name}}
             </h5>
-            <p class="card-text text-muted" style="font-size: 1.5vw">
+            <p class="card-text text-muted" style="font-size: 2.3vh">
               {{playlist.songs[0].name}} by {{playlist.songs[0].artist}}...
             </p>
             <div class="row">
               {% if playlist.songs|length > 1 %}
-              <div class="col-6 text-start text-reset" style="font-size: 1.5vw">
+              <div class="col-6 text-start text-reset" style="font-size: 2.3vh">
                 {{playlist.songs|length}} songs, {{playlist.total_duration}}
               </div>
               {% else %}
-              <div class="col-6 text-start text-reset" style="font-size: 1.5vw">
+              <div class="col-6 text-start text-reset" style="font-size: 2.3vh">
                 1 song, {{playlist.total_duration}}
               </div>
               {% endif %}
-              <div class="col-6 text-end" style="font-size: 1.5vw">
+              <div class="col-6 text-end" style="font-size: 2.3vh">
                 Created: {{playlist.date}}
               </div>
             </div>
