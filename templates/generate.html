@@ -4,32 +4,28 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Generate playlist - TempoTune</title>
     <!-- MDB icon -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
       rel="icon"
       href="{{url_for('static',filename='img/logo.png') }}"
-      type="image/x-icon"
-    />
+      type="image/x-icon" />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- Google Fonts Roboto -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    />
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
     <!-- MDB -->
     <link
       rel="stylesheet"
-      href="{{url_for('static',filename='css/mdb.min.css')}}"
-    />
+      href="{{url_for('static',filename='css/mdb.min.css')}}" />
   </head>
 
   <body style="background: linear-gradient(to right, #030113, #2d2760)">
@@ -45,8 +41,7 @@
               height="70px"
               alt="Tempotune Logo"
               loading="lazy"
-              style="margin-top: 1px"
-            />
+              style="margin-top: 1px" />
           </a>
 
           <!-- Toggle button -->
@@ -57,8 +52,7 @@
             data-mdb-target="#navbarButtonsExample"
             aria-controls="navbarButtonsExample"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
 
@@ -70,8 +64,7 @@
                 <a class="nav-link" href="{{ url_for('index') }}">
                   <p
                     class="mb-0 h3"
-                    style="color: #040219; letter-spacing: 0.25em"
-                  >
+                    style="color: #040219; letter-spacing: 0.25em">
                     TEMPOTUNE
                   </p>
                 </a>
@@ -89,8 +82,7 @@
                     background-color: #fffdf3;
                     color: #4b40b5;
                     border-color: #4b40b5 !important;
-                  "
-                >
+                  ">
                   GENERATE PLAYLIST
                 </button>
               </a>
@@ -98,12 +90,9 @@
                 data-mdb-ripple-init
                 class="px-3"
                 href="{{url_for('login')}}"
-                role="button"
-                ><i class
-                  ><img
+                role="button"><i class><img
                     src="{{url_for('static', filename='img/avatar.png')}}"
-                    alt /></i
-              ></a>
+                    alt /></i></a>
             </div>
           </div>
           <!-- Collapsible wrapper -->
@@ -118,37 +107,33 @@
         <div
           class="text-center mt-4"
           style="
-            font-size: 4vw;
+            font-size: 3.8vh;
             letter-spacing: 0.1em;
             background-image: linear-gradient(to right, #06003d, #4b40b5);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: bold;
-          "
-        >
+          ">
           <p>GET YOUR PLAYLIST NOW</p>
         </div>
         <div
           class="text-center"
-          style="color: #040024; font-size: 2vw; letter-spacing: 0.1em"
-        >
+          style="color: #040024; font-size: 2.5vh; letter-spacing: 0.1em">
           <p>PLAYLIST TAILORED FOR YOU</p>
         </div>
         <form method="post">
           <div
-            class="d-flex justify-content-between align-items-center flex-column flex-md-row w-100 mb-3"
-          >
+            class="d-flex justify-content-between align-items-center flex-column flex-md-row w-100 mb-3">
             <div
-              class="form-outline me-0.5 mb-3 mb-md-0 pr-2 w-50"
+              class="form-outline me-0.5 mb-3 mb-md-0 pr-2 me-md-2"
               style="color: #06003d"
-              data-mdb-input-init
-            >
+              data-mdb-input-init>
               <input
                 type="text"
                 id="form12"
                 class="form-control"
-                style="font-size: 1.7vw"
+                style="font-size: 1.7vh"
                 name="song"
                 {%
                 if
@@ -157,39 +142,17 @@
                 value="{{ song }}"
                 {%
                 endif
-                %}
-              />
-              <label class="form-label" for="form12" style="font-size: 1.7vw"
-                >Type a song name or a song URL (Spotify)</label
-              >
+                %} />
+              <label class="form-label" for="form12"
+                style="font-size: 2vh">Type a song name or a song URL
+                (Spotify)</label>
             </div>
-            <button
-              class="btn btn-primary col-5 rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
-              style="
-                background: linear-gradient(
-                  to right,
-                  #06003d,
-                  #4b40b5,
-                  #54095b
-                );
-                font-size: 1.7vw;
-                color: #fffdf3;
-              "
-              data-mdb-ripple-init
-              type="submit"
-              name="action"
-              value="generate"
-            >
-              GENERATE PLAYLIST
-            </button>
-          </div>
-          <div class="d-flex w-100 justify-content-between">
-            <div class="form-outline w-50" data-mdb-input-init>
+            <div class="form-outline  ms-md-2" data-mdb-input-init>
               <input
                 type="number"
                 id="typeNumber"
                 class="form-control"
-                style="font-size: 1.7vw"
+                style="font-size: 1.7vh"
                 name="song_amount"
                 {%
                 if
@@ -198,30 +161,50 @@
                 value="{{ song_amount }}"
                 {%
                 endif
-                %}
-              />
+                %} />
               <label
                 class="form-label"
                 for="typeNumber"
-                style="font-size: 1.7vw"
-                >Enter number of songs (from 1 to 50)</label
-              >
+                style="font-size: 2vh">Enter number of songs (from 1 to
+                50)</label>
             </div>
-            <div class="">
+
+          </div>
+          <div class="row">
+            <div class="col-sm-6 d-flex justify-content-center">
               <button
                 class="btn btn-primary rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
                 style="
-                  background: linear-gradient(to right, #06003d, #0e0842);
-                  font-size: 1.5vw;
-                  color: #fffdf3;
-                  float: right;
-                "
+                background: linear-gradient(
+                  to right,
+                  #06003d,
+                  #4b40b5,
+                  #54095b
+                );
+                font-size: 1.7vh;
+                color: #fffdf3;
+              "
+                data-mdb-ripple-init
+                type="submit"
+                name="action"
+                value="generate">
+                GENERATE PLAYLIST
+              </button>
+            </div>
+            <div class="col-sm-6 mt-3 mt-sm-0 d-flex justify-content-center">
+              <button
+                class="btn btn-primary rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
+                style="
+                background: linear-gradient(to right, #06003d, #0e0842);
+                font-size: 1.7vh;
+                color: #fffdf3;
+                float: right;
+              "
                 data-mdb-ripple-init
                 type="submit"
                 target="_blank"
                 value="reset"
-                name="action"
-              >
+                name="action">
                 Reset options
               </button>
             </div>
@@ -231,172 +214,142 @@
             <em>{{ message }}</em>
           </p>
           {% endif %}
-          <div class="justify-content-center mb-4">
+          <div class="justify-content-center mb-4 mt-3">
             <div class="mt-1">
-              
+
               <div class="range mt-0 mr-0 ml-0">
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: left;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >VOCAL</label
-                >
+                  ">VOCAL</label>
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: right;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >INSTRUMENTAL</label
-                >
+                  ">INSTRUMENTAL</label>
                 <input
                   type="range"
                   class="form-range"
                   id="customRange1"
                   style="background-color: transparent"
-                  name="instrumentalness"
-                />
+                  name="instrumentalness" />
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: left;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >RELAXED</label
-                >
+                  ">RELAXED</label>
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: right;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >ENERGETIC</label
-                >
+                  ">ENERGETIC</label>
                 <input
                   type="range"
                   class="form-range"
                   id="customRange2"
                   style="background-color: transparent"
-                  name="energy"
-                />
+                  name="energy" />
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: left;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >NON-DANCE</label
-                >
+                  ">NON-DANCE</label>
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: right;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >DANCE</label
-                >
+                  ">DANCE</label>
                 <input
                   type="range"
                   class="form-range"
                   id="customRange2"
                   style="background-color: transparent"
-                  name="danceability"
-                />
+                  name="danceability" />
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: left;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >SAD</label
-                >
+                  ">SAD</label>
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: right;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >HAPPY</label
-                >
+                  ">HAPPY</label>
                 <input
                   type="range"
                   class="form-range"
                   id="customRange2"
                   style="background-color: transparent"
-                  name="valence"
-                />
+                  name="valence" />
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: left;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >OBSCURE</label
-                >
+                  ">OBSCURE</label>
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: right;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >POPULAR</label
-                >
+                  ">POPULAR</label>
                 <input
                   type="range"
                   class="form-range"
                   id="customRange2"
                   style="background-color: transparent"
-                  name="popularity"
-                />
+                  name="popularity" />
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: left;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >ELECTRONIC</label
-                >
+                  ">ELECTRONIC</label>
                 <label
                   class="form-label"
                   style="
                     color: #06003d;
                     float: right;
-                    font-size: 1.5vw;
+                    font-size: 2vh;
                     font-weight: bold;
-                  "
-                  >ACOUSTIC</label
-                >
+                  ">ACOUSTIC</label>
                 <input
                   type="range"
                   class="form-range"
                   id="customRange2"
                   style="background-color: transparent"
-                  name="acousticness"
-                />
+                  name="acousticness" />
               </div>
             </div>
           </div>
@@ -410,27 +363,23 @@
                 <div
                   class="form-outline mb-md-0 pr-2 align-self-center"
                   style="color: #06003d"
-                  data-mdb-input-init
-                >
+                  data-mdb-input-init>
                   <input
                     type="text"
                     id="form13"
                     class="form-control"
                     style="font-size: 1.7vw"
-                    name="playlist_name"
-                  />
+                    name="playlist_name" />
                   <label
                     class="form-label"
                     for="form13"
-                    style="font-size: 1.7vw"
-                    >Type playlist name</label
-                  >
+                    style="font-size: 1.7vw">Type playlist name</label>
                 </div>
               </div>
 
               <div class="w-40 d-flex justify-content-center">
                 <input class="d-none" name="play" value="{{ playlist }}" />
-                <div class="">
+                <div class>
                   <button
                     class="btn btn-primary rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
                     style="
@@ -440,8 +389,7 @@
                       float: right;
                     "
                     data-mdb-ripple-init
-                    type="submit"
-                  >
+                    type="submit">
                     SAVE PLAYLIST
                   </button>
                 </div>
@@ -465,41 +413,35 @@
             <input
               class="d-none"
               name="playlist_delete"
-              value="{{ playlist }}"
-            />
+              value="{{ playlist }}" />
             {% for song in playlist.songs %}
             <div
               class="card my-3 shadow-3-strong"
               style="
                 background-image: linear-gradient(to right, #2b2185, #6d1cc4);
                 border-radius: 2rem;
-              "
-            >
+              ">
               <div class="card-body p-3 px-4" style="margin: -0.6rem">
                 <div class="row m-1">
                   {% if song.preview_url == 'z' %}
                   <div
-                    class="col-2 col-md-1 d-flex align-items-center justify-content-start"
-                  >
+                    class="col-2 col-md-1 d-flex align-items-center justify-content-start">
                     <button
                       type="button"
                       class="btn btn-secondary btn-floating"
                       style="height: 3vw; width: 3vw; font-size: 1.2vw"
                       data-mdb-ripple-init
-                      disabled
-                    >
+                      disabled>
                       <i
                         class="fas fa-play icon-item active"
                         id="mdb-span-example-icon"
                         role="button"
-                        style="user-select: none; touch-action: none"
-                      ></i>
+                        style="user-select: none; touch-action: none"></i>
                     </button>
                   </div>
                   {% else %}
                   <div
-                    class="col-2 col-md-1 d-flex align-items-center justify-content-start"
-                  >
+                    class="col-2 col-md-1 d-flex align-items-center justify-content-start">
                     <audio id="audioPlayer">
                       <source src="{{song.preview_url}}" type="audio/mpeg" />
                       Your browser does not support the audio element.
@@ -512,70 +454,56 @@
                       style="height: 3vw; width: 3vw; font-size: 1.2vw"
                       data-mdb-popover-init
                       data-mdb-trigger="hover"
-                      data-mdb-content="Play the preview given by Spotify"
-                    >
+                      data-mdb-content="Play the preview given by Spotify">
                       <i
                         class="fas fa-play icon-item active"
                         id="mdb-span-example-icon"
                         role="button"
-                        style="user-select: none; touch-action: none"
-                      ></i>
+                        style="user-select: none; touch-action: none"></i>
                     </button>
                   </div>
                   {% endif %}
                   <div
-                    class="col-2 col-md-1 d-flex align-items-center justify-content-start"
-                  >
+                    class="col-2 col-md-1 d-flex align-items-center justify-content-start">
                     <img
                       src="{{song.cover_small}}"
-                      alt=""
-                      style="border-radius: 10%; object-fit: fit; height: 3.5vw"
-                    />
+                      alt
+                      style="border-radius: 10%; object-fit: fit; height: 3.5vw" />
                   </div>
                   <div
-                    class="col-3 d-flex align-items-center justify-content-start text-white"
-                  >
+                    class="col-3 d-flex align-items-center justify-content-start text-white">
                     <a
                       target="_blank"
                       href="{{song.url}}"
                       class="text-white"
-                      style="font-size: 1vw"
-                    >
+                      style="font-size: 1vw">
                       {{song.name}}
                     </a>
                   </div>
                   <div
-                    class="col-3 d-none d-md-block align-self-center text-white"
-                  >
+                    class="col-3 d-none d-md-block align-self-center text-white">
                     <a
                       target="_blank"
                       href="{{song.album_url}}"
                       class="text-white d-flex justify-content-start"
-                      style="font-size: 1vw"
-                      >{{song.album}}</a
-                    >
+                      style="font-size: 1vw">{{song.album}}</a>
                   </div>
                   <div
-                    class="col-2 d-flex align-items-center justify-content-start text-white"
-                  >
+                    class="col-2 d-flex align-items-center justify-content-start text-white">
                     <a
                       target="_blank"
                       href="{{song.artist_url}}"
                       class="text-white"
-                      style="font-size: 1vw"
-                      >{{song.artist}}</a
-                    >
+                      style="font-size: 1vw">{{song.artist}}</a>
                   </div>
                   <div
                     class="d-flex col-1 align-items-center text-white"
-                    style="font-size: 1vw"
-                  >
+                    style="font-size: 1vw">
                     {{song.duration}}
                   </div>
                   <div
                     class="d-flex col-2 col-md-1 align-items-center text-white justify-content-center"
-                    style="font-size: 1vw"
-                  >
+                    style="font-size: 1vw">
                     <button
                       type="submit"
                       name="action"
@@ -585,16 +513,14 @@
                         font-size: 1.2vw;
                         background: transparent;
                         border: none !important;
-                      "
-                    >
+                      ">
                       <i
                         class="icon-item fas fa-trash"
                         role="button"
                         data-prefix="fas"
                         data-id="trash"
                         data-unicode="f1f8"
-                        data-mdb-tooltip-initialized="true"
-                      ></i>
+                        data-mdb-tooltip-initialized="true"></i>
                     </button>
                   </div>
                 </div>
@@ -613,41 +539,34 @@
         <div class="row text-center justify-content-evenly pt-3">
           <div
             class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block align-self-center"
-            style="object-fit: scale-down"
-          >
+            style="object-fit: scale-down">
             <a href="../">
               <img
                 src="{{ url_for('static', filename='img/logo.png')}}"
                 alt
-                style="max-height: 6vw"
-              />
+                style="max-height: 6vw" />
             </a>
           </div>
           <div class="row col-12 col-md-10 col-lg-11 mb-md-0 text-center">
             <h6
               class="text-uppercase mb-0 text-white"
-              style="font-size: 3vh; letter-spacing: 0.1em"
-            >
+              style="font-size: 3vh; letter-spacing: 0.1em">
               Follow us on:
             </h6>
-            <div class="">
+            <div class>
               <ul
-                class="row list-unstyled my-2 d-flex justify-content-evenly px-0 mb-3"
-              >
+                class="row list-unstyled my-2 d-flex justify-content-evenly px-0 mb-3">
                 <li class="col-10 col-sm-3">
                   <div class="row justify-content-center mt-2">
                     <img
                       class="col-2 p-0 align-self-center"
                       style="max-width: 2.8vh"
                       src="{{ url_for('static', filename='img/інста_1.png')}}"
-                      alt
-                    />
+                      alt />
                     <a
                       href="#!"
                       class="col-4 col-sm-10 col-lg-8 text-white px-2"
-                      style="font-size: 2vh"
-                      >tempotune_official</a
-                    >
+                      style="font-size: 2vh">tempotune_official</a>
                   </div>
                 </li>
                 <li class="col-10 col-sm-3">
@@ -656,14 +575,11 @@
                       class="col-2 p-0 align-self-center"
                       style="max-width: 2.8vh"
                       src="{{ url_for('static', filename='img/facebook_1.png')}}"
-                      alt
-                    />
+                      alt />
                     <a
                       href="#!"
                       class="col-4 col-sm-8 col-lg-6 text-white px-2"
-                      style="font-size: 2vh"
-                      >TEMPOTUNE</a
-                    >
+                      style="font-size: 2vh">TEMPOTUNE</a>
                   </div>
                 </li>
                 <li class="col-10 col-sm-3">
@@ -672,14 +588,11 @@
                       class="col-2 p-0 align-self-center"
                       style="max-width: 2.8vh"
                       src="{{ url_for('static', filename='img/twitter_1.png')}}"
-                      alt
-                    />
+                      alt />
                     <a
                       href="#!"
                       class="col-4 col-sm-10 col-lg-8 text-white px-2"
-                      style="font-size: 2vh"
-                      >tempotune_official</a
-                    >
+                      style="font-size: 2vh">tempotune_official</a>
                   </div>
                 </li>
               </ul>
@@ -695,16 +608,14 @@
           font-size: 1.8vh;
           color: aliceblue;
           opacity: 1.3vw;
-        "
-      >
+        ">
         © 2024 Tempotune. All rights reserved.
       </div>
     </footer>
     <!-- MDB -->
     <script
       type="text/javascript"
-      src="{{url_for('static',filename='js/mdb.umd.min.js')}}"
-    ></script>
+      src="{{url_for('static',filename='js/mdb.umd.min.js')}}"></script>
     <!-- Custom scripts -->
     <script type="text/javascript">
       var currentAudio = null;
