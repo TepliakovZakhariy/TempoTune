@@ -245,7 +245,6 @@ def generate():
 @app.route('/add_playlist', methods=['GET','POST'])
 def add_playlist():
     email = session.get('email')
-    print(email)
     if not email:
         return redirect(url_for('login', err=1))
     if request.method == 'POST':
