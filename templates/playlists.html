@@ -220,69 +220,82 @@
       </div>
     </div>
 
-    <footer class="" style="background-color: #040024 !important">
+    <footer class style="background-color: #040024 !important">
       <div class="container">
         <div class="row text-center justify-content-evenly pt-3">
           <div
-            class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block"
+            class="col-lg-1 col-md-2 mb-4 mb-md-0 d-none d-md-block align-self-center"
             style="object-fit: scale-down"
           >
             <a href="../">
               <img
                 src="{{ url_for('static', filename='img/logo.png')}}"
-                alt=""
+                alt
                 style="max-height: 6vw"
               />
             </a>
           </div>
-          <div class="row col-12 col-md-10 col-lg-11 mb-md-0">
+          <div class="row col-12 col-md-10 col-lg-11 mb-md-0 text-center">
             <h6
               class="text-uppercase mb-0 text-white"
-              style="font-size: 1.5vw; letter-spacing: 0.1em"
+              style="font-size: 3vh; letter-spacing: 0.1em"
             >
               Follow us on:
             </h6>
-            <ul class="list-unstyled mt-2 d-flex justify-content-evenly">
-              <li>
-                <div class="row justify-content-start mt-2">
-                  <img
-                    class="col-2 p-0 align-self-center"
-                    style="max-width: 1.5vw"
-                    src="{{ url_for('static', filename='img/інста_1.png')}}"
-                    alt=""
-                  />
-                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
-                    >tempotune_official</a
-                  >
-                </div>
-              </li>
-              <li>
-                <div class="row mt-2 justify-content-center">
-                  <img
-                    class="col-2 p-0 align-self-center"
-                    style="max-width: 1.5vw"
-                    src="{{ url_for('static', filename='img/facebook_1.png')}}"
-                    alt=""
-                  />
-                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
-                    >TEMPOTUNE</a
-                  >
-                </div>
-              </li>
-              <li>
-                <div class="row mt-2 justify-content-end">
-                  <img
-                    class="col-2 p-0 align-self-center"
-                    style="max-width: 1.5vw"
-                    src="{{ url_for('static', filename='img/twitter_1.png')}}"
-                    alt=""
-                  />
-                  <a href="#!" class="col-10 text-white" style="font-size: 1vw"
-                    >tempotune_official</a
-                  >
-                </div>
-              </li>
-            </ul>
+            <div class="">
+              <ul
+                class="row list-unstyled my-2 d-flex justify-content-evenly px-0 mb-3"
+              >
+                <li class="col-10 col-sm-3">
+                  <div class="row justify-content-center mt-2">
+                    <img
+                      class="col-2 p-0 align-self-center"
+                      style="max-width: 2.8vh"
+                      src="{{ url_for('static', filename='img/інста_1.png')}}"
+                      alt
+                    />
+                    <a
+                      href="#!"
+                      class="col-4 col-sm-10 col-lg-8 text-white px-2"
+                      style="font-size: 2vh"
+                      >tempotune_official</a
+                    >
+                  </div>
+                </li>
+                <li class="col-10 col-sm-3">
+                  <div class="row mt-2 justify-content-center">
+                    <img
+                      class="col-2 p-0 align-self-center"
+                      style="max-width: 2.8vh"
+                      src="{{ url_for('static', filename='img/facebook_1.png')}}"
+                      alt
+                    />
+                    <a
+                      href="#!"
+                      class="col-4 col-sm-8 col-lg-6 text-white px-2"
+                      style="font-size: 2vh"
+                      >TEMPOTUNE</a
+                    >
+                  </div>
+                </li>
+                <li class="col-10 col-sm-3">
+                  <div class="row mt-2 justify-content-center">
+                    <img
+                      class="col-2 p-0 align-self-center"
+                      style="max-width: 2.8vh"
+                      src="{{ url_for('static', filename='img/twitter_1.png')}}"
+                      alt
+                    />
+                    <a
+                      href="#!"
+                      class="col-4 col-sm-10 col-lg-8 text-white px-2"
+                      style="font-size: 2vh"
+                      >tempotune_official</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -291,9 +304,9 @@
         class="text-center p-3"
         style="
           background-color: #040219;
-          font-size: 0.8vw;
+          font-size: 1.8vh;
           color: aliceblue;
-          opacity: 0.9;
+          opacity: 1.3vw;
         "
       >
         © 2024 Tempotune. All rights reserved.
