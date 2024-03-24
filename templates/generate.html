@@ -133,7 +133,6 @@
                 type="text"
                 id="form12"
                 class="form-control"
-                style="font-size: 1.7vh"
                 name="song"
                 {%
                 if
@@ -152,7 +151,6 @@
                 type="number"
                 id="typeNumber"
                 class="form-control"
-                style="font-size: 1.7vh"
                 name="song_amount"
                 {%
                 if
@@ -359,7 +357,7 @@
         <section id="playlist">
           <form action="{{url_for('add_playlist')}}" method="POST">
             <div class="d-flex justify-content-around w-100 mb-4">
-              <div class="w-50">
+              <div class="w-50 h-100">
                 <div
                   class="form-outline mb-md-0 pr-2 align-self-center"
                   style="color: #06003d"
@@ -368,12 +366,11 @@
                     type="text"
                     id="form13"
                     class="form-control"
-                    style="font-size: 1.7vw"
                     name="playlist_name" />
                   <label
                     class="form-label"
                     for="form13"
-                    style="font-size: 1.7vw">Type playlist name</label>
+                    style="font-size: 2vh">Type playlist name</label>
                 </div>
               </div>
 
@@ -384,7 +381,7 @@
                     class="btn btn-primary rounded-9 display-1 mt-md-0 ml-md-3 mr-md-3"
                     style="
                       background: linear-gradient(to right, #06003d, #54095b);
-                      font-size: 1.5vw;
+                      font-size: 1.7vh;
                       color: #fffdf3;
                       float: right;
                     "
@@ -398,14 +395,14 @@
           </form>
           <div class="row container p-3 px-4 mx-1" style="margin: -0.6rem">
             <div class="col-2 col-md-1"></div>
-            <div class="col-1" style="font-size: 1vw"></div>
-            <div class="col-3" style="font-size: 1vw">Song</div>
-            <div class="col-3 d-none d-md-block" style="font-size: 1vw">
+            <div class="col-2 col-md-1" style="font-size: 1.3vh"></div>
+            <div class="col-3" style="font-size: 1.3vh">Song</div>
+            <div class="col-3 d-none d-md-block" style="font-size: 1.3vh">
               Album
             </div>
-            <div class="col-2" style="font-size: 1vw">Artist</div>
-            <div class="col-2" style="font-size: 1vw">Duration</div>
-            <div class="col-2" style="font-size: 1vw"></div>
+            <div class="col-2" style="font-size: 1.3vh">Artist</div>
+            <div class="col-2" style="font-size: 1.3vh">Duration</div>
+            <div class="col-2" style="font-size: 1.3vh"></div>
           </div>
 
           <hr class="m-0" />
@@ -476,7 +473,7 @@
                       target="_blank"
                       href="{{song.url}}"
                       class="text-white"
-                      style="font-size: 1vw">
+                      style="font-size: 1.7vh">
                       {{song.name}}
                     </a>
                   </div>
@@ -486,7 +483,7 @@
                       target="_blank"
                       href="{{song.album_url}}"
                       class="text-white d-flex justify-content-start"
-                      style="font-size: 1vw">{{song.album}}</a>
+                      style="font-size: 1.7vh">{{song.album}}</a>
                   </div>
                   <div
                     class="col-2 d-flex align-items-center justify-content-start text-white">
@@ -494,23 +491,23 @@
                       target="_blank"
                       href="{{song.artist_url}}"
                       class="text-white"
-                      style="font-size: 1vw">{{song.artist}}</a>
+                      style="font-size: 1.7vh">{{song.artist}}</a>
                   </div>
                   <div
                     class="d-flex col-1 align-items-center text-white"
-                    style="font-size: 1vw">
+                    style="font-size: 1.7vh">
                     {{song.duration}}
                   </div>
                   <div
                     class="d-flex col-2 col-md-1 align-items-center text-white justify-content-center"
-                    style="font-size: 1vw">
+                    style="font-size: 1.7vh">
                     <button
                       type="submit"
                       name="action"
                       value="{{song}}"
                       class="text-white"
                       style="
-                        font-size: 1.2vw;
+                        font-size: 1.2vh;
                         background: transparent;
                         border: none !important;
                       ">
@@ -556,7 +553,7 @@
             <div class>
               <ul
                 class="row list-unstyled my-2 d-flex justify-content-evenly px-0 mb-3">
-                <li class="col-10 col-sm-3">
+                <li class="col-10 col-sm-4">
                   <div class="row justify-content-center mt-2">
                     <img
                       class="col-2 p-0 align-self-center"
@@ -569,7 +566,7 @@
                       style="font-size: 2vh">tempotune_official</a>
                   </div>
                 </li>
-                <li class="col-10 col-sm-3">
+                <li class="col-10 col-sm-4">
                   <div class="row mt-2 justify-content-center">
                     <img
                       class="col-2 p-0 align-self-center"
@@ -582,7 +579,7 @@
                       style="font-size: 2vh">TEMPOTUNE</a>
                   </div>
                 </li>
-                <li class="col-10 col-sm-3">
+                <li class="col-10 col-sm-4">
                   <div class="row mt-2 justify-content-center">
                     <img
                       class="col-2 p-0 align-self-center"
