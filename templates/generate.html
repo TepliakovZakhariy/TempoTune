@@ -393,19 +393,22 @@
               </div>
             </div>
           </form>
-          <div class="row container p-3 px-4 mx-1" style="margin: -0.6rem">
-            <div class="col-2 col-md-1"></div>
-            <div class="col-2 col-md-1" style="font-size: 1.3vh"></div>
-            <div class="col-3" style="font-size: 1.3vh">Song</div>
-            <div class="col-3 d-none d-md-block" style="font-size: 1.3vh">
-              Album
+          <div class="d-none d-sm-block">
+            <div class="row container p-3 px-4 mx-1" style="margin: -0.6rem">
+              <div class="col-2 col-md-1"></div>
+              <div class="col-2 col-md-1" style="font-size: 1.3vh"></div>
+              <div class="col-3" style="font-size: 1.3vh">Song</div>
+              <div class="col-3 d-none d-md-block" style="font-size: 1.3vh">
+                Album
+              </div>
+              <div class="col-2" style="font-size: 1.3vh">Artist</div>
+              <div class="col-2" style="font-size: 1.3vh">Duration</div>
+              <div class="col-2" style="font-size: 1.3vh"></div>
             </div>
-            <div class="col-2" style="font-size: 1.3vh">Artist</div>
-            <div class="col-2" style="font-size: 1.3vh">Duration</div>
-            <div class="col-2" style="font-size: 1.3vh"></div>
+            <hr class="m-0" />
           </div>
 
-          <hr class="m-0" />
+          
           <form action="{{url_for('generate')}}" method="POST">
             <input
               class="d-none"
@@ -422,11 +425,11 @@
                 <div class="row m-1">
                   {% if song.preview_url == 'z' %}
                   <div
-                    class="col-2 col-md-1 d-flex align-items-center justify-content-start">
+                    class="col-2 col-md-1 d-none d-sm-flex align-items-center justify-content-start">
                     <button
                       type="button"
                       class="btn btn-secondary btn-floating"
-                      style="height: 3vw; width: 3vw; font-size: 1.2vw"
+                      style="height: 5vh; width: 5vh; font-size: 2.5vh"
                       data-mdb-ripple-init
                       disabled>
                       <i
@@ -436,9 +439,25 @@
                         style="user-select: none; touch-action: none"></i>
                     </button>
                   </div>
+                  <div
+                    class="col-2 col-md-1 d-flex d-sm-none align-items-center justify-content-start">
+                    <button
+                      type="button"
+                      class="btn btn-secondary btn-floating"
+                      style="height: 5vh; width: 5vh; font-size: 2.5vh rounded-2"
+                      data-mdb-ripple-init
+                      disabled>
+                      <i
+                        class="fas fa-play icon-item active"
+                        id="mdb-span-example-icon"
+                        role="button"
+                        style="user-select: none; touch-action: none"></i>
+                    </button>
+                  </div>
+
                   {% else %}
                   <div
-                    class="col-2 col-md-1 d-flex align-items-center justify-content-start">
+                    class="col-2 col-md-1 d-none d-sm-flex align-items-center justify-content-start">
                     <audio id="audioPlayer">
                       <source src="{{song.preview_url}}" type="audio/mpeg" />
                       Your browser does not support the audio element.
@@ -448,7 +467,29 @@
                       class="btn btn-primary btn-floating"
                       data-mdb-ripple-init
                       onclick="togglePlayPause(this)"
-                      style="height: 3vw; width: 3vw; font-size: 1.2vw"
+                      style="height: 5vh; width: 5vh; font-size: 2.5vh"
+                      data-mdb-popover-init
+                      data-mdb-trigger="hover"
+                      data-mdb-content="Play the preview given by Spotify">
+                      <i
+                        class="fas fa-play icon-item active"
+                        id="mdb-span-example-icon"
+                        role="button"
+                        style="user-select: none; touch-action: none"></i>
+                    </button>
+                  </div>
+                  <div
+                    class="col-2 col-md-1 d-flex d-sm-none align-items-center justify-content-start">
+                    <audio id="audioPlayer">
+                      <source src="{{song.preview_url}}" type="audio/mpeg" />
+                      Your browser does not support the audio element.
+                    </audio>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-floating rounded-2"
+                      data-mdb-ripple-init
+                      onclick="togglePlayPause(this)"
+                      style="height: 5vh; width: 5vh; font-size: 2.5vh; background: url({{song.cover_small}}); "
                       data-mdb-popover-init
                       data-mdb-trigger="hover"
                       data-mdb-content="Play the preview given by Spotify">
@@ -461,40 +502,74 @@
                   </div>
                   {% endif %}
                   <div
-                    class="col-2 col-md-1 d-flex align-items-center justify-content-start">
+                    class="col-2 col-md-1 d-none d-sm-flex align-items-center justify-content-start">
                     <img
                       src="{{song.cover_small}}"
                       alt
-                      style="border-radius: 10%; object-fit: fit; height: 3.5vw" />
+                      style="border-radius: 10%; object-fit: fit; height: 5vh" />
                   </div>
                   <div
-                    class="col-3 d-flex align-items-center justify-content-start text-white">
+                    class="col-8 d-sm-none align-items-center justify-content-start text-white row">
+                    <div class="col-12 d-flex">
+                      <a
+                      target="_blank"
+                      href="{{song.url}}"
+                      class="text-white"
+                      style="font-size: 1.7vh; overflow: hidden;
+                      max-width: 100%;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;">
+                      {{song.name}}
+                      </a>
+                    </div>
+                    <div class="col-12 d-flex">
+                      <a
+                      target="_blank"
+                      href="{{song.artist_url}}"
+                      class="text-white"
+                      style="font-size: 1.7vh; overflow: hidden;
+                      max-width: 100%;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;">{{song.artist}}</a>
+                    </div>
+                  </div>
+                  <div
+                    class="col-3 d-none d-sm-flex align-items-center justify-content-start text-white">
                     <a
                       target="_blank"
                       href="{{song.url}}"
                       class="text-white"
-                      style="font-size: 1.7vh">
+                      style="font-size: 1.7vh; overflow: hidden;
+                      max-width: 100%;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;">
                       {{song.name}}
                     </a>
                   </div>
                   <div
-                    class="col-3 d-none d-md-block align-self-center text-white">
+                    class="col-3 d-none d-md-flex align-items-center justify-content-start text-white">
                     <a
                       target="_blank"
                       href="{{song.album_url}}"
-                      class="text-white d-flex justify-content-start"
-                      style="font-size: 1.7vh">{{song.album}}</a>
+                      class="text-white"
+                      style="font-size: 1.7vh; overflow: hidden;
+                      max-width: 100%;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;">{{song.album}}</a>
                   </div>
                   <div
-                    class="col-2 d-flex align-items-center justify-content-start text-white">
+                    class="col-2 d-none d-sm-flex align-items-center justify-content-start text-white">
                     <a
                       target="_blank"
                       href="{{song.artist_url}}"
-                      class="text-white"
-                      style="font-size: 1.7vh">{{song.artist}}</a>
+                      class="text-white "
+                      style="font-size: 1.7vh; overflow: hidden;
+                      max-width: 100%;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;">{{song.artist}}</a>
                   </div>
                   <div
-                    class="d-flex col-1 align-items-center text-white"
+                    class="d-none d-sm-flex col-1 align-items-center text-white"
                     style="font-size: 1.7vh">
                     {{song.duration}}
                   </div>
@@ -507,7 +582,7 @@
                       value="{{song}}"
                       class="text-white"
                       style="
-                        font-size: 1.2vh;
+                        font-size: 2.1vh;
                         background: transparent;
                         border: none !important;
                       ">
