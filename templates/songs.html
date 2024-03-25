@@ -4,26 +4,31 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>{{playlist.name}} - TempoTune</title>
     <!-- MDB icon -->
     <link
       rel="icon"
       href="{{ url_for('static', filename='img/logo.png')}}"
-      type="image/x-icon" />
+      type="image/x-icon"
+    />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <!-- Google Fonts Roboto -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
     <!-- MDB -->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/mdb.min.css' )}}" />
+      href="{{ url_for('static', filename='css/mdb.min.css' )}}"
+    />
   </head>
 
   <body>
@@ -40,7 +45,8 @@
               height="70px"
               alt="Tempotune Logo"
               loading="lazy"
-              style="margin-top: -1px" />
+              style="margin-top: -1px"
+            />
           </a>
 
           <!-- Toggle button -->
@@ -51,7 +57,8 @@
             data-mdb-target="#navbarButtonsExample"
             aria-controls="navbarButtonsExample"
             aria-expanded="false"
-            aria-label="Toggle navigation">
+            aria-label="Toggle navigation"
+          >
             <i class="fas fa-bars"></i>
           </button>
 
@@ -63,7 +70,8 @@
                 <a class="nav-link" href="{{ url_for('index') }}">
                   <p
                     class="mb-0 h3"
-                    style="color: #040219; letter-spacing: 0.25em">
+                    style="color: #040219; letter-spacing: 0.25em"
+                  >
                     TEMPOTUNE
                   </p>
                 </a>
@@ -81,7 +89,8 @@
                     background-color: #fffdf3;
                     color: #4b40b5;
                     border-color: #4b40b5 !important;
-                  ">
+                  "
+                >
                   GENERATE PLAYLIST
                 </button>
               </a>
@@ -94,7 +103,8 @@
                     background-color: #fffdf3;
                     color: #4b40b5;
                     border-color: #4b40b5 !important;
-                  ">
+                  "
+                >
                   LOGOUT
                 </button>
               </a>
@@ -102,9 +112,12 @@
                 data-mdb-ripple-init
                 class="px-3"
                 href="{{url_for('login')}}"
-                role="button"><i class><img
+                role="button"
+                ><i class
+                  ><img
                     src="{{ url_for('static', filename='img/avatar.png')}}"
-                    alt /></i></a>
+                    alt /></i
+              ></a>
             </div>
           </div>
           <!-- Collapsible wrapper -->
@@ -118,7 +131,8 @@
       style="
         background: linear-gradient(to right, rgba(0, 5, 23), rgb(14, 4, 103));
         min-height: 80vh;
-      ">
+      "
+    >
       <div class="row justify-content-center">
         <div class="col-6">
           <h1 class="text-white text-center">{{playlist.name}}</h1>
@@ -127,41 +141,53 @@
           <form
             method="POST"
             action="{{url_for('add_to_spotify')}}"
-            class="text-center">
-            <button
+            class="text-center"
+          >
+            <span
+              class="d-inline-block"
               data-mdb-ripple-init
-              class="btn rounded-8 display-3 text-white"
-              style="background-color: #1ccc5b; font-size: 2vw"
-              type="submit"
-              name="playlist"
-              value="{{playlist}}"
               data-mdb-popover-init
               data-mdb-trigger="hover"
               data-mdb-placement="bottom"
-              data-mdb-content="Please note that this feature is under development and may not work correctly.">
-              <i class="fab fa-spotify fa-md mx-1"></i>
-              Save to Spotify
-            </button>
+              data-mdb-content="Work in progress. Coming soon!"
+            >
+              <button
+                class="btn rounded-8 display-3 text-white"
+                style="
+                  background-color: #1ccc5b;
+                  font-size: 2vw;
+                  pointer-events: none;
+                "
+                type="submit"
+                name="playlist"
+                value="{{playlist}}"
+                disabled
+              >
+                <i class="fab fa-spotify fa-md mx-1"></i>
+                Save to Spotify
+              </button>
+            </span>
           </form>
         </div>
       </div>
       <div class="px-2 px-md-5 mt-4">
         <div class="d-none d-sm-block">
-          <div class="row p-3 px-4 mx-1"
-            style="margin: -0.6rem">
+          <div class="row p-3 px-4 mx-1" style="margin: -0.6rem">
             <div class="col-2 col-md-1"></div>
             <div class="col-2 col-md-1" style="font-size: 1.3vh"></div>
             <div class="col-3 text-white" style="font-size: 1.3vh">Song</div>
-            <div class="col-3 d-none d-md-block text-white"
-              style="font-size: 1.3vh">
+            <div
+              class="col-3 d-none d-md-block text-white"
+              style="font-size: 1.3vh"
+            >
               Album
             </div>
             <div class="col-2 text-white" style="font-size: 1.3vh">Artist</div>
-            <div class="col-2 text-white"
-              style="font-size: 1.3vh">Duration</div>
+            <div class="col-2 text-white" style="font-size: 1.3vh">
+              Duration
+            </div>
             <div class="col-2" style="font-size: 1.3vh"></div>
           </div>
-
         </div>
         <hr
           class="m-0 hr"
@@ -171,55 +197,65 @@
               rgb(59, 3, 150),
               rgb(25, 16, 108)
             );
-          " />
+          "
+        />
         <form
           action="{{url_for('songs',playlist_id=playlist.id)}}"
           ,
-          method="POST">
+          method="POST"
+        >
           {% for song in playlist.songs %}
           <div
             class="card my-3 shadow-3-strong"
             style="
               background-image: linear-gradient(to right, #2b2185, #6d1cc4);
               border-radius: 2rem;
-            ">
+            "
+          >
             <div class="card-body p-3 px-4" style="margin: -0.6rem">
               <div class="row m-1">
                 {% if song.preview_url == 'z' %}
                 <div
-                  class="col-2 col-md-1 d-none d-sm-flex align-items-center justify-content-start">
+                  class="col-2 col-md-1 d-none d-sm-flex align-items-center justify-content-start"
+                >
                   <button
                     type="button"
                     class="btn btn-secondary btn-floating"
                     style="height: 5vh; width: 5vh; font-size: 2.5vh"
                     data-mdb-ripple-init
-                    disabled>
+                    disabled
+                  >
                     <i
                       class="fas fa-play icon-item active"
                       id="mdb-span-example-icon"
                       role="button"
-                      style="user-select: none; touch-action: none"></i>
+                      style="user-select: none; touch-action: none"
+                    ></i>
                   </button>
                 </div>
                 <div
-                  class="col-2 col-md-1 d-flex d-sm-none align-items-center justify-content-start">
+                  class="col-2 col-md-1 d-flex d-sm-none align-items-center justify-content-start"
+                >
                   <button
                     type="button"
                     class="btn btn-secondary btn-floating"
                     style="height: 5vh; width: 5vh; font-size: 2.5vh rounded-2"
                     data-mdb-ripple-init
-                    disabled>
+                    disabled
+                  >
                     <i
                       class="fas fa-play icon-item active"
                       id="mdb-span-example-icon"
                       role="button"
-                      style="user-select: none; touch-action: none"></i>
+                      style="user-select: none; touch-action: none"
+                    ></i>
                   </button>
                 </div>
 
                 {% else %}
                 <div
-                  class="col-2 col-md-1 d-none d-sm-flex align-items-center justify-content-start">
+                  class="col-2 col-md-1 d-none d-sm-flex align-items-center justify-content-start"
+                >
                   <audio id="audioPlayer">
                     <source src="{{song.preview_url}}" type="audio/mpeg" />
                     Your browser does not support the audio element.
@@ -232,16 +268,19 @@
                     style="height: 5vh; width: 5vh; font-size: 2.5vh"
                     data-mdb-popover-init
                     data-mdb-trigger="hover"
-                    data-mdb-content="Play the preview given by Spotify">
+                    data-mdb-content="Play the preview given by Spotify"
+                  >
                     <i
                       class="fas fa-play icon-item active"
                       id="mdb-span-example-icon"
                       role="button"
-                      style="user-select: none; touch-action: none"></i>
+                      style="user-select: none; touch-action: none"
+                    ></i>
                   </button>
                 </div>
                 <div
-                  class="col-2 col-md-1 d-flex d-sm-none align-items-center justify-content-start">
+                  class="col-2 col-md-1 d-flex d-sm-none align-items-center justify-content-start"
+                >
                   <audio id="audioPlayer">
                     <source src="{{song.preview_url}}" type="audio/mpeg" />
                     Your browser does not support the audio element.
@@ -254,24 +293,29 @@
                     style="height: 5vh; width: 5vh; font-size: 2.5vh; background: url({{song.cover_small}}); "
                     data-mdb-popover-init
                     data-mdb-trigger="hover"
-                    data-mdb-content="Play the preview given by Spotify">
+                    data-mdb-content="Play the preview given by Spotify"
+                  >
                     <i
                       class="fas fa-play icon-item active"
                       id="mdb-span-example-icon"
                       role="button"
-                      style="user-select: none; touch-action: none"></i>
+                      style="user-select: none; touch-action: none"
+                    ></i>
                   </button>
                 </div>
                 {% endif %}
                 <div
-                  class="col-2 col-md-1 d-none d-sm-flex align-items-center justify-content-start">
+                  class="col-2 col-md-1 d-none d-sm-flex align-items-center justify-content-start"
+                >
                   <img
                     src="{{song.cover_small}}"
                     alt
-                    style="border-radius: 10%; object-fit: fit; height: 5vh" />
+                    style="border-radius: 10%; object-fit: fit; height: 5vh"
+                  />
                 </div>
                 <div
-                  class="col-8 d-sm-none align-items-center justify-content-start text-white row">
+                  class="col-8 d-sm-none align-items-center justify-content-start text-white row"
+                >
                   <div class="col-12 d-flex">
                     <a
                       target="_blank"
@@ -283,7 +327,8 @@
                         max-width: 100%;
                         text-overflow: ellipsis;
                         white-space: nowrap;
-                      ">
+                      "
+                    >
                       {{song.name}}
                     </a>
                   </div>
@@ -298,11 +343,14 @@
                         max-width: 100%;
                         text-overflow: ellipsis;
                         white-space: nowrap;
-                      ">{{song.artist}}</a>
+                      "
+                      >{{song.artist}}</a
+                    >
                   </div>
                 </div>
                 <div
-                  class="col-3 d-none d-sm-flex align-items-center justify-content-start text-white">
+                  class="col-3 d-none d-sm-flex align-items-center justify-content-start text-white"
+                >
                   <a
                     target="_blank"
                     href="{{song.url}}"
@@ -313,12 +361,14 @@
                       max-width: 100%;
                       text-overflow: ellipsis;
                       white-space: nowrap;
-                    ">
+                    "
+                  >
                     {{song.name}}
                   </a>
                 </div>
                 <div
-                  class="col-3 d-none d-md-flex align-items-center justify-content-start text-white">
+                  class="col-3 d-none d-md-flex align-items-center justify-content-start text-white"
+                >
                   <a
                     target="_blank"
                     href="{{song.album_url}}"
@@ -329,10 +379,13 @@
                       max-width: 100%;
                       text-overflow: ellipsis;
                       white-space: nowrap;
-                    ">{{song.album}}</a>
+                    "
+                    >{{song.album}}</a
+                  >
                 </div>
                 <div
-                  class="col-2 d-none d-sm-flex align-items-center justify-content-start text-white">
+                  class="col-2 d-none d-sm-flex align-items-center justify-content-start text-white"
+                >
                   <a
                     target="_blank"
                     href="{{song.artist_url}}"
@@ -343,16 +396,20 @@
                       max-width: 100%;
                       text-overflow: ellipsis;
                       white-space: nowrap;
-                    ">{{song.artist}}</a>
+                    "
+                    >{{song.artist}}</a
+                  >
                 </div>
                 <div
                   class="d-none d-sm-flex col-1 align-items-center text-white"
-                  style="font-size: 1.7vh">
+                  style="font-size: 1.7vh"
+                >
                   {{song.duration}}
                 </div>
                 <div
                   class="d-flex col-2 col-md-1 align-items-center text-white justify-content-center"
-                  style="font-size: 1.7vh">
+                  style="font-size: 1.7vh"
+                >
                   <button
                     type="submit"
                     name="song"
@@ -362,14 +419,16 @@
                       font-size: 2.1vh;
                       background: transparent;
                       border: none !important;
-                    ">
+                    "
+                  >
                     <i
                       class="icon-item fas fa-trash"
                       role="button"
                       data-prefix="fas"
                       data-id="trash"
                       data-unicode="f1f8"
-                      data-mdb-tooltip-initialized="true"></i>
+                      data-mdb-tooltip-initialized="true"
+                    ></i>
                   </button>
                 </div>
               </div>
@@ -473,7 +532,8 @@
     </footer>
     <script
       type="text/javascript"
-      src="{{ url_for('static', filename='js/mdb.umd.min.js' )}}"></script>
+      src="{{ url_for('static', filename='js/mdb.umd.min.js' )}}"
+    ></script>
     <!-- Custom scripts -->
     <script type="text/javascript">
       var currentAudio = null;
