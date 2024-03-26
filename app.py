@@ -167,6 +167,20 @@ def index():
     return render_template("index.html")
 
 
+@app.errorhandler(404)
+def page_not_found(error):
+    message = 'Sorry! The page you are looking for can`t be found'
+    eror = '404'
+    return render_template('error.html', message=message, eror=eror), 404
+
+
+@app.errorhandler(500)
+def server_error(error):
+    message = 'Sorry! Server error, we are currently trying to fix the problem'
+    eror = '500'
+    return render_template('error.html', message=message, eror=eror), 500
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     email = session.get("email")
@@ -260,14 +274,16 @@ def songs(playlist_id):
             playlists_[playlist_index] = playlist
             playlists_ = [str(playlist) for playlist in playlists_]
             users.update_one(
-                {"email": session["email"]}, {"$set": {"playlists": playlists_}}
+                {"email": session["email"]}, {
+                    "$set": {"playlists": playlists_}}
             )
             return render_template("songs.html", playlist=playlist)
         else:
             playlists_.remove(playlist)
             playlists_ = [str(playlist) for playlist in playlists_]
             users.update_one(
-                {"email": session["email"]}, {"$set": {"playlists": playlists_}}
+                {"email": session["email"]}, {
+                    "$set": {"playlists": playlists_}}
             )
             return redirect(url_for("playlists"))
 
@@ -388,7 +404,8 @@ def add_playlist():
         user = users.find_one({"email": session["email"]})
         user["playlists"].append(playlist)
         users.update_one(
-            {"email": session["email"]}, {"$set": {"playlists": user["playlists"]}}
+            {"email": session["email"]}, {
+                "$set": {"playlists": user["playlists"]}}
         )
         return redirect(url_for("songs", playlist_id=playlist_id))
     else:
@@ -405,7 +422,8 @@ def delete_playlist(playlist_id):
     ][0]
     playlists_.remove(playlist)
     playlists_ = [str(playlist) for playlist in playlists_]
-    users.update_one({"email": session["email"]}, {"$set": {"playlists": playlists_}})
+    users.update_one({"email": session["email"]}, {
+                     "$set": {"playlists": playlists_}})
     return redirect(url_for("playlists"))
 
 
@@ -445,5 +463,5 @@ def add_to_spotify():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
-    serve(app, host="0.0.0.0", port=port)
-    # app.run(port=port, host='0.0.0.0', debug=True)
+    # serve(app, host="0.0.0.0", port=port)
+    app.run(port=port, host='0.0.0.0', debug=True)

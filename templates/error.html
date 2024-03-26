@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Error</title>
+    <!-- MDB icon -->
+    <link
+      rel="icon"
+      href="{{url_for('static',filename='img/logo.png')}}"
+      type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/mdb.min.css') }}" />
+  </head>
+
+  <body>
+    <!-- Start your project here-->
+    <div
+      class="d-flex justify-content-center align-items-center"
+      style="
+        background: linear-gradient(to right, #060422, #251a81);
+        height: 100vh;
+      ">
+      <div
+        class="card col-10 col-md-9 rounded-9 mt-2 row"
+        style="color: #251a81; background-color: #fffdf3">
+        <div class="card-body row justify-content-between">
+          <div class="col-md-4 align-self-center d-none d-md-flex">
+            <a class="navbar-brand me-md-5 " href="{{ url_for('index') }}">
+              <img
+                src="{{ url_for('static', filename='img/logo.png') }}"
+                alt="Tempotune Logo"
+                loading="lazy"
+                style="margin-top: 1px; max-height: 20vh" />
+            </a>
+          </div>
+          <div class="col-md-8">
+            <p class="text-center" style="font-size: 10vh">{{eror}}</p>
+            <h2 class="mb-4" style="text-align: center">{{message}}</h2>
+
+            <!-- Submit button -->
+            <a
+              href="{{ url_for('index') }}"
+              data-mdb-ripple-init
+              class="btn btn-primary mb-5 col-12"
+              style="
+              color: #fffdf3;
+              padding: 8px 10px;
+              font-size: 14px;
+              display: block;
+              margin: 0 auto;
+              background: linear-gradient(to right, #06003d, #54095b);
+            ">
+              Main page
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src='{{ url_for("static",filename="js/mdb.umd.min.js")}}'></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+  </body>
+</html>
