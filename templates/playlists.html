@@ -147,7 +147,9 @@
           </section>
         </div>
         {% for playlist in playlists %}
-        <div class="card col-11 col-sm-5 col-lg-3  mx-2 my-4 px-0 position-relative">
+        <div
+          class="card col-11 col-sm-5 col-lg-3 mx-2 my-4 px-0 position-relative"
+        >
           <div
             class="bg-image hover-overlay"
             data-mdb-ripple-init
@@ -188,10 +190,21 @@
             </div>
           </div>
           <div class="card-body p-2 p-sm-4">
-            <h5 class="card-title" style="font-size: 3.2vh">
-              {{playlist.name}}
-            </h5>
-            <p class="card-text text-muted" style="font-size: 2.3vh">
+            <a href="{{url_for('delete_playlist',playlist_id=playlist.id)}}">
+              <h5 class="card-title text-dark" style="font-size: 3.2vh">
+                {{playlist.name}}
+              </h5>
+            </a>
+            <p
+              class="card-text text-muted"
+              style="
+                font-size: 2.3vh;
+                overflow: hidden;
+                max-width: 100%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              "
+            >
               {{playlist.songs[0].name}} by {{playlist.songs[0].artist}}...
             </p>
             <div class="row">
