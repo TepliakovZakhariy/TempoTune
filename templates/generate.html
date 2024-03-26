@@ -41,7 +41,8 @@
               height="70px"
               alt="Tempotune Logo"
               loading="lazy"
-              style="margin-top: 1px" />
+              style="margin-top: 1px"
+            />
           </a>
 
           <!-- Toggle button -->
@@ -52,19 +53,21 @@
             data-mdb-target="#navbarButtonsExample"
             aria-controls="navbarButtonsExample"
             aria-expanded="false"
-            aria-label="Toggle navigation">
+            aria-label="Toggle navigation"
+          >
             <i class="fas fa-bars"></i>
           </button>
 
           <!-- Collapsible wrapper -->
           <div class="collapse navbar-collapse" id="navbarButtonsExample">
             <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-lg-0">
+            <ul class="navbar-nav me-auto mb-lg-0 d-none d-md-flex">
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('index') }}">
                   <p
                     class="mb-0 h3"
-                    style="color: #040219; letter-spacing: 0.25em">
+                    style="color: #040219; letter-spacing: 0.25em"
+                  >
                     TEMPOTUNE
                   </p>
                 </a>
@@ -72,7 +75,7 @@
             </ul>
             <!-- Left links -->
 
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center justify-content-around">
               <a href="{{url_for('generate')}}">
                 <button
                   data-mdb-ripple-init
@@ -82,7 +85,8 @@
                     background-color: #fffdf3;
                     color: #4b40b5;
                     border-color: #4b40b5 !important;
-                  ">
+                  "
+                >
                   GENERATE PLAYLIST
                 </button>
               </a>
@@ -90,9 +94,12 @@
                 data-mdb-ripple-init
                 class="px-3"
                 href="{{url_for('login')}}"
-                role="button"><i class><img
+                role="button"
+                ><i class
+                  ><img
                     src="{{url_for('static', filename='img/avatar.png')}}"
-                    alt /></i></a>
+                    alt /></i
+              ></a>
             </div>
           </div>
           <!-- Collapsible wrapper -->

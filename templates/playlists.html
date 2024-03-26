@@ -62,9 +62,9 @@
           </button>
 
           <!-- Collapsible wrapper -->
-          <div class="collapse navbar-collapse" id="navbarButtonsExample">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarButtonsExample">
             <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-lg-0">
+            <ul class="navbar-nav me-auto mb-lg-0 d-none d-lg-flex">
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('index') }}">
                   <p
@@ -78,12 +78,12 @@
             </ul>
             <!-- Left links -->
 
-            <div class="d-flex align-items-center">
-              <a href="{{url_for('generate')}}">
+            <div class="d-flex align-items-center  justify-content-around row">
+              <a href="{{url_for('generate')}}" class="col-sm-6 text-center">
                 <button
                   data-mdb-ripple-init
                   type="button"
-                  class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                  class="btn btn-primary me-sm-3 rounded-9 border border-2 display-3"
                   style="
                     background-color: #fffdf3;
                     color: #4b40b5;
@@ -93,11 +93,11 @@
                   GENERATE PLAYLIST
                 </button>
               </a>
-              <a href="{{url_for('logout')}}">
+              <a href="{{url_for('logout')}}" class="col-5 col-sm-4 mt-2 mt-sm-0 text-center">
                 <button
                   data-mdb-ripple-init
                   type="button"
-                  class="btn btn-primary me-3 rounded-9 border border-2 display-3"
+                  class="btn btn-primary me-sm-3 rounded-9 border border-2 display-3"
                   style="
                     background-color: #fffdf3;
                     color: #4b40b5;
@@ -109,7 +109,8 @@
               </a>
               <a
                 data-mdb-ripple-init
-                class="px-3"
+                class="px-3 col-3 col-sm-2"
+                class="text-center"
                 href="{{url_for('playlists')}}"
                 role="button"
                 ><i class
